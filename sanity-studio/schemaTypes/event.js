@@ -3,7 +3,7 @@ import {CalendarIcon} from '@sanity/icons'
 
 export const eventType = defineType({
   name: 'event',
-  title: 'Events',
+  title: 'Event',
   icon: CalendarIcon,
   type: 'document',
   fields: [
@@ -22,7 +22,12 @@ export const eventType = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'text',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+        },
+      ],
     }),
     defineField({
       name: 'date',
@@ -77,16 +82,4 @@ export const eventType = defineType({
       }
     },
   },
-  orderings: [
-    {
-      title: 'Date (Ascending)',
-      name: 'dateAsc',
-      by: [{field: 'date', direction: 'asc'}],
-    },
-    {
-      title: 'Date (Descending)',
-      name: 'dateDesc',
-      by: [{field: 'date', direction: 'desc'}],
-    }
-  ],
 })

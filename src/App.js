@@ -1,12 +1,16 @@
-import Events from "./components/events";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home"
+import Contact from "./pages/Contact"
+import Events from "./pages/Events"
 
-function App() {
-  return (
-		<div className="h-screen flex justify-center items-center bg-[#c21f23]">
-		  <Events/>
-		</div>
-	);
-}
-
+const App = () => (
+	<Router>
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route path="/events" element={<Events />} />
+			<Route path="/contact" element={<Contact />} />
+		</Routes>
+	</Router>
+)
 
 export default App;

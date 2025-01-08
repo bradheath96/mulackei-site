@@ -23,11 +23,26 @@ const Events = () => {
 			.catch(console.error);
     }, []);
     
-    console.log(events, "<<< events log")
+	console.log(events, "<<< events log")
 
 	return (
 		<div>
-			<h1>Upcoming Events</h1>
+			<h1 className="text-4xl text-white font-bold">Upcoming Events</h1>
+			<ul>
+				{events.map((event) => (
+					<li key={event._id}>
+						<h2 className="text-4xl text-white font-bold " >{event.name}</h2>
+						<p>{new Date(event.date).toLocaleDateString()}</p>
+						{event.image && (
+							<img
+								src={event.image.asset.url}
+								alt={event.name}
+								className="w-40 h-40 object-cover rounded-lg"
+							/>
+						)}
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 };

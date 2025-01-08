@@ -31,7 +31,7 @@ const Events = () => {
 			<ul>
 				{events.map((event) => (
 					<li key={event._id}>
-						<h2 className="text-4xl text-white font-bold " >{event.name}</h2>
+						<h2 className="text-2xl text-white font-semi-bold " >{event.name}</h2>
 						<p>{new Date(event.date).toLocaleDateString()}</p>
 						{event.image && (
 							<img

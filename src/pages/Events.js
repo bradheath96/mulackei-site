@@ -30,7 +30,7 @@ const Events = () => {
 			className="min-h-screen text-white px-8 py-12"
 			style={{ backgroundColor: "#F93631" }}>
 			<h1 className="text-4xl font-bold mb-8 text-center">Upcoming Events</h1>
-			<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+			<div className="grid gap-9 md:grid-cols-2 lg:grid-cols-3 ">
 				{events.map((event) => (
 					<div
 						key={event._id}
@@ -40,13 +40,13 @@ const Events = () => {
 							<img
 								src={event.image.asset.url}
 								alt={event.name}
-								className="w-full h-40 object-cover rounded-md mb-4"
+								className="w-full h-60 object-cover rounded-md mb-6 "
 							/>
 						)}
 						<h2 className="text-xl font-semibold mb-2 text-center">
 							{event.name}
 						</h2>
-						<p className="text-sm text-gray-400 mb-4 text-center">
+						<p className="text-sm text-white mb-4 text-center">
 							{new Date(event.date).toLocaleDateString(undefined, {
 								weekday: "short",
 								month: "short",

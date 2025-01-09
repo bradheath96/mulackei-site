@@ -8,8 +8,8 @@ const Header = () => (
 			<Link to="/">Mulackei</Link>
 		</h1>
 		<nav>
-			<Link to="/" className="px-3">
-				Home
+			<Link to="/About" className="px-3">
+				About
 			</Link>
 			<Link to="/events" className="px-3">
 				Events

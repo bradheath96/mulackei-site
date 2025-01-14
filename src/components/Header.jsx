@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 
 const Header = () => (
-	<header
-		className="bg-secondary sticky top-0 z-50 text-white p-4 flex justify-between items-center">
-		<h1 className="font-bold px-32">
+	<header className="bg-secondary sticky top-0 z-50 text-white p-4 flex justify-between items-center">
+		<h1 className="text-xl font-bold px-32">
 			<Link to="/">Mulackei</Link>
 		</h1>
-		<nav>
+		<nav className="text-xl font-bold px-32">
 			<Link to="/About" className="px-3">
 				About
 			</Link>

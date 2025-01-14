@@ -28,9 +28,11 @@ const Events = () => {
 	return (
 		<div className="bg-primary min-h-screen text-white py-12">
 			<h1 className="text-4xl font-bold mb-8 text-center">Upcoming Events</h1>
-			<div className="grid gap-4 grid-cols-1 ">
+			<div className="grid grid-cols-1 ">
 				{events.map((event) => (
-					<div key={event._id} className="bg-boxBG p-6 shadow-md">
+					<div
+						key={event._id}
+						className="bg-boxBG p-6 shadow-md border border-yellow-600">
 						<div className="grid grid-cols-[auto_1fr_auto] items-center gap-8 p-6">
 							<div className="max-w-max">
 								{event.image && (

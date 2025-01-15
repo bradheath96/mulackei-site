@@ -1,6 +1,6 @@
 const Home = () => (
 	<div>
-		<section className="flex flex-col items-center justify-center h-80 p-12 md:p-14 bg-primary">
+		<section className="flex flex-col items-center justify-center min-h-screen p-12 md:p-14 bg-primary">
 			<h1 className="text-4xl font-bold mb-4 text-white">
 				Welcome to Mulackei!
 			</h1>

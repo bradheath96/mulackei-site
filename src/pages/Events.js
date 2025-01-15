@@ -5,6 +5,7 @@ const Events = () => {
 	const [events, setEvents] = useState([]);
 
 	useEffect(() => {
+		const currentDate = new Date();
 		sanityClient
 			.fetch(
 				`*[_type == "event"] | order(date asc) {
@@ -19,7 +20,10 @@ const Events = () => {
           tickets
         }`
 			)
-			.then((data) => setEvents(data))
+            .then((data) => {
+                const upComingEvents = data.filter((event) => new Date(event.date) > currentDate)
+                setEvents(upComingEvents);
+			})
 			.catch(console.error);
 	}, []);
 

@@ -3,6 +3,8 @@ import sanityClient from "../sanityClient";
 
 const Events = () => {
 	const [events, setEvents] = useState([]);
+	const [filteredEvents, setFilteredEvents] = useState([]);
+	const [selectedCategory, setSelectedCategory] = useState("all");
 
 	useEffect(() => {
 		const currentDate = new Date();
@@ -20,20 +22,75 @@ const Events = () => {
           tickets
         }`
 			)
-            .then((data) => {
-                const upComingEvents = data.filter((event) => new Date(event.date) > currentDate)
-                setEvents(upComingEvents);
+			.then((data) => {
+				const upComingEvents = data.filter(
+					(event) => new Date(event.date) > currentDate
+				);
+				setEvents(upComingEvents);
+				setFilteredEvents(upComingEvents);
 			})
 			.catch(console.error);
 	}, []);
 
-	console.log(events, "<<< fetched events");
+	const handleFilterChange = (category) => {
+		setSelectedCategory(category);
+
+		if (category === "all") {
+			setFilteredEvents(events);
+		} else {
+			const filteredEvents = events.filter((event) => event.type === category);
+			setFilteredEvents(filteredEvents);
+		}
+	};
+
+	console.log(filteredEvents, "<<< filtered events");
 
 	return (
 		<div className="bg-primary min-h-screen text-white py-12">
 			<h1 className="text-4xl font-bold mb-8 text-center">Upcoming Events</h1>
+
+			{/* Filter Bar */}
+			<div className="grid grid-cols-5 justify-center mb-8 mx-auto w-[60%] max-w-4xl">
+				<button
+					className={`px-2 py-2 ${
+						selectedCategory === "all" ? "bg-secondary" : "bg-boxBG"
+					} text-white border border-yellow-600`}
+					onClick={() => handleFilterChange("all")}>
+					All
+				</button>
+				<button
+					className={`px-2 py-2 ${
+						selectedCategory === "music" ? "bg-secondary" : "bg-boxBG"
+					} text-white border border-yellow-600`}
+					onClick={() => handleFilterChange("music")}>
+					Music Gig
+				</button>
+				<button
+					className={`px-2 py-2 ${
+						selectedCategory === "chess" ? "bg-secondary" : "bg-boxBG"
+					} text-white border border-yellow-600`}
+					onClick={() => handleFilterChange("chess")}>
+					Chess Nights
+				</button>
+				<button
+					className={`px-2 py-2 ${
+						selectedCategory === "art exhibition" ? "bg-secondary" : "bg-boxBG"
+					} text-white border border-yellow-600`}
+					onClick={() => handleFilterChange("art exhibition")}>
+					Art Exhibition
+				</button>
+				<button
+					className={`px-2 py-2 ${
+						selectedCategory === "film screening" ? "bg-secondary" : "bg-boxBG"
+					} text-white border border-yellow-600`}
+					onClick={() => handleFilterChange("film screening")}>
+					Film Screening
+				</button>
+			</div>
+
+			{/* Event Listings */}
 			<div className="grid grid-cols-1 ">
-				{events.map((event) => (
+				{filteredEvents.map((event) => (
 					<div
 						key={event._id}
 						className="bg-boxBG p-6 shadow-md border border-yellow-600">
@@ -48,7 +105,7 @@ const Events = () => {
 								)}
 							</div>
 							<div className="flex flex-col justify-center">
-								<h2 className="text-3xl font-bold mb-2 text-left">
+								<h2 className="text-5xl font-bold mb-2 text-left">
 									{event.name}
 								</h2>
 								<p className="text-sm text-white mb-4 text-left">

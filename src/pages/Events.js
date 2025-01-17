@@ -105,22 +105,19 @@ const Events = () => {
 								)}
 							</div>
 							<div className="flex flex-col justify-center">
-								<h2 className="text-5xl font-bold mb-2 text-left">
-									{event.name}
-								</h2>
-								<p className="text-sm text-white mb-4 text-left">
+								<p className="text-sm text-white mb-2 text-left">
 									{new Date(event.date).toLocaleDateString(undefined, {
 										weekday: "short",
 										month: "short",
 										day: "numeric",
-										year: "numeric",
-										hour: "numeric",
-										minute: "numeric",
 									})}
 								</p>
+								<h2 className="text-5xl font-bold mb-2 text-left">
+									{event.name}
+								</h2>
 							</div>
-							<div className="justify-self-end">
-								<button className="px-8 py-4 bg-secondary text-white shadow hover:bg-secondary-dark">
+							<div className="justify-self-end mr-16">
+								<button className="px-8 py-4 bg-secondary text-white shadow hover:bg-secondary-dark mx-auto">
 									More Info
 								</button>
 							</div>

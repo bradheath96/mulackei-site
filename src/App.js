@@ -4,6 +4,7 @@ import Contact from "./pages/Contact";
 import Events from "./pages/Events";
 import Header from "./components/Header";
 import About from "./pages/About";
+import EventDetails from "./pages/EventDeatails";
 
 const App = () => (
 	<Router>
@@ -13,6 +14,7 @@ const App = () => (
 			<Route path="/about" element={<About />} />
 			<Route path="/events" element={<Events />} />
 			<Route path="/contact" element={<Contact />} />
+			<Route path="/events/:slug" element={<EventDetails />} />
 		</Routes>
 	</Router>
 );

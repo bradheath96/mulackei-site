@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { fetchEvents } from "../services/EventServices";
+import { useNavigate } from "react-router-dom";
 
 const Events = () => {
 	const [events, setEvents] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState("all");
 	const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const currentDate = new Date();
@@ -68,6 +70,10 @@ const Events = () => {
 		"Nov",
 		"Dec",
 	];
+
+	const handleMoreInfoClick = (slug) => {
+		navigate(`/events/${slug}`)
+	}
 
 	console.log(events, "<<< events")
 
@@ -166,7 +172,7 @@ const Events = () => {
 									</h2>
 								</div>
 								<div className="justify-self-end mr-16">
-									<button className="px-8 py-4 bg-secondary text-white shadow hover:bg-secondary-dark mx-auto">
+									<button className="px-8 py-4 bg-secondary text-white shadow hover:bg-secondary-dark mx-auto" onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>
 								</div>

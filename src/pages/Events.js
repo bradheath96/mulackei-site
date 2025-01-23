@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import sanityClient from "../sanityClient";
+import { fetchEvents } from "../services/EventServices";
 
 const Events = () => {
 	const [events, setEvents] = useState([]);
@@ -9,20 +9,7 @@ const Events = () => {
 
 	useEffect(() => {
 		const currentDate = new Date();
-		sanityClient
-			.fetch(
-				`*[_type == "event"] | order(date asc) {
-          _id,
-          name,
-          date,
-          description,
-          image {
-              asset -> { url }
-          },
-          type,
-          tickets
-        }`
-			)
+		fetchEvents()
 			.then((data) => {
 				const upComingEvents = data.filter(
 					(event) => new Date(event.date) > currentDate
@@ -82,8 +69,10 @@ const Events = () => {
 		"Dec",
 	];
 
+	console.log(events, "<<< events")
+
 	return (
-		<div className="bg-primary min-h-screen text-white py-12">
+		<div className="bg-primary min-h-screen text-white ">
 			{/* Month Selector */}
 			<div className="sticky top-14 bg-primary py-4 flex justify-center items-center mb-8 mx-auto w-full z-10">
 				<button

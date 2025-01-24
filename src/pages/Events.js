@@ -10,6 +10,10 @@ const Events = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
+	useEffect(() => {
 		const currentDate = new Date();
 		fetchEvents()
 			.then((data) => {
@@ -72,21 +76,21 @@ const Events = () => {
 	];
 
 	const handleMoreInfoClick = (slug) => {
-		navigate(`/events/${slug}`)
-	}
+		navigate(`/events/${slug}`);
+	};
 
-	console.log(events, "<<< events")
+	console.log(events, "<<< events");
 
 	return (
 		<div className="bg-primary min-h-screen text-white ">
 			{/* Month Selector */}
-			<div className="sticky top-14 bg-primary py-4 flex justify-center items-center mb-8 mx-auto w-full z-10">
+			<div className="sticky top-14 bg-primary py-2 flex justify-center items-center  mx-auto w-full z-10">
 				<button
 					className="text-white px-4"
 					onClick={() => handleMonthChange("prev")}>
 					←
 				</button>
-				<h2 className="text-4xl font-bold mx-4">
+				<h2 className="text-5xl font-bold mx-4">
 					{monthNames[currentMonth]} {currentYear}
 				</h2>
 				<button
@@ -95,50 +99,62 @@ const Events = () => {
 					→
 				</button>
 			</div>
+			<hr className="border-t border-white my-4" />
 
 			{/* Category Filter */}
-			<div className="grid grid-cols-5 justify-center mb-8 mx-auto w-[60%] max-w-4xl">
+			<div className="grid grid-cols-5 justify-center mx-auto w-[60%] max-w-4xl">
 				<button
 					className={`px-2 py-2 ${
-						selectedCategory === "all" ? "bg-secondary" : "bg-boxBG"
-					} text-white border border-yellow-600`}
+						selectedCategory === "all"
+							? "bg-boxYellow  text-black"
+							: "bg-primary text-white"
+					} border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("all")}>
 					All
 				</button>
 				<button
 					className={`px-2 py-2 ${
-						selectedCategory === "music" ? "bg-secondary" : "bg-boxBG"
-					} text-white border border-yellow-600`}
+						selectedCategory === "music"
+							? "bg-boxYellow text-black"
+							: "bg-primary  text-white"
+					} text-black border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("music")}>
 					Music Gig
 				</button>
 				<button
 					className={`px-2 py-2 ${
-						selectedCategory === "chess" ? "bg-secondary" : "bg-boxBG"
-					} text-white border border-yellow-600`}
+						selectedCategory === "chess"
+							? "bg-boxYellow text-black"
+							: "bg-primary text-white"
+					} text-black border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("chess")}>
 					Chess Nights
 				</button>
 				<button
 					className={`px-2 py-2 ${
-						selectedCategory === "art exhibition" ? "bg-secondary" : "bg-boxBG"
-					} text-white border border-yellow-600`}
+						selectedCategory === "art exhibition"
+							? "bg-boxYellow text-black"
+							: "bg-primary text-white"
+					} text-black border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("art exhibition")}>
 					Art Exhibition
 				</button>
 				<button
 					className={`px-2 py-2 ${
-						selectedCategory === "film screening" ? "bg-secondary" : "bg-boxBG"
-					} text-white border border-yellow-600`}
+						selectedCategory === "film screening"
+							? "bg-boxYellow text-black"
+							: "bg-primary  text-white"
+					} text-black border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("film screening")}>
 					Film Screening
 				</button>
 			</div>
+			<hr className="border-t border-white my-4" />
 
 			{/* Event Listings */}
 			<div className="grid grid-cols-1 ">
 				{filteredEvents.length === 0 ? (
-					<div className="text-center mt-10">
+					<div className="text-center ">
 						<h3 className="text-4xl font-bold">No results found</h3>
 						<p className="text-lg mt-2">
 							Please choose another filter to find some sweet events.
@@ -146,16 +162,14 @@ const Events = () => {
 					</div>
 				) : (
 					filteredEvents.map((event) => (
-						<div
-							key={event._id}
-							className="bg-boxBG p-6 shadow-md border border-yellow-600">
-							<div className="grid grid-cols-[auto_1fr_auto] items-center gap-8 p-6">
+						<div key={event._id} className="bg-primary">
+							<div className="grid grid-cols-[auto_1fr_auto] items-center gap-8 p-6 ml-10">
 								<div className="max-w-max">
 									{event.image && (
 										<img
 											src={event.image.asset.url}
 											alt={event.name}
-											className="w-60 h-60 object-cover rounded"
+											className="w-80 h-80 object-cover rounded"
 										/>
 									)}
 								</div>
@@ -172,11 +186,14 @@ const Events = () => {
 									</h2>
 								</div>
 								<div className="justify-self-end mr-16">
-									<button className="px-8 py-4 bg-secondary text-white shadow hover:bg-secondary-dark mx-auto" onClick={() => handleMoreInfoClick(event.slug.current)}>
+									<button
+										className="w-60 px-8 py-4 bg-boxYellow border-2 border-floralWhite hover:bg-secondary-dark mx-auto text-black"
+										onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>
 								</div>
 							</div>
+							<hr className="border-t border-white" />
 						</div>
 					))
 				)}

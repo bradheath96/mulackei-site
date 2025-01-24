@@ -8,6 +8,10 @@ const EventDetails = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
+	useEffect(() => {
 		const getEvent = async () => {
 			try {
 				const data = await fetchEventsBySlug(slug);
@@ -60,6 +64,20 @@ const EventDetails = () => {
 						})}
 					</p>
 					<h1 className="text-8xl font-bold">{event.name}</h1>
+				</div>
+			</div>
+			<hr className="border-t border-white my-10" />
+
+			<div className="grid grid-cols-2">
+				<div></div>
+				<div className="flex flex-col justify-start mx-5 mt-10">
+					<div className="text-lg font-light justify-start mr-5 space-y-4 mb-10">
+						{event.description.map((block, index) => (
+							<p key={index}>
+								{block.children.map((child) => child.text).join(" ")}
+							</p>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>

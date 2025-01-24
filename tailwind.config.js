@@ -4,9 +4,13 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: "#d10b0b",
+				primary: "#8D0801",
+				floralWhite:"#fff8f0ff",
+				engineeringOrange: "#ca140aff",
+				boxYellow: "#ffbd24ff",
+				federalBlue: "#0D0B47",
 				secondary: "#BF0603",
-				boxBG: "#001427",
+				boxBG : "#001427",
 			},
 			screens: {
 				sm: "480px",

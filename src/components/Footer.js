@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
-		    <footer className="bg-floralWhite text-black py-6 mt-8">
+		    <footer className="bg-floralWhite text-black py-6">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex flex-col sm:flex-row justify-between items-center">
 					{/* Footer Brand */}
@@ -23,13 +23,6 @@ const Footer = () => {
 						<Link to="/contact" className="hover:underline">
 							Contact
 						</Link>
-						<a
-							href="https://www.privacypolicygenerator.info/"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="hover:underline">
-							Privacy Policy
-						</a>
 					</nav>
 				</div>
 			</div>

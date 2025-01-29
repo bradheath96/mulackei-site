@@ -5,18 +5,12 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: "#8D0801",
-				floralWhite:"#fff8f0ff",
+				floralWhite: "#fff8f0ff",
 				engineeringOrange: "#ca140aff",
 				boxYellow: "#ffbd24ff",
 				federalBlue: "#0D0B47",
 				secondary: "#BF0603",
-				boxBG : "#001427",
-			},
-			screens: {
-				sm: "480px",
-				md: "768px",
-				lg: "976px",
-				xl: "1440px",
+				boxBG: "#001427",
 			},
 		},
 	},

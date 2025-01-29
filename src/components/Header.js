@@ -60,17 +60,19 @@ const Header = () => {
 
 			{/* Mobile Navigation Panel */}
 			<DisclosurePanel className="sm:hidden">
-				<div className="space-y-2 px-4 pb-3">
+				<div className="space-y-2 pb-3 px-48 text-center">
 					{navigation.map((item) => (
 						<Link
 							key={item.name}
 							to={item.to}
-							className="block text-black hover:bg-boxYellow hover:text-black rounded-sm px-3 py-2 text-base font-medium">
+							className="block text-black hover:bg-boxYellow hover:text-black  px-6 py-2 text-base font-medium"
+						>
 							{item.name}
 						</Link>
 					))}
 				</div>
 			</DisclosurePanel>
+			<hr className="border-1 sticky  border-boxYellow" />
 		</Disclosure>
 	);
 };

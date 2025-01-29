@@ -187,7 +187,7 @@ const Events = () => {
 								</div>
 								<div className="justify-self-end mr-16">
 									<button
-										className="w-60 px-8 py-4 bg-boxYellow border-2 border-floralWhite hover:bg-secondary-dark mx-auto text-black"
+										className="w-60 px-8 py-4 bg-boxYellow  hover:bg-secondary-dark mx-auto text-black"
 										onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>

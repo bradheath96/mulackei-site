@@ -84,7 +84,7 @@ const Events = () => {
 	return (
 		<div className="bg-primary min-h-screen text-white ">
 			{/* Month Selector */}
-			<div className="sticky top-14 bg-primary py-2 flex justify-center items-center  mx-auto w-full z-10">
+			<div className="sticky top-20 bg-primary py-2 flex justify-center items-center  mx-auto w-full z-10">
 				<button
 					className="text-white px-4"
 					onClick={() => handleMonthChange("prev")}>
@@ -99,10 +99,10 @@ const Events = () => {
 					→
 				</button>
 			</div>
-			<hr className="border-t border-white my-4" />
+			<hr className="border-t sticky top-36 border-white my-4" />
 
 			{/* Category Filter */}
-			<div className="grid grid-cols-5 justify-center mx-auto w-[60%] max-w-4xl">
+			<div className="grid grid-cols-5 justify-center mx-auto w-[450px] max-w-4xl">
 				<button
 					className={`px-2 py-2 ${
 						selectedCategory === "all"
@@ -119,7 +119,7 @@ const Events = () => {
 							: "bg-primary  text-white"
 					} text-black border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("music")}>
-					Music Gig
+					Music
 				</button>
 				<button
 					className={`px-2 py-2 ${
@@ -128,7 +128,7 @@ const Events = () => {
 							: "bg-primary text-white"
 					} text-black border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("chess")}>
-					Chess Nights
+					Chess
 				</button>
 				<button
 					className={`px-2 py-2 ${
@@ -137,7 +137,7 @@ const Events = () => {
 							: "bg-primary text-white"
 					} text-black border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("art exhibition")}>
-					Art Exhibition
+					Art
 				</button>
 				<button
 					className={`px-2 py-2 ${
@@ -146,7 +146,7 @@ const Events = () => {
 							: "bg-primary  text-white"
 					} text-black border-2 border-floralWhite`}
 					onClick={() => handleCategoryChange("film screening")}>
-					Film Screening
+					Film
 				</button>
 			</div>
 			<hr className="border-t border-white my-4" />

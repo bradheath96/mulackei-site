@@ -1,42 +1,78 @@
+import {
+	Disclosure,
+	DisclosureButton,
+	DisclosurePanel,
+} from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-import FacebookIcon from "../assets/facebook.svg";
-import InstagramIcon from "../assets/instagram.svg";
 
-const Header = () => (
-	<header class="bg-floralWhite sticky top-0 z-50 p-3 flex justify-between items-center">
-		{/*Logo*/}
-		<h1 class="text-xl text-black font-light ml-5">
-			<Link to="/">Mulackei</Link>
-		</h1>
+const navigation = [
+	{ name: "About", to: "/about" },
+	{ name: "Events", to: "/events" },
+	{ name: "Contact", to: "/contact" },
+];
 
-		{/* Navigation Links */}
-		<nav class="flex items-center space-x-5 mr-5 justify-center  p-2">
-			{/* Page Links */}
-			<Link to="/about" class="text-xl text-black font-light">
-				About
-			</Link>
-			<Link to="/events" class="text-xl text-black font-light">
-				Events
-			</Link>
-			<Link to="/contact" class="text-xl text-black font-light text-left">
-				Contact
-			</Link>
+function classNames(...classes) {
+	return classes.filter(Boolean).join(" ");
+}
 
-			{/* Social Media Links */}
-			<a
-				href="https://www.facebook.com/profile.php?id=100092280880824"
-				target="_blank"
-				rel="noopener noreferrer">
-				<img src={FacebookIcon} alt="Facebook" class="w-8 h-8" />
-			</a>
-			<a
-				href="https://www.instagram.com/mulackei_/"
-				target="_blank"
-				rel="noopener noreferrer">
-				<img src={InstagramIcon} alt="Instagram" class="w-8 h-8" />
-			</a>
-		</nav>
-	</header>
-);
+const Header = () => {
+	return (
+		<Disclosure as="nav" className="bg-floralWhite sticky top-0 z-50">
+			<div className="max-w-full px-6 sm:px-8 lg:px-10">
+				<div className="relative flex h-20 items-center justify-between">
+					{/* Logo Section - Aligned Left */}
+					<div className="flex items-center">
+						<Link key="Home" to="/">
+							<h1 className="text-4xl">Mulackei</h1>
+						</Link>
+					</div>
+
+					{/* Desktop Navigation - Pushed to the Right */}
+					<div className="hidden sm:flex ml-auto space-x-2">
+						{navigation.map((item) => (
+							<Link
+								key={item.name}
+								to={item.to}
+								className={classNames(
+									"text-black hover:bg-boxYellow hover:text-black",
+									"rounded-sm px-4 py-2 text-lg font-medium"
+								)}>
+								{item.name}
+							</Link>
+						))}
+					</div>
+
+					{/* Mobile Menu Button - Only visible on small screens */}
+					<div className="sm:hidden">
+						<DisclosureButton className="text-black p-2 focus:outline-none">
+							{({ open }) =>
+								open ? (
+									<XMarkIcon aria-hidden="true" className="size-6" />
+								) : (
+									<Bars3Icon aria-hidden="true" className="size-6" />
+								)
+							}
+						</DisclosureButton>
+					</div>
+				</div>
+			</div>
+
+			{/* Mobile Navigation Panel */}
+			<DisclosurePanel className="sm:hidden">
+				<div className="space-y-2 px-4 pb-3">
+					{navigation.map((item) => (
+						<Link
+							key={item.name}
+							to={item.to}
+							className="block text-black hover:bg-boxYellow hover:text-black rounded-sm px-3 py-2 text-base font-medium">
+							{item.name}
+						</Link>
+					))}
+				</div>
+			</DisclosurePanel>
+		</Disclosure>
+	);
+};
 
 export default Header;

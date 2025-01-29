@@ -45,7 +45,7 @@ const EventDetails = () => {
 		<div className="bg-primary min-h-screen text-white">
 			<div className="grid grid-flow-col-1 lg:grid-cols-2">
 				<div className="justify-center lg:mt-10 lg:mx-8">
-					<div className="w-full lg:max-w-[600px] max-h-[450px] lg:max-h-[620px] flex items-center justify-center overflow-hidden">
+					<div className="w-full lg:max-w-[600px] max-h-[500px] lg:max-h-[620px] flex items-center justify-center overflow-hidden">
 						<img
 							src={event.image.asset.url}
 							alt={event.name}
@@ -71,7 +71,7 @@ const EventDetails = () => {
 			<div className="grid grid-cols-1 lg:grid-cols-2">
 				<div></div>
 				<div className="flex flex-col justify-start mx-5 mt-10">
-					<div className="text-lg font-light justify-start mr-5 space-y-4 mb-10">
+					<div className="text-md font-light justify-start mr-5 space-y-4 mb-10">
 						{event.description.map((block, index) => (
 							<p key={index}>
 								{block.children.map((child) => child.text).join(" ")}

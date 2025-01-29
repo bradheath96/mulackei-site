@@ -43,9 +43,9 @@ const EventDetails = () => {
 
 	return (
 		<div className="bg-primary min-h-screen text-white">
-			<div className="grid grid-cols-2">
-				<div className="justify-center mt-10 mx-8">
-					<div className="w-[600px] h-[620px] flex items-center justify-center bg-gray-800  overflow-hidden">
+			<div className="grid grid-flow-col-1 lg:grid-cols-2">
+				<div className="justify-center lg:mt-10 lg:mx-8">
+					<div className="w-full lg:max-w-[600px] max-h-[450px] lg:max-h-[620px] flex items-center justify-center overflow-hidden">
 						<img
 							src={event.image.asset.url}
 							alt={event.name}
@@ -53,8 +53,8 @@ const EventDetails = () => {
 						/>
 					</div>
 				</div>
-				<div className="flex flex-col justify-start mx-5 mt-10">
-					<p className="text-3xl font-light">
+				<div className="flex flex-col justify-start mt-5 mx-5 lg:mx-5 lg:mt-10">
+					<p className="text-2xl lg:text-3xl font-light">
 						{new Date(event.date).toLocaleDateString(undefined, {
 							weekday: "short",
 							month: "short",
@@ -63,12 +63,12 @@ const EventDetails = () => {
 							minute: "2-digit",
 						})}
 					</p>
-					<h1 className="text-8xl font-bold">{event.name}</h1>
+					<h1 className="text-6xl lg:text-8xl font-bold">{event.name}</h1>
 				</div>
 			</div>
-			<hr className="border-t border-white my-10" />
+			<hr className="border-t border-boxYellow my-10" />
 
-			<div className="grid grid-cols-2">
+			<div className="grid grid-cols-1 lg:grid-cols-2">
 				<div></div>
 				<div className="flex flex-col justify-start mx-5 mt-10">
 					<div className="text-lg font-light justify-start mr-5 space-y-4 mb-10">

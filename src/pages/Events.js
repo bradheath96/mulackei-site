@@ -102,9 +102,9 @@ const Events = () => {
 			<hr className="border-t sticky top-36 border-white my-4" />
 
 			{/* Category Filter */}
-			<div className="grid grid-cols-5 justify-center mx-auto w-[450px] max-w-4xl">
+			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl">
 				<button
-					className={`px-2 py-2 ${
+					className={`px-1 py-1 ${
 						selectedCategory === "all"
 							? "bg-boxYellow  text-black"
 							: "bg-primary text-white"
@@ -113,7 +113,7 @@ const Events = () => {
 					All
 				</button>
 				<button
-					className={`px-2 py-2 ${
+					className={`px-1 py-1 ${
 						selectedCategory === "music"
 							? "bg-boxYellow text-black"
 							: "bg-primary  text-white"
@@ -122,7 +122,7 @@ const Events = () => {
 					Music
 				</button>
 				<button
-					className={`px-2 py-2 ${
+					className={`px-1 py-1 ${
 						selectedCategory === "chess"
 							? "bg-boxYellow text-black"
 							: "bg-primary text-white"
@@ -131,7 +131,7 @@ const Events = () => {
 					Chess
 				</button>
 				<button
-					className={`px-2 py-2 ${
+					className={`px-1 py-1 ${
 						selectedCategory === "art exhibition"
 							? "bg-boxYellow text-black"
 							: "bg-primary text-white"
@@ -140,7 +140,7 @@ const Events = () => {
 					Art
 				</button>
 				<button
-					className={`px-2 py-2 ${
+					className={`px-1 py-1 ${
 						selectedCategory === "film screening"
 							? "bg-boxYellow text-black"
 							: "bg-primary  text-white"

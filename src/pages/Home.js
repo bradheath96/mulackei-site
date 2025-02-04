@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Mulackei from "../assets/images/Mulackei-1.jpg";
+
 const Home = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0);

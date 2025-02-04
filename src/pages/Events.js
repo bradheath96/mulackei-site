@@ -46,6 +46,7 @@ const Events = () => {
 			}
 		}
 	};
+
 	const filteredEvents = events.filter((event) => {
 		const eventDate = new Date(event.date);
 		const isSameMonth =
@@ -57,8 +58,6 @@ const Events = () => {
 
 		return isSameMonth && isSameCategory;
 	});
-
-	console.log(filteredEvents, "<<< filtered events");
 
 	const monthNames = [
 		"Jan",
@@ -79,12 +78,10 @@ const Events = () => {
 		navigate(`/events/${slug}`);
 	};
 
-	console.log(events, "<<< events");
-
 	return (
-		<div className="bg-primary min-h-screen text-white ">
+		<div className="bg-primary text-white min-h-screen">
 			{/* Month Selector */}
-			<div className="sticky top-20 bg-primary py-2 flex justify-center items-center  mx-auto w-full z-10">
+			<div className="top-28 bg-primary py-2 flex justify-center items-center mx-auto w-full">
 				<button
 					className="text-white px-4"
 					onClick={() => handleMonthChange("prev")}>
@@ -99,62 +96,30 @@ const Events = () => {
 					→
 				</button>
 			</div>
-			<hr className="border-t sticky top-36 border-white my-4" />
+			<hr className="border-t border-boxYellow my-4" />
 
 			{/* Category Filter */}
 			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl">
-				<button
-					className={`px-1 py-1 ${
-						selectedCategory === "all"
-							? "bg-boxYellow  text-black"
-							: "bg-primary text-white"
-					} border-2 border-floralWhite`}
-					onClick={() => handleCategoryChange("all")}>
-					All
-				</button>
-				<button
-					className={`px-1 py-1 ${
-						selectedCategory === "music"
-							? "bg-boxYellow text-black"
-							: "bg-primary  text-white"
-					} text-black border-2 border-floralWhite`}
-					onClick={() => handleCategoryChange("music")}>
-					Music
-				</button>
-				<button
-					className={`px-1 py-1 ${
-						selectedCategory === "chess"
-							? "bg-boxYellow text-black"
-							: "bg-primary text-white"
-					} text-black border-2 border-floralWhite`}
-					onClick={() => handleCategoryChange("chess")}>
-					Chess
-				</button>
-				<button
-					className={`px-1 py-1 ${
-						selectedCategory === "art exhibition"
-							? "bg-boxYellow text-black"
-							: "bg-primary text-white"
-					} text-black border-2 border-floralWhite`}
-					onClick={() => handleCategoryChange("art exhibition")}>
-					Art
-				</button>
-				<button
-					className={`px-1 py-1 ${
-						selectedCategory === "film screening"
-							? "bg-boxYellow text-black"
-							: "bg-primary  text-white"
-					} text-black border-2 border-floralWhite`}
-					onClick={() => handleCategoryChange("film screening")}>
-					Film
-				</button>
+				{["all", "music", "chess", "art", "film"].map((category) => (
+					<button
+						key={category}
+						className={`px-1 py-1 ${
+							selectedCategory === category
+								? "bg-boxYellow text-black"
+								: "bg-primary text-white"
+						} border-2 border-floralWhite`}
+						onClick={() => handleCategoryChange(category)}>
+						{category.charAt(0).toUpperCase() + category.slice(1)}
+					</button>
+				))}
 			</div>
-			<hr className="border-t border-white my-4" />
+
+			<hr className="border-t border-boxYellow my-4" />
 
 			{/* Event Listings */}
-			<div className="grid grid-cols-1 ">
+			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 xl:grid-cols-1">
 				{filteredEvents.length === 0 ? (
-					<div className="text-center ">
+					<div className="text-center">
 						<h3 className="text-4xl font-bold">No results found</h3>
 						<p className="text-lg mt-2">
 							Please choose another filter to find some sweet events.
@@ -163,37 +128,54 @@ const Events = () => {
 				) : (
 					filteredEvents.map((event) => (
 						<div key={event._id} className="bg-primary">
-							<div className="grid grid-cols-[auto_1fr_auto] items-center gap-8 p-6 ml-10">
-								<div className="max-w-max">
-									{event.image && (
+							{/* Large Screen Layout (Three Columns) */}
+							<div
+								className="lg:grid lg:grid-cols-[auto_1fr_auto] lg:grid-rows-1 lg:mx-20 lg:items-center 
+                        					md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 
+                        sm:flex sm:flex-col sm:items-center">
+								{/* Event Image (First Column) */}
+								{event.image && (
+									<div className="lg:w-[300px] lg:h-[300px] sm:w-full sm:h-64 sm:mb-4">
 										<img
 											src={event.image.asset.url}
 											alt={event.name}
-											className="w-80 h-80 object-cover rounded"
+											className="w-full h-full object-cover"
 										/>
-									)}
-								</div>
-								<div className="flex flex-col justify-center">
-									<p className="text-lg font-light text-white mb-2 text-left">
+									</div>
+								)}
+
+								{/* Event Content (Second Column) */}
+								<div className="lg:w-full sm:w-full sm:px-6 sm:py-4">
+									{/* Event Date */}
+									<p className="text-lg font-light text-white text-left">
 										{new Date(event.date).toLocaleDateString(undefined, {
 											weekday: "short",
 											month: "short",
 											day: "numeric",
 										})}
 									</p>
-									<h2 className="text-5xl font-bold mb-2 text-left">
+
+									{/* Event Name */}
+									<h2 className="lg:text-6xl font-bold mb-4 text-left text-white">
 										{event.name}
 									</h2>
 								</div>
-								<div className="justify-self-end mr-16">
-									<button
-										className="w-60 px-8 py-4 bg-boxYellow  hover:bg-secondary-dark mx-auto text-black"
-										onClick={() => handleMoreInfoClick(event.slug.current)}>
+
+								{/* Buttons (Third Column - Stay on the Right) */}
+								<div className="lg:flex lg:flex-col lg:items-end lg:gap-4 font-medium">
+									{/* More Info Button */}
+									<button className="lg:w-52 px-6 py-3 bg-boxYellow hover:bg-secondary-dark text-black border border-white">
 										More Info
+									</button>
+
+									{/* Free In Button */}
+									<button className="lg:w-52 px-6 py-3 bg-boxYellow hover:bg-secondary-dark text-black border border-white">
+										Free In!
 									</button>
 								</div>
 							</div>
-							<hr className="border-t border-white" />
+
+							<hr className="border-t border-boxYellow" />
 						</div>
 					))
 				)}

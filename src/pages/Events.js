@@ -164,7 +164,9 @@ const Events = () => {
 								{/* Buttons (Third Column - Stay on the Right) */}
 								<div className="lg:flex lg:flex-col lg:items-end lg:gap-4 font-medium">
 									{/* More Info Button */}
-									<button className="lg:w-52 px-6 py-3 bg-boxYellow hover:bg-secondary-dark text-black border border-white">
+									<button
+										className="lg:w-52 px-6 py-3 bg-boxYellow hover:bg-secondary-dark text-black border border-white"
+										onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>
 

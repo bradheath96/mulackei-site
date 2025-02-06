@@ -45,7 +45,7 @@ const EventDetails = () => {
 		<div className="bg-primary min-h-screen text-white">
 			<div className="grid grid-flow-col-1 lg:grid-cols-2">
 				<div className="justify-center lg:mt-10 lg:mx-8">
-					<div className="w-full lg:max-w-[600px] max-h-[500px] lg:max-h-[620px] flex items-center justify-center overflow-hidden">
+					<div className="w-full  max-h-[500px] lg:max-w-[600px] lg:max-h-[620px] flex items-center justify-center overflow-hidden">
 						<img
 							src={event.image.asset.url}
 							alt={event.name}

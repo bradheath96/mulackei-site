@@ -78,6 +78,8 @@ const Events = () => {
 		navigate(`/events/${slug}`);
 	};
 
+	console.log(events, "<<< log");
+
 	return (
 		<div className="bg-primary text-white min-h-screen">
 			{/* Month Selector */}
@@ -107,7 +109,7 @@ const Events = () => {
 							selectedCategory === category
 								? "bg-boxYellow text-black"
 								: "bg-primary text-white"
-						} border-2 border-floralWhite`}
+						} border-2 border-boxYellow`}
 						onClick={() => handleCategoryChange(category)}>
 						{category.charAt(0).toUpperCase() + category.slice(1)}
 					</button>
@@ -117,7 +119,7 @@ const Events = () => {
 			<hr className="border-t border-boxYellow my-4" />
 
 			{/* Event Listings */}
-			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 xl:grid-cols-1">
+			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2">
 				{filteredEvents.length === 0 ? (
 					<div className="text-center">
 						<h3 className="text-4xl font-bold">No results found</h3>
@@ -130,12 +132,12 @@ const Events = () => {
 						<div key={event._id} className="bg-primary">
 							{/* Large Screen Layout (Three Columns) */}
 							<div
-								className="lg:grid lg:grid-cols-[auto_1fr_auto] lg:grid-rows-1 lg:mx-20 lg:items-center 
-                        					md:grid md:grid-cols-2 md:grid-rows-2 md:gap-4 
-                        sm:flex sm:flex-col sm:items-center">
+								className="lg:grid lg:grid-cols-[2fr_600px_1fr] lg:grid-rows-1 lg:mx-10 lg:justify-center lg:p-1 lg:mb-8
+                        					md:grid md:grid-cols-2 md:grid-rows-[auto_80px] md:p-5
+											sm:flex sm:flex-col sm:items-center">
 								{/* Event Image (First Column) */}
 								{event.image && (
-									<div className="lg:w-[300px] lg:h-[300px] sm:w-full sm:h-64 sm:mb-4">
+									<div className=" w-full h-[275px] p-2 flex justify-center">
 										<img
 											src={event.image.asset.url}
 											alt={event.name}
@@ -145,9 +147,12 @@ const Events = () => {
 								)}
 
 								{/* Event Content (Second Column) */}
-								<div className="lg:w-full sm:w-full sm:px-6 sm:py-4">
+								<div
+									className=" lg:content-start lg:h-full
+												sm:w-full 
+												md:h-full md:content-end p-2">
 									{/* Event Date */}
-									<p className="text-lg font-light text-white text-left">
+									<p className="text-lg font-light text-white">
 										{new Date(event.date).toLocaleDateString(undefined, {
 											weekday: "short",
 											month: "short",
@@ -156,22 +161,24 @@ const Events = () => {
 									</p>
 
 									{/* Event Name */}
-									<h2 className="lg:text-6xl font-bold mb-4 text-left text-white">
+									<h2 className="lg:text-6xl md:text-6xl font-bold text-white md:align-text-bottom">
 										{event.name}
 									</h2>
 								</div>
 
 								{/* Buttons (Third Column - Stay on the Right) */}
-								<div className="lg:flex lg:flex-col lg:items-end lg:gap-4 font-medium">
+								<div
+									className="lg:flex lg:flex-col lg:gap-4 lg:col-auto lg:row-auto lg:items-start lg:h-full lg:mt-5
+                								md:col-span-2 md:row-start-2 md:h-[80px] p-2 flex items-center gap-4">
 									{/* More Info Button */}
 									<button
-										className="lg:w-52 px-6 py-3 bg-boxYellow hover:bg-secondary-dark text-black border border-white"
+										className="lg:w-full md:w-full  py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow"
 										onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>
 
 									{/* Free In Button */}
-									<button className="lg:w-52 px-6 py-3 bg-boxYellow hover:bg-secondary-dark text-black border border-white">
+									<button className="lg:w-full md:w-full  py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
 										Free In!
 									</button>
 								</div>

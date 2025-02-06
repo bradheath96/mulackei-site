@@ -45,8 +45,8 @@ export const eventType = defineType({
       options: {
         list: [
           {title: 'Music Gig', value: 'music'},
-          {title: 'Art Exhibition', value: 'art exhibition'},
-          {title: 'Film Screening', value: 'film screening'},
+          {title: 'Art Exhibition', value: 'art'},
+          {title: 'Film Screening', value: 'film'},
           {title: 'Chess Night', value: 'chess'},
         ],
         layout: 'radio',

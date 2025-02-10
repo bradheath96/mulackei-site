@@ -83,7 +83,7 @@ const Events = () => {
 	return (
 		<div className="bg-primary text-white min-h-screen">
 			{/* Month Selector */}
-			<div className="top-28 bg-primary py-2 flex justify-center items-center mx-auto w-full">
+			<div className="sticky top-20 bg-primary py-2 flex justify-center items-center mx-auto w-full border-b-2 border-boxYellow">
 				<button
 					className="text-white px-4"
 					onClick={() => handleMonthChange("prev")}>
@@ -98,10 +98,9 @@ const Events = () => {
 					→
 				</button>
 			</div>
-			<hr className="border-t border-boxYellow my-4" />
 
 			{/* Category Filter */}
-			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl">
+			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl mt-4">
 				{["all", "music", "chess", "art", "film"].map((category) => (
 					<button
 						key={category}
@@ -116,7 +115,7 @@ const Events = () => {
 				))}
 			</div>
 
-			<hr className="border-t border-boxYellow my-4" />
+			<hr className="border-t-2 border-boxYellow my-4" />
 
 			{/* Event Listings */}
 			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2">
@@ -184,7 +183,7 @@ const Events = () => {
 								</div>
 							</div>
 
-							<hr className="border-t border-boxYellow" />
+							<hr className="border-t-2 border-boxYellow" />
 						</div>
 					))
 				)}

@@ -68,7 +68,7 @@ const Header = () => {
 					))}
 				</div>
 			</DisclosurePanel>
-			<hr className="border-1 border-boxYellow" />
+			<hr className="border-b-[1.5px] border-boxYellow" />
 		</Disclosure>
 	);
 };

@@ -43,17 +43,17 @@ const EventDetails = () => {
 
 	return (
 		<div className="bg-primary min-h-screen text-white">
-			<div className="grid grid-flow-col-1 lg:grid-cols-2">
-				<div className="justify-center lg:mt-10 lg:mx-8">
-					<div className="w-full  max-h-[500px] lg:max-w-[600px] lg:max-h-[620px] flex items-center justify-center overflow-hidden">
+			<div className="grid grid-flow-col-1 md:grid-cols-2 lg:grid-cols-2">
+				<div className="lg:px-4 lg:pt-4 md:px-4 md:pt-4">
+					<div className="w-full  max-h-[500px] lg:max-w-[600px] lg:max-h-[620px] md:max-w-[520px] md:max-h-[500px]">
 						<img
 							src={event.image.asset.url}
 							alt={event.name}
-							className="w-full h-full object-cover"
+							className="w-[500px] h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] object-cover"
 						/>
 					</div>
 				</div>
-				<div className="flex flex-col justify-start mt-5 mx-5 lg:mx-5 lg:mt-10">
+				<div className="md:place-content-end px-4 pt-4 md:h-full lg:place-content-end">
 					<p className="text-2xl lg:text-3xl font-light">
 						{new Date(event.date).toLocaleDateString(undefined, {
 							weekday: "short",
@@ -64,11 +64,14 @@ const EventDetails = () => {
 						})}
 					</p>
 					<h1 className="text-6xl lg:text-8xl font-bold">{event.name}</h1>
+					<button className="lg:w-full md:w-full w-full mt-5 py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
+						Buy Tickets
+					</button>
 				</div>
 			</div>
 			<hr className="border-t border-boxYellow my-10" />
 
-			<div className="grid grid-cols-1 lg:grid-cols-2">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
 				<div></div>
 				<div className="flex flex-col justify-start mx-5 mt-10">
 					<div className="text-md font-light justify-start mr-5 space-y-4 mb-10">

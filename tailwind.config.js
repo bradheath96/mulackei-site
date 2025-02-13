@@ -12,6 +12,11 @@ module.exports = {
 				secondary: "#BF0603",
 				boxBG: "#001427",
 			},
+			fontFamily: {
+				titleFont: ["Noto Serif Display", "serif"],
+				bodyFont: ["Poppins", "sans-serif"],
+				logoFont: ["Noto Sans", "sans-serif"],
+			},
 		},
 	},
 	plugins: [require("tailwindcss-animated")],

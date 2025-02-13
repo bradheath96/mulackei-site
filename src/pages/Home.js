@@ -14,10 +14,10 @@ const Home = () => {
 				{/* Dark Overlay */}
 			</div>
 			<section className="relative flex flex-col items-center justify-center min-h-[500px] text-center p-6">
-				<h1 className="animate-fade-up text-4xl font-bold mb-4 text-white">
-					Welcome to Mulackei!
+				<h1 className="animate-fade-up font-titleFont text-6xl font-bold mb-4 text-white">
+					Welcome to Mulackei
 				</h1>
-				<p className="animate-fade-up text-lg mb-6  text-white">
+				<p className="animate-fade-up font-bodyFont text-lg mb-6  text-white">
 					Your hub for live music, art, and more.
 				</p>
 			</section>

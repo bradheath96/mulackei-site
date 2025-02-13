@@ -20,11 +20,11 @@ const Header = () => {
 	return (
 		<Disclosure as="nav" className="bg-floralWhite sticky top-0 z-[100]">
 			<div className="w-full px-6 sm:px-8 lg:px-10">
-				<div className="relative flex h-20 items-center justify-between">
+				<div className="relative flex h-16 items-center justify-between">
 					{/* Logo Section */}
 					<div className="flex items-center">
 						<Link key="Home" to="/">
-							<h1 className="text-4xl">Mulackei</h1>
+							<h1 className="text-3xl font-logoFont">Mulackei</h1>
 						</Link>
 					</div>
 
@@ -34,7 +34,7 @@ const Header = () => {
 							<Link
 								key={item.name}
 								to={item.to}
-								className="text-black hover:bg-boxYellow hover:text-black rounded-sm px-4 py-2 text-lg font-medium">
+								className="font-bodyFont text-black hover:bg-boxYellow hover:text-black rounded-sm px-4 py-2 text-lg font-medium">
 								{item.name}
 							</Link>
 						))}

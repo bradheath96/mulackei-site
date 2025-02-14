@@ -18,7 +18,7 @@ const Home = () => {
 				const upcomingEvents = data.filter(
 					(event) => new Date(event.date) > currentDate
 				);
-				setEvents(upcomingEvents.slice(0, 3));
+				setEvents(upcomingEvents.slice(0, 4));
 			})
 			.catch(console.error);
 	}, []);
@@ -94,11 +94,21 @@ const Home = () => {
 									{event.name}
 								</h3>
 								{/* More Info Button */}
-								<button
-									className="mt-4 w-full py-2 bg-boxYellow font-medium text-black border-2 border-boxYellow"
-									onClick={() => handleMoreInfoClick(event.slug.current)}>
-									More Info
-								</button>
+								<div
+									className="lg:flex lg:flex-col lg:gap-4 lg:col-auto lg:row-auto lg:items-start lg:h-full lg:mt-5
+                								md:col-span-2 md:row-start-2 md:h-[80px] mt-4 flex items-center gap-3">
+									{/* More Info Button */}
+									<button
+										className="font-bodyFont lg:w-full md:w-full w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow"
+										onClick={() => handleMoreInfoClick(event.slug.current)}>
+										More Info
+									</button>
+
+									{/* Free In Button */}
+									<button className="font-bodyFont lg:w-full md:w-full w-full  py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
+										Free In!
+									</button>
+								</div>
 
 								<hr className=" left-0 border-t-2 border-boxYellow mt-5 " />
 							</div>
@@ -106,6 +116,7 @@ const Home = () => {
 					))}
 				</div>
 			</div>
+			
 		</div>
 	);
 };

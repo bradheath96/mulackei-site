@@ -18,7 +18,7 @@ const Home = () => {
 				const upcomingEvents = data.filter(
 					(event) => new Date(event.date) > currentDate
 				);
-				setEvents(upcomingEvents.slice(0, 4));
+				setEvents(upcomingEvents.slice(0, 8));
 			})
 			.catch(console.error);
 	}, []);
@@ -60,18 +60,21 @@ const Home = () => {
 			<hr className="border-t-2 border-boxYellow" />
 
 			{/* Upcoming Events Section */}
-			<div className="bg-primary text-white py-5 px-6 ">
+			<div className="bg-primary text-white py-5 px-6  ">
 				<div className="relative flex items-center mb-8 mt-3 animate-fade animate-duration-1000">
-					<hr className="flex-grow border-t-2 border-boxYellow" />
-					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap">
-						What's On
-					</h2>
-					<hr className="flex-grow border-t-2 border-boxYellow" />
-				</div>
+					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
 
-				<div className="animate-fade animate-duration-1000 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-4 max-w-6xl mx-auto">
+					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
+						Coming Up
+					</h2>
+					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
+				</div>
+				<div className="animate-fade animate-duration-1000 grid grid-cols-1 gap-6 lg:grid-cols-4 lg:gap-8 mx-auto">
 					{events.map((event) => (
-						<div key={event.id} className="bg-primary">
+						<div
+							key={event.id}
+							className="bg-primary flex flex-col min-h-[400px]">
+							{/* Ensure equal height */}
 							{/* Event Image */}
 							{event.image && (
 								<img
@@ -81,42 +84,39 @@ const Home = () => {
 								/>
 							)}
 							{/* Event Details */}
-
-							<div className="mt-4">
-								<p className="text-lg font-light texth-white font-bodyFont">
-									{new Date(event.date).toLocaleDateString(undefined, {
-										weekday: "short",
-										month: "short",
-										day: "numeric",
-									})}
-								</p>
-								<h3 className="font-titleFont text-3xl font-bold text-white">
-									{event.name}
-								</h3>
-								{/* More Info Button */}
-								<div
-									className="lg:flex lg:flex-col lg:gap-4 lg:col-auto lg:row-auto lg:items-start lg:h-full lg:mt-5
-                								md:col-span-2 md:row-start-2 md:h-[80px] mt-4 flex items-center gap-3">
-									{/* More Info Button */}
+							<div className="flex flex-col flex-grow pt-4">
+								{" "}
+								{/* Allows content to expand */}
+								<div>
+									<p className="text-lg font-light text-white font-bodyFont">
+										{new Date(event.date).toLocaleDateString(undefined, {
+											weekday: "short",
+											month: "short",
+											day: "numeric",
+										})}
+									</p>
+									<h3 className="font-titleFont text-4xl font-bold text-white mb-5">
+										{event.name}
+									</h3>
+								</div>
+								{/* Buttons always at the bottom */}
+								<div className="flex flex-col gap-4 mt-auto">
+									{" "}
+									{/* Pushes to bottom */}
 									<button
-										className="font-bodyFont lg:w-full md:w-full w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow"
+										className="font-bodyFont w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow"
 										onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>
-
-									{/* Free In Button */}
-									<button className="font-bodyFont lg:w-full md:w-full w-full  py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
+									<button className="font-bodyFont w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
 										Free In!
 									</button>
 								</div>
-
-								<hr className=" left-0 border-t-2 border-boxYellow mt-5 " />
 							</div>
 						</div>
 					))}
 				</div>
 			</div>
-			
 		</div>
 	);
 };

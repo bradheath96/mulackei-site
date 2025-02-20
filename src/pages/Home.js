@@ -30,7 +30,7 @@ const Home = () => {
 	return (
 		<div className=" relative">
 			{/* Hero Section with Background Image */}
-			<div className="relative min-h-[30vh] overflow-hidden">
+			<div className="relative min-h-[30vh] lg:min-h-[54vh] overflow-hidden">
 				<div
 					className="bg-primary absolute inset-0 bg-cover bg-center bg-no-repeat scale-200 transform"
 					style={{ backgroundImage: `url(${Mulackei})` }}>
@@ -48,8 +48,8 @@ const Home = () => {
 			<hr className="border-t-2 border-boxYellow" />
 
 			{/* About Us Section */}
-			<div className="bg-primary text-white py-3 px-6 text-left">
-				<p className="animate-fade animate-duration-1000 max-w-2xl mx-auto text-sm font-bodyFont">
+			<div className="bg-primary text-white py-3 lg:py-8 px-6 text-left">
+				<p className="lg:text-center animate-fade animate-duration-1000 max-w-2xl mx-auto text-sm lg:text-lg font-bodyFont">
 					The Mulackei is a non-profit association dedicated to art, readings,
 					workshops, concerts and other cultural events. Our goal is to create a
 					space for encounters and creative exchange that brings together people

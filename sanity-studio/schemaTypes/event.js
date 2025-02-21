@@ -33,10 +33,12 @@ export const eventType = defineType({
       name: 'date',
       title: 'Date',
       type: 'datetime',
+      validation: (rule) => rule.required().error(`Date required`),
     }),
     defineField({
       name: 'image',
       type: 'image',
+      validation: (rule) => rule.required().error(`Image required`),
     }),
     defineField({
       name: 'type',
@@ -51,6 +53,34 @@ export const eventType = defineType({
         ],
         layout: 'radio',
       },
+    }),
+    defineField({
+      name: 'price',
+      title: 'Event Price',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Free In', value: 'free'},
+          {title: 'Paid (Enter Price)', value: 'paid'},
+        ],
+        layout: 'radio',
+      },
+      validation: (rule) => rule.required().error(`Event price is required`),
+    }),
+    defineField({
+      name: 'priceAmount',
+      title: 'Price Amount (€)',
+      type: 'string', // Changed from number to string to allow ranges
+      hidden: ({parent}) => parent?.price !== 'paid', // Only show if "Paid" is selected
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          if (context.parent?.price === 'paid') {
+            if (!value || !/^\d+(-\d+)?$/.test(value)) {
+              return 'Enter a valid price (e.g., "5" or "5-10")'
+            }
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'tickets',

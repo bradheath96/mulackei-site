@@ -23,11 +23,7 @@ export const eventType = defineType({
       name: 'description',
       title: 'Description',
       type: 'array',
-      of: [
-        {
-          type: 'block',
-        },
-      ],
+      of: [{type: 'block'}],
     }),
     defineField({
       name: 'date',
@@ -70,8 +66,8 @@ export const eventType = defineType({
     defineField({
       name: 'priceAmount',
       title: 'Price Amount (€)',
-      type: 'string', // Changed from number to string to allow ranges
-      hidden: ({parent}) => parent?.price !== 'paid', // Only show if "Paid" is selected
+      type: 'string',
+      hidden: ({parent}) => parent?.price !== 'paid',
       validation: (rule) =>
         rule.custom((value, context) => {
           if (context.parent?.price === 'paid') {
@@ -92,8 +88,9 @@ export const eventType = defineType({
       name: 'name',
       date: 'date',
       image: 'image',
+      highlighted: 'highlighted',
     },
-    prepare({name, date, image}) {
+    prepare({name, date, image, highlighted}) {
       const nameFormatted = name || 'Untitled event'
       const dateFormatted = date
         ? new Date(date).toLocaleDateString(undefined, {
@@ -107,7 +104,7 @@ export const eventType = defineType({
 
       return {
         title: nameFormatted,
-        subtitle: dateFormatted,
+        subtitle: `${dateFormatted} ${highlighted ? '⭐ Highlighted' : ''}`,
         media: image || CalendarIcon,
       }
     },

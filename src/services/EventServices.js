@@ -12,6 +12,8 @@ const fetchEvents = async () => {
               asset -> { url }
           },
           type,
+          price,
+          priceAmount,
           tickets
         }`;
 		const events = await sanityClient.fetch(query);

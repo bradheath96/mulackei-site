@@ -122,8 +122,8 @@ const Events = () => {
 				{filteredEvents.length === 0 ? (
 					<div className="text-center"></div>
 				) : (
-					filteredEvents.map((event) => (
-						<div key={event._id} className="bg-primary">
+					filteredEvents.map((event, index) => (
+						<div key={index} className="bg-primary">
 							{/* Large Screen Layout (Three Columns) */}
 							<div
 								className="lg:grid lg:grid-cols-[2fr_600px_1fr] lg:grid-rows-1 lg:mx-10 lg:justify-center lg:p-1 lg:mb-8
@@ -158,6 +158,7 @@ const Events = () => {
 									<h2 className="font-titleFont lg:text-6xl md:text-6xl text-4xl font-bold text-white md:align-text-bottom">
 										{event.name}
 									</h2>
+
 								</div>
 
 								{/* Buttons (Third Column - Stay on the Right) */}
@@ -173,7 +174,7 @@ const Events = () => {
 
 									{/* Free In Button */}
 									<button className="font-bodyFont lg:w-full md:w-full w-full  py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
-										Free In!
+										{event.priceAmount === null ? "Free In!" : "€" + event.priceAmount}
 									</button>
 								</div>
 							</div>

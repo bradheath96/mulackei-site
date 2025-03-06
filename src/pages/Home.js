@@ -6,6 +6,7 @@ import Mulackei from "../assets/images/Mulackei-1.jpg";
 const Home = () => {
 	const [events, setEvents] = useState([]);
 	const navigate = useNavigate();
+	
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -26,6 +27,8 @@ const Home = () => {
 	const handleMoreInfoClick = (slug) => {
 		navigate(`/events/${slug}`);
 	};
+	
+	console.log(events, "<<< log");
 
 	return (
 		<div className=" relative">
@@ -70,10 +73,8 @@ const Home = () => {
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
 				<div className="animate-fade animate-duration-1000 grid grid-cols-1 gap-6 lg:grid-cols-4 lg:gap-8 mx-auto">
-					{events.map((event) => (
-						<div
-							key={event.id}
-							className="bg-primary flex flex-col min-h-[400px]">
+					{events.map((event, index) => (
+						<div key={index} className="bg-primary flex flex-col min-h-[400px]">
 							{/* Ensure equal height */}
 							{/* Event Image */}
 							{event.image && (
@@ -109,7 +110,14 @@ const Home = () => {
 										More Info
 									</button>
 									<button className="font-bodyFont w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
-										Free In!
+										{
+											event.priceAmount === null
+												? "Free In!"
+												: event.priceAmount
+														.split("-") 
+														.map((price) => `€${price.trim()}`) 
+														.join("-") 
+										}
 									</button>
 								</div>
 							</div>

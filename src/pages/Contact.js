@@ -1,19 +1,25 @@
 import { useEffect, useState } from "react";
 import emailjs from "emailjs-com";
-import mulackeiImage from "../assets/images/Mulackei-2.jpg";
+import { fetchVenueImage } from "../services/EventServices"; // Import function
 
 const Contact = () => {
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
+	const [venueImage, setVenueImage] = useState(null);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
-	}, []);
 
+		// Fetch image when component mounts
+		fetchVenueImage()
+			.then((imageUrl) => setVenueImage(imageUrl))
+			.catch((error) => console.error("Error fetching venue image:", error));
+	}, []);
+	
+	console.log(venueImage, "<<< image");
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// Create a FormData object to send form data
 		const form = e.target;
 
 		emailjs
@@ -42,8 +48,8 @@ const Contact = () => {
 				<div className="lg:px-4 lg:pt-4 md:px-4 md:pt-4">
 					<div>
 						<img
-							src={mulackeiImage}
-							alt={mulackeiImage}
+							src={venueImage}
+							alt="Mulackei Venue Door"
 							className="w-[500px] h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] object-cover"
 						/>
 					</div>

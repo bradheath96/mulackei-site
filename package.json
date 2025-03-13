@@ -9,6 +9,7 @@
 		"@sanity/image-url": "^1.1.0",
 		"cra-template": "1.2.0",
 		"emailjs-com": "^3.2.0",
+		"lucide-react": "^0.479.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-router-dom": "^7.1.1",

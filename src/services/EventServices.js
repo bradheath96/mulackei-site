@@ -66,7 +66,7 @@ const fetchSingleVenueImage = async () => {
 
 const fetchVenueImages = async () => {
 	try {
-		const query = `*[_type == "venue"][0].images[]{
+		const query = `*[_type == "venue"][].images[]{
 			"url": asset->url,
 			"filename": asset->originalFilename,
 			"altText": alt,

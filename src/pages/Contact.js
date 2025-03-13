@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react";
 import emailjs from "emailjs-com";
-import { fetchVenueImage } from "../services/EventServices"; // Import function
+import { fetchSingleVenueImage } from "../services/EventServices"; // Import function
 
 const Contact = () => {
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
-	const [venueImage, setVenueImage] = useState(null);
+	const [venueImage, setVenueImage] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
-
-		// Fetch image when component mounts
-		fetchVenueImage()
-			.then((imageUrl) => setVenueImage(imageUrl))
-			.catch((error) => console.error("Error fetching venue image:", error));
 	}, []);
-	
-	console.log(venueImage, "<<< image");
+
+	useEffect(() => {
+		const getImage = async () => {
+			const imageUrl = await fetchSingleVenueImage();
+			setVenueImage(imageUrl);
+			setIsLoading(false); 
+		};
+		getImage();
+	}, []);
+
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -24,10 +29,10 @@ const Contact = () => {
 
 		emailjs
 			.sendForm(
-				"service_mhuqmdo", // Service ID
+				"service_mhuqmdo",
 				"template_wi4pwdk",
-				form, // Use form instead of templateParams
-				"lnzsxhUl3YINQGmQL" // Public Key
+				form, 
+				"lnzsxhUl3YINQGmQL"
 			)
 			.then(
 				(response) => {
@@ -46,12 +51,16 @@ const Contact = () => {
 		<div className="bg-primary min-h-screen text-white">
 			<div className="grid grid-flow-col-1 md:grid-cols-2 lg:grid-cols-2 lg:grid-rows-1  mb-10">
 				<div className="lg:px-4 lg:pt-4 md:px-4 md:pt-4">
-					<div>
-						<img
-							src={venueImage}
-							alt="Mulackei Venue Door"
-							className="w-[500px] h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] object-cover"
-						/>
+					<div className="animate-fade animate-duration-1500">
+						{isLoading ? (
+							<div className="w-[500px] h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] bg-primary "></div>
+						) : (
+							<img
+								src={venueImage}
+								alt={venueImage}
+								className="w-[500px] h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] object-cover"
+							/>
+						)}
 					</div>
 				</div>
 				<div className="md:place-content-end px-4 pt-4 md:h-full lg:place-content-end animate-fade animate-duration-1500">

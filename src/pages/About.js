@@ -15,8 +15,11 @@ const About = () => {
 	}, []);
 	console.log(imagesUrls);
 	return (
-		<div className="bg-primary flex flex-col items-center justify-center h-screen">
-			<ImageSlider imageUrls={imagesUrls} />
+		<div className="bg-primary flex flex-col items-center justify-center min-h-screen">
+			<div className="max-w-[800px] width-full height-[250px] m-0-auto">
+				<ImageSlider imageUrls={imagesUrls} />
+			</div>
+			
 		</div>
 	);
 };

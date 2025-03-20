@@ -6,6 +6,10 @@ const About = () => {
 	const [imagesUrls, setImagesUrls] = useState([]);
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
+	useEffect(() => {
 		const fetchImages = async () => {
 			const images = await fetchVenueImages();
 			const urls = images.map(image => image.url)
@@ -16,7 +20,7 @@ const About = () => {
 	console.log(imagesUrls);
 	return (
 		<div className="bg-primary flex flex-col items-center justify-center min-h-screen">
-			<div className="max-w-[800px] width-full height-[250px] m-0-auto">
+			<div className="max-w-[800px] width-full height-[250px] m-0-auto border-2 border-boxYellow">
 				<ImageSlider imageUrls={imagesUrls} />
 			</div>
 			

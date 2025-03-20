@@ -43,16 +43,14 @@ const Home = () => {
 
 				{/* Text Overlay */}
 				<section className="relative flex flex-col items-center justify-center min-h-[30vh] text-center p-6">
-					<h1 className="animate-fade animate-duration-1000 font-titleFont text-3xl lg:text-6xl font-bold mb-4 text-white">
-						Welcome to Mulackei
-					</h1>
+					<h1 className="animate-fade animate-duration-1000 font-titleFont text-3xl lg:text-6xl font-bold mb-4 text-white"></h1>
 				</section>
 			</div>
 			<hr className="border-t-2 border-boxYellow" />
 
 			{/* About Us Section */}
 			<div className="bg-primary text-white py-3 lg:py-8 px-6 text-left">
-				<p className="lg:text-center animate-fade animate-duration-1000 max-w-2xl mx-auto text-sm lg:text-lg font-bodyFont">
+				<p className="animate-fade animate-duration-1000 max-w-3xl mx-auto text-sm lg:text-lg font-bodyFont">
 					The Mulackei is a non-profit association dedicated to art, readings,
 					workshops, concerts and other cultural events. Our goal is to create a
 					space for encounters and creative exchange that brings together people
@@ -105,19 +103,17 @@ const Home = () => {
 									{" "}
 									{/* Pushes to bottom */}
 									<button
-										className="font-bodyFont w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow"
+										className="font-bodyFont w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
 										onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>
-									<button className="font-bodyFont w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
-										{
-											event.priceAmount === null
-												? "Free In!"
-												: event.priceAmount
-														.split("-") 
-														.map((price) => `€${price.trim()}`) 
-														.join("-") 
-										}
+									<button className="font-bodyFont w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+										{event.priceAmount === null
+											? "Free In!"
+											: event.priceAmount
+													.split("-")
+													.map((price) => `€${price.trim()}`)
+													.join("-")}
 									</button>
 								</div>
 							</div>

@@ -80,7 +80,7 @@ const Contact = () => {
 						Germany
 					</p>
 					<button
-						className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium "
+						className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium  transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
 						onClick={() =>
 							window.open("https://maps.app.goo.gl/PwvuUPaUE7i6eEZd7", "_blank")
 						}>

@@ -83,7 +83,7 @@ const Events = () => {
 	return (
 		<div className="bg-primary text-white min-h-screen">
 			{/* Month Selector */}
-			<div className="sticky top-[60px]  bg-primary py-2 flex justify-center items-center mx-auto w-full border-b-2 border-boxYellow">
+			<div className="sticky top-[60px]  bg-primary py-2 flex justify-center items-center mx-auto w-full border-b-2 border-boxYellow transition duration-300 ease-in-out">
 				<button
 					className="text-white px-4"
 					onClick={() => handleMonthChange("prev")}>
@@ -100,7 +100,7 @@ const Events = () => {
 			</div>
 
 			{/* Category Filter */}
-			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl mt-4">
+			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl mt-4 ">
 				{["all", "music", "chess", "art", "film"].map((category) => (
 					<button
 						key={category}
@@ -108,7 +108,7 @@ const Events = () => {
 							selectedCategory === category
 								? "bg-boxYellow text-black"
 								: "bg-primary text-white"
-						} border-2 border-boxYellow font-bodyFont`}
+						} border-2 border-boxYellow font-bodyFont transition duration-300 ease-in-out`}
 						onClick={() => handleCategoryChange(category)}>
 						{category.charAt(0).toUpperCase() + category.slice(1)}
 					</button>
@@ -158,7 +158,6 @@ const Events = () => {
 									<h2 className="font-titleFont lg:text-6xl md:text-6xl text-4xl font-bold text-white md:align-text-bottom">
 										{event.name}
 									</h2>
-
 								</div>
 
 								{/* Buttons (Third Column - Stay on the Right) */}
@@ -167,14 +166,16 @@ const Events = () => {
                 								md:col-span-2 md:row-start-2 md:h-[80px] p-2 flex items-center gap-4">
 									{/* More Info Button */}
 									<button
-										className="font-bodyFont lg:w-full md:w-full w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow"
+										className="font-bodyFont lg:w-full md:w-full w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
 										onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>
 
 									{/* Free In Button */}
-									<button className="font-bodyFont lg:w-full md:w-full w-full  py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow">
-										{event.priceAmount === null ? "Free In!" : "€" + event.priceAmount}
+									<button className="font-bodyFont lg:w-full md:w-full w-full  py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+										{event.priceAmount === null
+											? "Free In!"
+											: "€" + event.priceAmount}
 									</button>
 								</div>
 							</div>

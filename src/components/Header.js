@@ -31,7 +31,7 @@ const Header = () => {
 							<Link
 								key={item.name}
 								to={item.to}
-								className="font-bodyFont text-black hover:bg-boxYellow hover:text-black rounded-sm px-4 py-2 text-lg font-medium">
+								className="font-bodyFont text-black hover:bg-boxYellow hover:text-black rounded-sm px-4 py-2 text-lg font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
 								{item.name}
 							</Link>
 						))}
@@ -58,7 +58,7 @@ const Header = () => {
 							<Link
 								key={item.name}
 								to={item.to}
-								onClick={() => setIsOpen(false)} 
+								onClick={() => setIsOpen(false)}
 								className="block text-black hover:bg-boxYellow hover:text-black py-2 text-base font-medium">
 								{item.name}
 							</Link>

@@ -1,4 +1,4 @@
-import {CalendarIcon} from '@sanity/icons'
+import {CalendarIcon, ImageIcon} from '@sanity/icons'
 
 export const structure = (S) =>
   S.list()
@@ -16,4 +16,9 @@ export const structure = (S) =>
         .icon(CalendarIcon)
         .child(S.documentList().title('Past Events').filter('date < now()')),
       S.divider(),
+      S.listItem()
+        .title('Venue Images')
+        .schemaType('venue')
+        .icon(ImageIcon)
+        .child(S.documentTypeList('venue').title('Venue Images')),
     ])

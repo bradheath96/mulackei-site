@@ -17,7 +17,7 @@ export default function ImageSlider({ imageUrls }) {
 	}
 
 	return (
-		<div className="relative w-full h-full overflow-hidden">
+		<div className="relative w-full h-full overflow-hidden animate-fade animate-duration-1500">
 			<div
 				className="flex w-full h-full transition-transform duration-700 ease-in-out"
 				style={{ transform: `translateX(${-100 * imageIndex}%)` }}>
@@ -31,7 +31,7 @@ export default function ImageSlider({ imageUrls }) {
 				))}
 			</div>
 
-			{/* Navigation Buttons - Restored Original Hover Effect */}
+			{/* Navigation Buttons */}
 			<button
 				onClick={showPrevImage}
 				className="clear block absolute top-0 bottom-0 p-4 cursor-pointer left-0 hover:bg-boxYellow/20 transition duration-500 ease-in-out hover:scale-x-110">

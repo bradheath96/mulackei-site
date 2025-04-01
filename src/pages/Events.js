@@ -7,6 +7,7 @@ const Events = () => {
 	const [selectedCategory, setSelectedCategory] = useState("all");
 	const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+	const [isLoading, setIsLoading] = useState(true); // Loading state for skeleton loader
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -21,32 +22,12 @@ const Events = () => {
 					(event) => new Date(event.date) > currentDate
 				);
 				setEvents(upComingEvents);
+				setIsLoading(false); // Stop loading when data is fetched
 			})
 			.catch(console.error);
 	}, []);
 
-	const handleCategoryChange = (category) => {
-		setSelectedCategory(category);
-	};
-
-	const handleMonthChange = (direction) => {
-		if (direction === "prev") {
-			if (currentMonth === 0) {
-				setCurrentMonth(11);
-				setCurrentYear(currentYear - 1);
-			} else {
-				setCurrentMonth(currentMonth - 1);
-			}
-		} else if (direction === "next") {
-			if (currentMonth === 11) {
-				setCurrentMonth(0);
-				setCurrentYear(currentYear + 1);
-			} else {
-				setCurrentMonth(currentMonth + 1);
-			}
-		}
-	};
-
+	// Filter events by category and month
 	const filteredEvents = events.filter((event) => {
 		const eventDate = new Date(event.date);
 		const isSameMonth =
@@ -74,16 +55,36 @@ const Events = () => {
 		"Dec",
 	];
 
+	const handleMonthChange = (direction) => {
+		if (direction === "prev") {
+			if (currentMonth === 0) {
+				setCurrentMonth(11);
+				setCurrentYear(currentYear - 1);
+			} else {
+				setCurrentMonth(currentMonth - 1);
+			}
+		} else if (direction === "next") {
+			if (currentMonth === 11) {
+				setCurrentMonth(0);
+				setCurrentYear(currentYear + 1);
+			} else {
+				setCurrentMonth(currentMonth + 1);
+			}
+		}
+	};
+
+	const handleCategoryChange = (category) => {
+		setSelectedCategory(category);
+	};
+
 	const handleMoreInfoClick = (slug) => {
 		navigate(`/events/${slug}`);
 	};
 
-	console.log(events, "<<< log");
-
 	return (
 		<div className="bg-primary text-white min-h-screen">
 			{/* Month Selector */}
-			<div className="sticky top-[60px]  bg-primary py-2 flex justify-center items-center mx-auto w-full border-b-2 border-boxYellow transition duration-300 ease-in-out">
+			<div className="sticky top-16 z-10 bg-primary py-2 flex justify-center items-center mx-auto w-full border-b-2 border-boxYellow transition duration-300 ease-in-out">
 				<button
 					className="text-white px-4"
 					onClick={() => handleMonthChange("prev")}>
@@ -115,23 +116,31 @@ const Events = () => {
 				))}
 			</div>
 
-			<hr className="border-t-2 border-boxYellow my-4" />
+			<hr className="border-t-2 border-boxYellow mt-[1rem]" />
 
 			{/* Event Listings */}
-			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2 ">
-				{filteredEvents.length === 0 ? (
-					<div className="text-center"></div>
+			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2 mt-3">
+				{/* Skeleton Loader */}
+				{isLoading ? (
+					<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2">
+						{/* Skeleton for events */}
+						{[...Array(5)].map((_, index) => (
+							<div key={index} className="bg-primary p-4 animate-pulse">
+								<div className="h-48 bg-primary rounded-md mb-4"></div>
+								<div className="h-6 bg-primary rounded-md mb-2"></div>
+								<div className="h-4 bg-primary rounded-md mb-2"></div>
+							</div>
+						))}
+					</div>
 				) : (
+					// Actual Event Listings
 					filteredEvents.map((event, index) => (
-						<div key={index} className="bg-primary ">
-							{/* Large Screen Layout (Three Columns) */}
-							<div
-								className="lg:grid lg:grid-cols-[2fr_600px_1fr] lg:grid-rows-1 lg:mx-10 lg:justify-center lg:p-1 lg:mb-8
-                        					md:grid md:grid-cols-2 md:grid-rows-[auto_80px] md:p-5
-											p-3 " >
-								{/* Event Image (First Column) */}
+						<div key={index} className="bg-primary">
+							{/* Event Layout */}
+							<div className="lg:grid lg:grid-cols-[2fr_600px_1fr] lg:grid-rows-1 lg:mx-10 lg:justify-center lg:p-1 lg:mb-8 md:grid md:grid-cols-2 md:grid-rows-[auto_80px] md:p-5 p-3 animate-fade animate-duration-1500">
+								{/* Event Image */}
 								{event.image && (
-									<div className=" w-full h-[300px] p-2 flex justify-center ">
+									<div className="w-full h-[300px] p-2 flex justify-center">
 										<img
 											src={event.image.asset.url}
 											alt={event.name}
@@ -140,12 +149,8 @@ const Events = () => {
 									</div>
 								)}
 
-								{/* Event Content (Second Column) */}
-								<div
-									className=" lg:content-start lg:h-full
-												
-												md:h-full md:content-end p-2">
-									{/* Event Date */}
+								{/* Event Content */}
+								<div className="lg:content-start lg:h-full md:h-full md:content-end p-2">
 									<p className="font-bodyFont text-lg font-light text-white">
 										{new Date(event.date).toLocaleDateString(undefined, {
 											weekday: "short",
@@ -153,26 +158,19 @@ const Events = () => {
 											day: "numeric",
 										})}
 									</p>
-
-									{/* Event Name */}
 									<h2 className="font-titleFont lg:text-6xl md:text-6xl text-4xl font-bold text-white md:align-text-bottom">
 										{event.name}
 									</h2>
 								</div>
 
-								{/* Buttons (Third Column - Stay on the Right) */}
-								<div
-									className="lg:flex lg:flex-col lg:gap-4 lg:col-auto lg:row-auto lg:items-start lg:h-full lg:mt-5
-                								md:col-span-2 md:row-start-2 md:h-[80px] p-2 flex items-center gap-4">
-									{/* More Info Button */}
+								{/* Buttons */}
+								<div className="lg:flex lg:flex-col lg:gap-4 lg:col-auto lg:row-auto lg:items-start lg:h-full lg:mt-5 md:col-span-2 md:row-start-2 md:h-[80px] p-2 flex items-center gap-4">
 									<button
 										className="font-bodyFont lg:w-full md:w-full w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
 										onClick={() => handleMoreInfoClick(event.slug.current)}>
 										More Info
 									</button>
-
-									{/* Free In Button */}
-									<button className="font-bodyFont lg:w-full md:w-full w-full  py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+									<button className="font-bodyFont lg:w-full md:w-full w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
 										{event.priceAmount === null
 											? "Free In!"
 											: "€" + event.priceAmount}

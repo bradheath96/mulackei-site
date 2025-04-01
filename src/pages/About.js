@@ -28,7 +28,7 @@ const About = () => {
 				<ImageSlider imageUrls={imagesUrls} />
 			</div>
 			<div className="bg-primary text-white py-5 px-6  ">
-				<div className="relative flex items-center mb-8 mt-3 animate-fade animate-duration-1000">
+				<div className="relative flex items-center mb-8 mt-3 animate-fade animate-duration-1500">
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
 
 					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">

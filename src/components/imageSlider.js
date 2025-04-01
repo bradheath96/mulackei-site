@@ -34,12 +34,12 @@ export default function ImageSlider({ imageUrls }) {
 			{/* Navigation Buttons */}
 			<button
 				onClick={showPrevImage}
-				className="clear block absolute top-0 bottom-0 p-4 cursor-pointer left-0 hover:bg-boxYellow/20 transition duration-500 ease-in-out hover:scale-x-110">
+				className="clear block absolute top-0 bottom-0 p-4 cursor-pointer left-0 lg:hover:bg-boxYellow/20 transition duration-500 ease-in-out hover:scale-x-110">
 				<ArrowBigLeft className="stroke-white fill-black w-8 h-8" />
 			</button>
 			<button
 				onClick={showNextImage}
-				className="clear block absolute top-0 bottom-0 p-4 cursor-pointer right-0 hover:bg-boxYellow/20 transition duration-500 ease-in-out hover:scale-110">
+				className="clear block absolute top-0 bottom-0 p-4 cursor-pointer right-0 lg:hover:bg-boxYellow/20 transition duration-500 ease-in-out hover:scale-110">
 				<ArrowBigRight className="stroke-white fill-black w-8 h-8" />
 			</button>
 

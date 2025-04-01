@@ -4,6 +4,7 @@ import ImageSlider from "../components/imageSlider";
 
 const About = () => {
 	const [imagesUrls, setImagesUrls] = useState([]);
+	imagesUrls.shift();
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -17,6 +18,8 @@ const About = () => {
 		};
 		fetchImages();
 	}, []);
+
+	
 
 	return (
 		<div className="bg-primary lg:flex lg:flex-col max-h-full  justify-start min-h-screen ">

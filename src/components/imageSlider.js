@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from "lucide-react";
 
 export default function ImageSlider({ imageUrls }) {
 	const [imageIndex, setImageIndex] = useState(0);
@@ -17,29 +17,47 @@ export default function ImageSlider({ imageUrls }) {
 	}
 
 	return (
-		<div className="w-full h-full relative overflow-hidden">
-			<div className="w-full h-full flex overflow-hidden">
+		<div className="relative w-full h-full overflow-hidden">
+			<div
+				className="flex w-full h-full transition-transform duration-700 ease-in-out"
+				style={{ transform: `translateX(${-100 * imageIndex}%)` }}>
 				{imageUrls.map((url, index) => (
 					<img
 						key={url}
 						src={url}
 						alt={`Slide ${imageIndex + 1}`}
-						className="object-cover w-full h-full block flex-shrink-0 flex-grow-0 transition-transform duration-700 ease-in-out"
-						style={{ transform: `translateX(${-100 * imageIndex}%)` }}
+						className="object-cover w-full h-full flex-shrink-0"
 					/>
 				))}
 			</div>
 
+			{/* Navigation Buttons - Restored Original Hover Effect */}
 			<button
 				onClick={showPrevImage}
 				className="clear block absolute top-0 bottom-0 p-4 cursor-pointer left-0 hover:bg-boxYellow/20 transition duration-500 ease-in-out hover:scale-x-110">
-				<ArrowBigLeft className="stroke-white fill-black w-8 h-8  " />
+				<ArrowBigLeft className="stroke-white fill-black w-8 h-8" />
 			</button>
 			<button
 				onClick={showNextImage}
-				className="clear block absolute top-0 bottom-0 p-4 cursor-pointer right-0 hover:bg-boxYellow/20  transition duration-500 ease-in-out hover:scale-110">
-				<ArrowBigRight className="stroke-white fill-black right-0 w-8 h-8" />
+				className="clear block absolute top-0 bottom-0 p-4 cursor-pointer right-0 hover:bg-boxYellow/20 transition duration-500 ease-in-out hover:scale-110">
+				<ArrowBigRight className="stroke-white fill-black w-8 h-8" />
 			</button>
+
+			{/* Indicator Dots */}
+			<div className="absolute bottom-[0.5rem] left-1/2 translate-x-[-50%] flex gap-[0.5rem]">
+				{imageUrls.map((_, index) => (
+					<button
+						key={index}
+						className="block cursor-pointer w-[1rem] h-[1rem]"
+						onClick={() => setImageIndex(index)}>
+						{index === imageIndex ? (
+							<CircleDot className="stroke-boxYellow fill-black h-[100%] w-[100%] hover:scale-[1.2] transition-scale duration-500 ease-in-out" />
+						) : (
+							<Circle className="stroke-white fill-black h-[100%] w-[100%] hover:scale-[1.2] transition-scale duration-500 ease-in-out" />
+						)}
+					</button>
+				))}
+			</div>
 		</div>
 	);
 }

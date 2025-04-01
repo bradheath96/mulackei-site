@@ -118,20 +118,20 @@ const Events = () => {
 			<hr className="border-t-2 border-boxYellow my-4" />
 
 			{/* Event Listings */}
-			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2">
+			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2 ">
 				{filteredEvents.length === 0 ? (
 					<div className="text-center"></div>
 				) : (
 					filteredEvents.map((event, index) => (
-						<div key={index} className="bg-primary">
+						<div key={index} className="bg-primary ">
 							{/* Large Screen Layout (Three Columns) */}
 							<div
 								className="lg:grid lg:grid-cols-[2fr_600px_1fr] lg:grid-rows-1 lg:mx-10 lg:justify-center lg:p-1 lg:mb-8
                         					md:grid md:grid-cols-2 md:grid-rows-[auto_80px] md:p-5
-											p-3">
+											p-3 " >
 								{/* Event Image (First Column) */}
 								{event.image && (
-									<div className=" w-full h-[300px] p-2 flex justify-center">
+									<div className=" w-full h-[300px] p-2 flex justify-center ">
 										<img
 											src={event.image.asset.url}
 											alt={event.name}

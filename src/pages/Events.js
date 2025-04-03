@@ -7,7 +7,8 @@ const Events = () => {
 	const [selectedCategory, setSelectedCategory] = useState("all");
 	const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-	const [isLoading, setIsLoading] = useState(true); // Loading state for skeleton loader
+	const [isLoading, setIsLoading] = useState(true);
+	const [animationKey, setAnimationKey] = useState(0); 
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -22,12 +23,12 @@ const Events = () => {
 					(event) => new Date(event.date) > currentDate
 				);
 				setEvents(upComingEvents);
-				setIsLoading(false); // Stop loading when data is fetched
+				setIsLoading(false);
 			})
 			.catch(console.error);
 	}, []);
 
-	// Filter events by category and month
+	
 	const filteredEvents = events.filter((event) => {
 		const eventDate = new Date(event.date);
 		const isSameMonth =
@@ -56,6 +57,7 @@ const Events = () => {
 	];
 
 	const handleMonthChange = (direction) => {
+		window.scrollTo(0, 0);
 		if (direction === "prev") {
 			if (currentMonth === 0) {
 				setCurrentMonth(11);
@@ -71,10 +73,12 @@ const Events = () => {
 				setCurrentMonth(currentMonth + 1);
 			}
 		}
+		setAnimationKey((prevKey) => prevKey + 1); 
 	};
 
 	const handleCategoryChange = (category) => {
 		setSelectedCategory(category);
+		setAnimationKey((prevKey) => prevKey + 1); 
 	};
 
 	const handleMoreInfoClick = (slug) => {
@@ -101,7 +105,7 @@ const Events = () => {
 			</div>
 
 			{/* Category Filter */}
-			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl mt-4 ">
+			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl mt-4">
 				{["all", "music", "chess", "art", "film"].map((category) => (
 					<button
 						key={category}
@@ -119,11 +123,12 @@ const Events = () => {
 			<hr className="border-t-2 border-boxYellow mt-[1rem]" />
 
 			{/* Event Listings */}
-			<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2 mt-3">
+			<div
+				key={animationKey}
+				className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2 mt-3 animate-fade-up animate-duration-[1250ms]">
 				{/* Skeleton Loader */}
 				{isLoading ? (
 					<div className="grid grid-cols-1 gap-6 lg:grid-cols-1 lg:gap-2">
-						{/* Skeleton for events */}
 						{[...Array(5)].map((_, index) => (
 							<div key={index} className="bg-primary p-4 animate-pulse">
 								<div className="h-48 bg-primary rounded-md mb-4"></div>
@@ -132,12 +137,22 @@ const Events = () => {
 							</div>
 						))}
 					</div>
+				) : filteredEvents.length === 0 ? (
+					// No Events Message
+					<div className="text-center py-20">
+						<h2 className="text-4xl font-titleFont font-bold">
+							No events found.
+						</h2>
+						<p className="text-lg mt-2 font-bodyFont">
+							Check back soon for more updates!
+						</p>
+					</div>
 				) : (
 					// Actual Event Listings
 					filteredEvents.map((event, index) => (
 						<div key={index} className="bg-primary">
 							{/* Event Layout */}
-							<div className="lg:grid lg:grid-cols-[2fr_600px_1fr] lg:grid-rows-1 lg:mx-10 lg:justify-center lg:p-1 lg:mb-8 md:grid md:grid-cols-2 md:grid-rows-[auto_80px] md:p-5 p-3 animate-fade animate-duration-1500">
+							<div className="lg:grid lg:grid-cols-[2fr_600px_1fr] lg:grid-rows-1 lg:mx-10 lg:justify-center lg:p-1 lg:mb-8 md:grid md:grid-cols-2 md:grid-rows-[auto_80px] md:p-5 p-3">
 								{/* Event Image */}
 								{event.image && (
 									<div className="w-full h-[300px] p-2 flex justify-center">

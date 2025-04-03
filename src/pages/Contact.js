@@ -93,7 +93,7 @@ const Contact = () => {
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
 
 					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl  lg:pr-4 lg:whitespace-normal">
-						Conact Us
+						Contact Us
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>

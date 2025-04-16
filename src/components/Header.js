@@ -1,6 +1,7 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import LanguageToggle from "./LanguageToggle";
 
 const navigation = [
 	{ name: "About", to: "/about" },
@@ -35,6 +36,11 @@ const Header = () => {
 								{item.name}
 							</Link>
 						))}
+						<LanguageToggle
+							onToggle={(lang) => {
+								console.log("Language switched to:", lang);
+							}}
+						/>
 					</div>
 
 					<div className="sm:hidden">

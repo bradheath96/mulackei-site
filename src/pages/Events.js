@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchEvents } from "../services/EventServices";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Events = () => {
 	const [events, setEvents] = useState([]);
@@ -152,7 +153,13 @@ const Events = () => {
 				) : (
 					// Actual Event Listings
 					filteredEvents.map((event, index) => (
-						<div key={index} className="bg-primary">
+						<motion.div
+							key={index}
+							initial={{ opacity: 0, y: 30 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.5, delay: index * 0.1 }}
+							viewport={{ once: true }}
+							className="bg-primary">
 							{/* Event Layout */}
 							<div className="lg:grid lg:grid-cols-[2fr_600px_1fr] lg:grid-rows-1 lg:mx-10 lg:justify-center lg:p-1 lg:mb-8 md:grid md:grid-cols-2 md:grid-rows-[auto_80px] md:p-5 p-3">
 								{/* Event Image */}
@@ -196,7 +203,7 @@ const Events = () => {
 							</div>
 
 							<hr className="border-t-2 border-boxYellow" />
-						</div>
+						</motion.div>
 					))
 				)}
 			</div>

@@ -24,7 +24,6 @@ const EventDetails = () => {
 		};
 		getEvent();
 	}, [slug]);
-
 	return (
 		<div className="bg-primary min-h-screen text-white">
 			<div className="grid grid-flow-col-1 md:grid-cols-2 lg:grid-cols-2 lg:grid-rows-1 mb-10">

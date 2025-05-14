@@ -10,6 +10,8 @@ const Events = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [animationKey, setAnimationKey] = useState(0); 
 	const navigate = useNavigate();
+		console.log(events);
+
 
 	useEffect(() => {
 		window.scrollTo(0, 0);

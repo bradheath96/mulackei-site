@@ -4,10 +4,49 @@ import ImageSlider from "../components/imageSlider";
 import Mulcakei3 from "../assets/images/Mulackei-3.webp"
 import Mulackei4 from "../assets/images/Mulackei-4.webp"
 import Mulackei5 from "../assets/images/Mulackei-5.jpg"
+import Isobel from "../assets/images/Isobel.png";
+import Bass from "../assets/images/Bass.jpg";
 
 const About = () => {
 	const [imagesUrls, setImagesUrls] = useState([]);
+	const [openCard, setOpenCard] = useState(null);
+
 	imagesUrls.shift();
+
+	const team = [
+		{
+			id: 1,
+			name: "Alice Johnson",
+			role: "Creative Director",
+			image: Isobel,
+			bio: "Alice leads the creative vision of the team and ensures artistic integrity across all projects. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac lorem non velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			email: "alice@example.com",
+		},
+		{
+			id: 2,
+			name: "Ben Rivera",
+			role: "Events Manager",
+			image: Bass,
+			bio: "Ben manages logistics and coordination for all events. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in nulla non urna fermentum.",
+			email: "ben@example.com",
+		},
+		{
+			id: 3,
+			name: "Chloe Wu",
+			role: "Community Outreach",
+			image: Isobel,
+			bio: "Chloe connects with local artists and communities to build lasting relationships. Lorem ipsum dolor sit amet.",
+			email: "chloe@example.com",
+		},
+		{
+			id: 4,
+			name: "David Klein",
+			role: "Technical Coordinator",
+			image: Bass,
+			bio: "David oversees all technical operations, from sound to lighting. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+			email: "david@example.com",
+		},
+	];
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -116,6 +155,42 @@ const About = () => {
 						Meet the Team
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
+				</div>
+				<div className="bg-primary text-white py-5 px-4">
+					<div className="flex overflow-x-auto space-x-6 snap-x snap-mandatory scrollbar-hide pb-4">
+						
+						{team.map((member, index) => (
+							<div
+								key={member.id}
+								className="snap-center flex-shrink-0 w-full max-w-[90vw] sm:max-w-[500px] bg-secondary p-6 shadow-lg">
+								<img
+									src={member.image}
+									alt={member.name}
+									className="w-full h-64 object-cover mb-4"
+								/>
+								<h3 className="text-2xl font-titleFont font-bold text-white mb-1">
+									{member.name}
+								</h3>
+								<p className="text-sm font-bodyFont text-boxYellow mb-2">
+									{member.role}
+								</p>
+
+								<p className="text-sm font-bodyFont text-white">
+									{openCard === index
+										? member.bio
+										: `${member.bio.slice(0, 100)}...`}
+								</p>
+
+								<button
+									className="text-sm font-bodyFont text-boxYellow underline mt-2"
+									onClick={() =>
+										setOpenCard(openCard === index ? null : index)
+									}>
+									{openCard === index ? "Hide Bio" : "Read More"}
+								</button>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>

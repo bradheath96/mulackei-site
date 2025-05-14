@@ -6,8 +6,12 @@ import Mulackei4 from "../assets/images/Mulackei-4.webp"
 import Mulackei5 from "../assets/images/Mulackei-5.jpg"
 import Isobel from "../assets/images/Isobel.png";
 import Bass from "../assets/images/Bass.jpg";
+import { motion } from "framer-motion";
 
 const About = () => {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	const [imagesUrls, setImagesUrls] = useState([]);
 	const [openCard, setOpenCard] = useState(null);
 
@@ -48,9 +52,7 @@ const About = () => {
 		},
 	];
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
+	
 
 	useEffect(() => {
 		const fetchImages = async () => {
@@ -157,11 +159,14 @@ const About = () => {
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
 				<div className="bg-primary text-white py-5 px-4">
-					<div className="flex overflow-x-auto space-x-6 snap-x snap-mandatory scrollbar-hide pb-4">
-						
+					<div className="flex overflow-x-auto space-x-6 snap-x snap-mandatory pb-4">
 						{team.map((member, index) => (
-							<div
+							<motion.div
 								key={member.id}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.8, delay: index * 0.1 }}
+								viewport={{ once: true }}
 								className="snap-center flex-shrink-0 w-full max-w-[90vw] sm:max-w-[500px] bg-secondary p-6 shadow-lg">
 								<img
 									src={member.image}
@@ -174,13 +179,11 @@ const About = () => {
 								<p className="text-sm font-bodyFont text-boxYellow mb-2">
 									{member.role}
 								</p>
-
 								<p className="text-sm font-bodyFont text-white">
 									{openCard === index
 										? member.bio
 										: `${member.bio.slice(0, 100)}...`}
 								</p>
-
 								<button
 									className="text-sm font-bodyFont text-boxYellow underline mt-2"
 									onClick={() =>
@@ -188,7 +191,7 @@ const About = () => {
 									}>
 									{openCard === index ? "Hide Bio" : "Read More"}
 								</button>
-							</div>
+							</motion.div>
 						))}
 					</div>
 				</div>

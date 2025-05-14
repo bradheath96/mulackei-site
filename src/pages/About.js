@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchVenueImages } from "../services/EventServices";
 import ImageSlider from "../components/imageSlider";
-import Mulcakei3 from "../assets/images/Mulackei-3.webp"
-import Mulackei4 from "../assets/images/Mulackei-4.webp"
-import Mulackei5 from "../assets/images/Mulackei-5.jpg"
+import Mulcakei3 from "../assets/images/Mulackei-3.webp";
+import Mulackei4 from "../assets/images/Mulackei-4.webp";
+import Mulackei5 from "../assets/images/Mulackei-5.jpg";
 import Isobel from "../assets/images/Isobel.png";
 import Bass from "../assets/images/Bass.jpg";
 import { motion } from "framer-motion";
@@ -16,6 +16,13 @@ const About = () => {
 	const [openCard, setOpenCard] = useState(null);
 
 	imagesUrls.shift();
+
+	const fadeUp = {
+		initial: { opacity: 0, y: 40 },
+		whileInView: { opacity: 1, y: 0 },
+		transition: { duration: 1, ease: "easeOut" },
+		viewport: { once: true, amount: 0.2 },
+	};
 
 	const team = [
 		{
@@ -52,8 +59,6 @@ const About = () => {
 		},
 	];
 
-	
-
 	useEffect(() => {
 		const fetchImages = async () => {
 			const images = await fetchVenueImages();
@@ -83,8 +88,9 @@ const About = () => {
 			{/* First Row - Text Left, Image Right */}
 			<div className="bg-primary text-white px-4 md:px-6 lg:px-8 py-4 ">
 				{/* First Row */}
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center animate-fade animate-duration-1000">
-					{/* Text First on all screens */}
+				<motion.div
+					{...fadeUp}
+					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
 					<div className="order-1 flex justify-center items-center">
 						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
 							The Mulackei is a non-profit association dedicated to art,
@@ -93,8 +99,6 @@ const About = () => {
 							that brings together people from different backgrounds.
 						</p>
 					</div>
-
-					{/* Image Second on all screens */}
 					<div className="order-2 flex justify-center items-center">
 						<img
 							src={Mulcakei3}
@@ -102,23 +106,20 @@ const About = () => {
 							className="w-full max-w-[600px] h-auto object-cover"
 						/>
 					</div>
-				</div>
+				</motion.div>
 
 				{/* Second Row */}
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center animate-fade animate-duration-1000">
-					{/* Text First on mobile, second on md+ */}
+				<motion.div
+					{...fadeUp}
+					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
 					<div className="order-1 md:order-2 flex justify-center items-center">
 						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
 							The name “Mulackei" originates from a legendary Restaurant/Bar at
 							Mulackstraße 15, which was the second home for many of Berlin’s
 							most famous artists and con-artists, as well as for outsiders of
-							society in general. In the 40s, the courageous Minna Mahlich hid
-							trans- and homosexuals from the Nazis in the Mulackei. It was also
-							used as a name for the neighborhood around Mulackstraße.
+							society in general...
 						</p>
 					</div>
-
-					{/* Image Second on mobile, first on md+ */}
 					<div className="order-2 md:order-1 flex justify-center items-center">
 						<img
 							src={Mulackei4}
@@ -126,21 +127,17 @@ const About = () => {
 							className="w-full max-w-[600px] h-auto object-cover"
 						/>
 					</div>
-				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center animate-fade animate-duration-1000">
-					{/* Text First on mobile, second on md+ */}
+				</motion.div>
+				<motion.div
+					{...fadeUp}
+					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
 					<div className="order-1 flex justify-center items-center">
 						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
 							Our Mulackei is at Mulackstraße 27, across the street from Sodtkes
-							Restaurant, which was been replaced by shiny apartment buildings a
-							long time ago. We want to honour the tradition of our historical
-							neighbours by offering a tolerant gathering place for both
-							residents and visitors of the area. But we are not a restaurant,
-							nor a bar. Instead, we focus on artistic and cultural nourishment.
+							Restaurant, which was been replaced by shiny apartment
+							buildings...
 						</p>
 					</div>
-
-					{/* Image Second on mobile, first on md+ */}
 					<div className="order-2 flex justify-center items-center">
 						<img
 							src={Mulackei5}
@@ -148,7 +145,7 @@ const About = () => {
 							className="w-full max-w-[600px] h-auto object-cover"
 						/>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 			<div className="bg-primary text-white py-5 px-6">
 				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
@@ -165,8 +162,8 @@ const About = () => {
 								key={member.id}
 								initial={{ opacity: 0, y: 20 }}
 								whileInView={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.8, delay: index * 0.1 }}
-								viewport={{ once: true }}
+								transition={{ duration: 1, delay: index * 0.1 }}
+								viewport={{ once: true, amount: 0.3 }}
 								className="snap-center flex-shrink-0 w-full max-w-[90vw] sm:max-w-[500px] bg-secondary p-6 shadow-lg">
 								<img
 									src={member.image}

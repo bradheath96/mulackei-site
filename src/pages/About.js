@@ -1,7 +1,9 @@
 import { use, useEffect, useState } from "react";
-import { fetchVenueImages, fetchAboutUsImages } from "../services/EventServices";
+import {
+	fetchVenueImages,
+	fetchAboutUsImages,
+} from "../services/EventServices";
 import ImageSlider from "../components/imageSlider";
-
 import Isobel from "../assets/images/Isobel.png";
 import Bass from "../assets/images/Bass.jpg";
 import { motion } from "framer-motion";
@@ -13,7 +15,7 @@ const About = () => {
 	}, []);
 	const [imagesUrls, setImagesUrls] = useState([]);
 	const [openCard, setOpenCard] = useState(null);
-
+	const [isLoading, setIsLoading] = useState(true);
 	imagesUrls.shift();
 
 	const fadeUp = {
@@ -63,13 +65,14 @@ const About = () => {
 			const images = await fetchVenueImages();
 			const urls = images.map((image) => image.url);
 			setImagesUrls(urls);
+			setIsLoading(false);
 		};
 		fetchImages();
 	}, []);
 	console.log(imagesUrls);
 	return (
-		<div className="bg-primary lg:flex lg:flex-col max-h-full justify-start min-h-screen">
-			<div className="w-full h-[66vh] sm:h-[500px] lg:border-b-2 lg:border-boxYellow">
+		<div className="bg-primary lg:flex lg:flex-col max-h-full justify-start min-h-screen ">
+			<div className="w-full h-[66vh] sm:h-[500px] lg:border-b-2 lg:border-boxYellow animate-fade animate-duration-1000">
 				<ImageSlider imageUrls={imagesUrls.slice(0, -3)} />
 			</div>
 
@@ -99,11 +102,15 @@ const About = () => {
 						</p>
 					</div>
 					<div className="order-2 flex justify-center items-center">
-						<img
-							src={imagesUrls[10]}
-							alt="Mulackei venue"
-							className="w-full max-w-[600px] h-auto object-cover"
-						/>
+						{isLoading ? (
+							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+						) : (
+							<img
+								src={imagesUrls[10]}
+								alt="Mulackei Venue"
+								className="w-full max-w-[600px] h-auto object-cover"
+							/>
+						)}
 					</div>
 				</motion.div>
 
@@ -123,11 +130,15 @@ const About = () => {
 						</p>
 					</div>
 					<div className="order-2 md:order-1 flex justify-center items-center">
-						<img
-							src={imagesUrls[11]}
-							alt="Placeholder for space"
-							className="w-full max-w-[600px] h-auto object-cover"
-						/>
+						{isLoading ? (
+							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+						) : (
+							<img
+								src={imagesUrls[11]}
+								alt="Mulackei Venue"
+								className="w-full max-w-[600px] h-auto object-cover"
+							/>
+						)}
 					</div>
 				</motion.div>
 				<motion.div
@@ -144,11 +155,15 @@ const About = () => {
 						</p>
 					</div>
 					<div className="order-2 flex justify-center items-center">
-						<img
-							src={imagesUrls[9]}
-							alt="Placeholder for space"
-							className="w-full max-w-[600px] h-auto object-cover"
-						/>
+						{isLoading ? (
+							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+						) : (
+							<img
+								src={imagesUrls[9]}
+								alt="Mulackei Venue"
+								className="w-full max-w-[600px] h-auto object-cover"
+							/>
+						)}
 					</div>
 				</motion.div>
 			</div>

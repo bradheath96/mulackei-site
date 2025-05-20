@@ -72,11 +72,12 @@ const About = () => {
 	console.log(imagesUrls);
 	return (
 		<div className="bg-primary lg:flex lg:flex-col max-h-full justify-start min-h-screen ">
-			<div className="w-full h-[66vh] sm:h-[500px] lg:border-b-2 lg:border-boxYellow animate-fade animate-duration-1000">
+			<div className="w-full h-[500px] sm:h-[500px] lg:border-b-2 lg:border-boxYellow animate-fade animate-duration-1000">
 				<ImageSlider imageUrls={imagesUrls.slice(0, -3)} />
 			</div>
+			
 
-			<hr className="border-t-1 border-boxYellow" />
+			<hr className="border-t-2 border-boxYellow" />
 
 			{/* About Us Heading */}
 			<div className="bg-primary text-white pt-5 px-6">

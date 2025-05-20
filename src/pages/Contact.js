@@ -48,12 +48,13 @@ const Contact = () => {
 			);
 	};
 	return (
-		<div className="bg-primary min-h-screen text-white">
+		<div className="flex flex-col flex-grow bg-primary text-white">
+			
 			<div className="grid grid-flow-col-1 md:grid-cols-2 lg:grid-cols-2 lg:grid-rows-1  mb-10">
-				<div className="lg:px-4 lg:pt-4 md:px-4 md:pt-4">
+				<div className="lg:px-2 lg:pt-2 md:px-2 md:pt-2">
 					<div className="animate-fade animate-duration-1500">
 						{isLoading ? (
-							<div className="w-[500px] h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] bg-primary "></div>
+							<div className="w-[500px] min-h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] bg-primary "></div>
 						) : (
 							<img
 								src={venueImage}
@@ -62,6 +63,7 @@ const Contact = () => {
 							/>
 						)}
 					</div>
+					<hr className="border-t-2 lg:hidden md:hidden border-boxYellow" />
 				</div>
 				<div className="md:place-content-end px-4 pt-4 md:h-full lg:place-content-end animate-fade animate-duration-1500">
 					<div className="relative flex items-center mb-8 mt-3 ">

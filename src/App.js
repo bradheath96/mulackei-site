@@ -8,17 +8,21 @@ import EventDetails from "./pages/EventDeatails";
 import Footer from "./components/Footer";
 
 const App = () => (
-	<Router>
-		<Header />
-		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="/about" element={<About />} />
-			<Route path="/events" element={<Events />} />
-			<Route path="/contact" element={<Contact />} />
-			<Route path="/events/:slug" element={<EventDetails />} />
-		</Routes>
-		<Footer/>
-	</Router>
+	<div className="flex flex-col min-h-screen">
+		<Router>
+			<Header />
+			<main className="bg-primary flex-grow">
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/events" element={<Events />} />
+					<Route path="/contact" element={<Contact />} />
+					<Route path="/events/:slug" element={<EventDetails />} />
+				</Routes>
+			</main>
+			<Footer />
+		</Router>
+	</div>
 );
 
 export default App;

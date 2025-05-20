@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { fetchEvents } from "../services/EventServices";
+import { fetchEvents, fetchSingleVenueImage } from "../services/EventServices";
 import { useNavigate } from "react-router-dom";
-import Mulackei from "../assets/images/Mulackei-1.jpg";
 
 
 const Home = () => {
 	const [events, setEvents] = useState([]);
-	const [isLoading, setIsLoading] = useState(true); // Loading state
+	const [imageUrl, setImageUrl] = useState(null); 
+	const [isLoading, setIsLoading] = useState(true); 
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const navigate = useNavigate();
 
@@ -31,6 +31,15 @@ const Home = () => {
 		navigate(`/events/${slug}`);
 	};
 
+	useEffect(() => {
+		const loadImage = async () => {
+			const url = await fetchSingleVenueImage("Mulackei_2.webp"); // Replace with any filename
+			setImageUrl(url);
+		};
+
+		loadImage();
+	}, []);
+
 	return (
 		<div className="bg-primary relative min-h-screen">
 			{/* Hero Section with Background Image */}
@@ -39,7 +48,7 @@ const Home = () => {
 					<div className="absolute inset-0 bg-primary animate-pulse"></div>
 				)}
 				<img
-					src={Mulackei}
+					src={imageUrl}
 					alt="Venue"
 					className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
 						isImageLoaded ? "opacity-100" : "opacity-0"
@@ -59,7 +68,7 @@ const Home = () => {
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
-				
+
 				<div className="animate-fade animate-duration-1000 grid grid-cols-1 gap-6 lg:grid-cols-4 lg:gap-8 mx-auto">
 					{/* Skeleton Loader while fetching events */}
 					{isLoading
@@ -76,7 +85,6 @@ const Home = () => {
 								</div>
 						  ))
 						: events.map((event, index) => (
-							
 								<div
 									key={index}
 									className="bg-primary flex flex-col min-h-[400px] animate-fade-up animate-duration-1500">

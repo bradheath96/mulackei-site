@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import { fetchVenueImages } from "../services/EventServices";
+import { use, useEffect, useState } from "react";
+import { fetchVenueImages, fetchAboutUsImages } from "../services/EventServices";
 import ImageSlider from "../components/imageSlider";
-import Mulcakei3 from "../assets/images/Mulackei-3.webp";
-import Mulackei4 from "../assets/images/Mulackei-4.webp";
-import Mulackei5 from "../assets/images/Mulackei-5.jpg";
+
 import Isobel from "../assets/images/Isobel.png";
 import Bass from "../assets/images/Bass.jpg";
 import { motion } from "framer-motion";
+import { image } from "framer-motion/client";
 
 const About = () => {
 	useEffect(() => {
@@ -67,11 +66,11 @@ const About = () => {
 		};
 		fetchImages();
 	}, []);
-
+	console.log(imagesUrls);
 	return (
 		<div className="bg-primary lg:flex lg:flex-col max-h-full justify-start min-h-screen">
 			<div className="w-full h-[66vh] sm:h-[500px] lg:border-b-2 lg:border-boxYellow">
-				<ImageSlider imageUrls={imagesUrls} />
+				<ImageSlider imageUrls={imagesUrls.slice(0, -3)} />
 			</div>
 
 			{/* About Us Heading */}
@@ -101,7 +100,7 @@ const About = () => {
 					</div>
 					<div className="order-2 flex justify-center items-center">
 						<img
-							src={Mulcakei3}
+							src={imagesUrls[10]}
 							alt="Mulackei venue"
 							className="w-full max-w-[600px] h-auto object-cover"
 						/>
@@ -114,15 +113,18 @@ const About = () => {
 					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
 					<div className="order-1 md:order-2 flex justify-center items-center">
 						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
-							The name “Mulackei" originates from a legendary Restaurant/Bar at
+							The Name „Mulackei" originates from a legendary Restaurant/Bar at
 							Mulackstraße 15, which was the second home for many of Berlin’s
 							most famous artists and con-artists, as well as for outsiders of
-							society in general...
+							the society in general. In the 40s, the courageous Minna Mahlich
+							hid trans- and homosexuals from the Nazis in the Mulackei.
+							Mulackei was also used as a pars pro toto name for the whole
+							neighborhood surrounding Mulackstraße.
 						</p>
 					</div>
 					<div className="order-2 md:order-1 flex justify-center items-center">
 						<img
-							src={Mulackei4}
+							src={imagesUrls[11]}
 							alt="Placeholder for space"
 							className="w-full max-w-[600px] h-auto object-cover"
 						/>
@@ -134,13 +136,16 @@ const About = () => {
 					<div className="order-1 flex justify-center items-center">
 						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
 							Our Mulackei is at Mulackstraße 27, across the street from Sodtkes
-							Restaurant, which was been replaced by shiny apartment
-							buildings...
+							Restaurant, which was been replaced by shiny apartment buildings a
+							long time ago. We want to honour the tradition of our historical
+							neighbours by offering a tolerant gathering place for both
+							residents and visitors of the area. But we are not a restaurant,
+							nor a bar. Instead, we focus on artistic and cultural nourishment.
 						</p>
 					</div>
 					<div className="order-2 flex justify-center items-center">
 						<img
-							src={Mulackei5}
+							src={imagesUrls[9]}
 							alt="Placeholder for space"
 							className="w-full max-w-[600px] h-auto object-cover"
 						/>

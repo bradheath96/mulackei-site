@@ -76,6 +76,8 @@ const About = () => {
 				<ImageSlider imageUrls={imagesUrls.slice(0, -3)} />
 			</div>
 
+			<hr className="border-t-1 border-boxYellow" />
+
 			{/* About Us Heading */}
 			<div className="bg-primary text-white pt-5 px-6">
 				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">

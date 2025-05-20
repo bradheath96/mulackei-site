@@ -43,7 +43,7 @@ const Home = () => {
 	return (
 		<div className="bg-primary relative min-h-screen">
 			{/* Hero Section with Background Image */}
-			<div className="relative min-h-[30vh] lg:min-h-[70vh] overflow-hidden animate-fade animate-duration-1500">
+			<div className="relative min-h-[30vh] md:h-[500px] lg:min-h-[70vh] overflow-hidden animate-fade animate-duration-1500">
 				{!isImageLoaded && (
 					<div className="absolute inset-0 bg-primary animate-pulse"></div>
 				)}
@@ -57,7 +57,7 @@ const Home = () => {
 				/>
 			</div>
 
-			<hr className="border-t-2 border-boxYellow" />
+			<hr className="border-t-1 border-boxYellow" />
 
 			{/* Upcoming Events Section */}
 			<div className="bg-primary text-white py-5 px-6">
@@ -69,7 +69,7 @@ const Home = () => {
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
 
-				<div className="animate-fade animate-duration-1000 grid grid-cols-1 gap-6 lg:grid-cols-4 lg:gap-8 mx-auto">
+				<div className="animate-fade animate-duration-1000 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-8 max-w-7xl mx-auto">
 					{/* Skeleton Loader while fetching events */}
 					{isLoading
 						? [...Array(4)].map((_, index) => (
@@ -92,7 +92,7 @@ const Home = () => {
 										<img
 											src={event.image.asset.url}
 											alt={event.name}
-											className="w-full h-48 object-cover"
+											className="w-full h-[300px] object-cover"
 										/>
 									)}
 									<div className="flex flex-col flex-grow pt-4">

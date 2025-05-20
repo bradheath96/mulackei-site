@@ -14,7 +14,7 @@ const Contact = () => {
 
 	useEffect(() => {
 		const getImage = async () => {
-			const imageUrl = await fetchSingleVenueImage();
+			const imageUrl = await fetchSingleVenueImage("Mulackei_1.webp");
 			setVenueImage(imageUrl);
 			setIsLoading(false); 
 		};

@@ -48,20 +48,22 @@ const fetchEventsBySlug = async (slug) => {
 	}
 };
 
-const fetchSingleVenueImage = async () => {
+const fetchSingleVenueImage = async (filename) => {
 	try {
 		const query = `*[_type == "venue"][0].images[]{
       "url": asset->url,
       "filename": asset->originalFilename
-    }[filename == "Mulackei_1.webp"][0]`; // Fetch only this image
+    }[filename == $filename][0]`; 
 
-		const image = await sanityClient.fetch(query);
-		return image ? image.url : null; // Return only the URL or null if not found
+		const image = await sanityClient.fetch(query, {filename});
+		return image ? image.url : null;
 	} catch (error) {
 		console.error("Error fetching venue image:", error);
 		throw error;
 	}
 };
+
+
 
 
 const fetchVenueImages = async () => {
@@ -79,5 +81,8 @@ const fetchVenueImages = async () => {
 		throw error;
 	}
 };
+
+
+
 
 export { fetchEvents, fetchEventsBySlug, fetchSingleVenueImage, fetchVenueImages };

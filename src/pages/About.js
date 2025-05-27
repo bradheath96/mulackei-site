@@ -1,22 +1,80 @@
-import { use, useEffect, useState } from "react";
-import {
-	fetchVenueImages,
-	fetchAboutUsImages,
-} from "../services/EventServices";
+import { useEffect, useState } from "react";
+import { fetchImagesByCategory } from "../services/EventServices";
 import ImageSlider from "../components/imageSlider";
-import Isobel from "../assets/images/Isobel.png";
-import Bass from "../assets/images/Bass.jpg";
 import { motion } from "framer-motion";
-import { image } from "framer-motion/client";
 
 const About = () => {
+	const [venueImages, setVenueImages] = useState([]);
+	const [team, setTeam] = useState([]);
+	const [openCard, setOpenCard] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
-	const [imagesUrls, setImagesUrls] = useState([]);
-	const [openCard, setOpenCard] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
-	imagesUrls.shift();
+
+	useEffect(() => {
+		const fetchImages = async () => {
+			try {
+				const [venueImagesData, teamImagesData] = await Promise.all([
+					fetchImagesByCategory("venue"),
+					fetchImagesByCategory("team"),
+				]);
+				setVenueImages(venueImagesData);
+				
+
+				const fullTeam = [
+					{
+						id: 1,
+						name: "Julius Bahner",
+						role: "Head of Chess",
+						image: teamImagesData[3]?.url,
+						bio: "Julius Bahner was born in Munich in 1990. He is an academic Philosopher who hosts and develops humanistic events in the Mulackei. Being a passionate Chess Player, who you used to play for the first Team of the legendary SC Kreuzberg alongside Grandmasters and German Champions, he is also offering a weekly Chess Class for Children as well as hosting a monthly Chess Tournament in the Mulackei called CHAZZ, in which the games are accompanied by live Jazz Music.Alice leads the creative vision of the team and ensures artistic integrity across all projects.",
+						email: "alice@example.com",
+					},
+					{
+						id: 2,
+						name: "Frida Grubba",
+						role: "Head of Heads",
+						image: teamImagesData[1]?.url,
+						bio: "Frida Grubba was born in Berlin in 1992. From 2015 to 2022, Frida studied stage and costume design at the Weißensee Academy of Art and Design, where she graduated with a diploma in fine art. In 2019/20, Frida was awarded a scholarship from the Deutschland/Mart Stam program...",
+						email: "ben@example.com",
+					},
+					{
+						id: 3,
+						name: "Oisín Large",
+						role: "Community Outreach",
+						image: teamImagesData[4]?.url,
+						bio: "Born in 1998 in London, Oisín is a strategic professional with a strong background in operations, client relations, and project leadership...",
+						email: "chloe@example.com",
+					},
+					{
+						id: 4,
+						name: "Hannah Ugé",
+						role: "Technical Coordinator",
+						image: teamImagesData[2]?.url,
+						bio: "Hannah was born in 1997 at the Baltic Sea and grew up in Berlin...",
+						email: "david@example.com",
+					},
+					{
+						id: 5,
+						name: "Aurelien Falconnet",
+						role: "Macgyver",
+						image: teamImagesData[0]?.url,
+						bio: "Aurelien is a musician, sound engineer and producer. Born in Paris and trained as a pianist from an early age...",
+						email: "david@example.com",
+					},
+				];
+
+				setTeam(fullTeam);
+			} catch (error) {
+				console.error("Error fetching images:", error);
+			} finally {
+				setIsLoading(false);
+			}
+		};
+		fetchImages();
+	}, []);
 
 	const fadeUp = {
 		initial: { opacity: 0, y: 40 },
@@ -24,69 +82,16 @@ const About = () => {
 		transition: { duration: 1, ease: "easeOut" },
 		viewport: { once: true, amount: 0.2 },
 	};
-
-	const team = [
-		{
-			id: 1,
-			name: "Julius Bahner",
-			role: "Head of Chess",
-			image: Isobel,
-			bio: "Julius Bahner was born in Munich in 1990. He is an academic Philosopher who hosts and develops humanistic events in the Mulackei. Being a passionate Chess Player, who you used to play for the first Team of the legendary SC Kreuzberg alongside Grandmasters and German Champions, he is also offering a weekly Chess Class for Children as well as hosting a monthly Chess Tournament in the Mulackei called CHAZZ, in which the games are accompanied by live Jazz Music.Alice leads the creative vision of the team and ensures artistic integrity across all projects.",
-			email: "alice@example.com",
-		},
-		{
-			id: 2,
-			name: "Frida Grubba",
-			role: "Head of Heads",
-			image: Bass,
-			bio: "Frida Grubba was born in Berlin in 1992. From 2015 to 2022, Frida studied stage and costume design at the Weißensee Academy of Art and Design, where she graduated with a diploma in fine art. In 2019/20, Frida was awarded a scholarship from the Deutschland/Mart Stam program. Since 2014, Frida Grubba has worked as a freelance stage and costume designer on both independent and state theatre productions. Her portfolio includes work on The Last Dance and The Last Dance. B., as well as numerous children’s and youth theatre productions such as The Ugly Duckling, I Am Vincent and I Am Not Afraid, and A Week Full of SAMStage at Atze Music Theatre. Frida also contributed to opera productions including The Smart One (HMT Leipzig), The Bat (with the opera collective Con Tutti e.V. at Heimathafen Neukölln), and Carmen, Dido & Aeneas, and Hansel and Gretel (music theatre workshops of HFM+KHB Berlin). Additional projects include The Dragon (Theater Wolkow, Mecklenburg-Vorpommern), the immersive theatre performance XYZA (Karmanoia Immersive Art), the short films Evolin (FH Potsdam) and Stiche (HFF Potsdam), the music video Barely Real Snippet (Pulp Talks), and the photo series Out (amoresproductions)",
-			email: "ben@example.com",
-		},
-		{
-			id: 3,
-			name: "Oisín Large",
-			role: "Community Outreach",
-			image: Isobel,
-			bio: "Born in 1998 in London, Oisín is a strategic professional with a strong background in operations, client relations, and project leadership. Holding a Bachelor of Applied Sciences in Media & Communication Management from Macromedia University of Applied Sciences in Berlin, Oisín currently supports Mulackei e.V. in areas such as concerts, chess, writing, social media, and marketing. His career highlights include significant achievements at WeWork and Futurepath, where he improved operational efficiency and client satisfaction. Fluent in English and German, Oisín is also passionate about rugby, poetry, photography, and music. He is pursuing dreams of writing a novel, becoming a drone pilot, and sharing his creative talents with the world, with an ultimate goal of founding a sustainability-focused organization",
-			email: "chloe@example.com",
-		},
-		{
-			id: 4,
-			name: "Hannah Ugé",
-			role: "Technical Coordinator",
-			image: Bass,
-			bio: "Hannah was born in 1997 at the Baltic Sea and grew up in Berlin. She holds a Bachelor’s degree in Sociolinguistics, Philosophy, and English Philology from the Free University of Berlin and is currently pursuing her Master’s degrees in Linguistics and Applied Cultural Studies in Berlin and Potsdam. Hannah has completed internships in directing for documentary film and theater and teaches German as a foreign language. Her passion is dedicated to writing and engaging with societal issues in creative and artistic formats.",
-			email: "david@example.com",
-		},
-		{
-			id: 5,
-			name: "Aurelien Falconnet",
-			role: "Macgyver",
-			image: Bass,
-			bio: "Aurelien is a musician, sound engineer and producer. Born in Paris and trained as a pianist from an early age, he diversified his approach to music with drums, guitar, vocals and finally specialised as a bass player. Growing up in the hectic and multicultural Parisian music scene, he quickly fell in love with African and Afro-influenced music. Touring in France & Europe with various Afrobeat, Reggae, Soul, Jazz and Hip-hop projects, he had the opportunity to meet some of the most influential musicians of the last decades. In 2016, he moved to Berlin and has since worked as a music producer, sound engineer and live musician for a wide range of German and international artists. He is one of the founder of Mulackei and takes care of the day-to-day operations.",
-			email: "david@example.com",
-		},
-	];
-
-	useEffect(() => {
-		const fetchImages = async () => {
-			const images = await fetchVenueImages();
-			const urls = images.map((image) => image.url);
-			setImagesUrls(urls);
-			setIsLoading(false);
-		};
-		fetchImages();
-	}, []);
-	console.log(imagesUrls);
+	venueImages.shift();
 	return (
 		<div className="bg-primary lg:flex lg:flex-col max-h-full justify-start min-h-screen ">
 			<div className="w-full h-[500px] sm:h-[500px] lg:border-b-2 lg:border-boxYellow animate-fade animate-duration-1000">
-				<ImageSlider imageUrls={imagesUrls.slice(0, -3)} />
+				<ImageSlider imageData={venueImages.slice(0, -3)} />
 			</div>
-			
 
 			<hr className="border-t-2 border-boxYellow" />
 
+			{/* About Section */}
 			{/* About Us Heading */}
 			<div className="bg-primary text-white pt-5 px-6">
 				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
@@ -117,7 +122,7 @@ const About = () => {
 							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
 						) : (
 							<img
-								src={imagesUrls[10]}
+								src={venueImages[10]?.url}
 								alt="Mulackei Venue"
 								className="w-full max-w-[600px] h-auto object-cover"
 							/>
@@ -145,7 +150,7 @@ const About = () => {
 							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
 						) : (
 							<img
-								src={imagesUrls[11]}
+								src={venueImages[11]?.url}
 								alt="Mulackei Venue"
 								className="w-full max-w-[600px] h-auto object-cover"
 							/>
@@ -170,7 +175,7 @@ const About = () => {
 							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
 						) : (
 							<img
-								src={imagesUrls[9]}
+								src={venueImages[9]?.url}
 								alt="Mulackei Venue"
 								className="w-full max-w-[600px] h-auto object-cover"
 							/>
@@ -178,6 +183,8 @@ const About = () => {
 					</div>
 				</motion.div>
 			</div>
+
+			{/* Team Section */}
 			<div className="bg-primary text-white py-5 px-6">
 				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />

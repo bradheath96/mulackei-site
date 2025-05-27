@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import emailjs from "emailjs-com";
-import { fetchSingleVenueImage } from "../services/EventServices"; // Import function
+import { fetchImageByFilename } from "../services/EventServices"; // Import function
 
 const Contact = () => {
 	const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ const Contact = () => {
 
 	useEffect(() => {
 		const getImage = async () => {
-			const imageUrl = await fetchSingleVenueImage("Mulackei_1.webp");
+			const imageUrl = await fetchImageByFilename("Mulackei_1.webp");
 			setVenueImage(imageUrl);
 			setIsLoading(false); 
 		};

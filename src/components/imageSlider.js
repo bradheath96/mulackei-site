@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { ArrowBigLeft, ArrowBigRight, Circle, CircleDot } from "lucide-react";
 
-export default function ImageSlider({ imageUrls }) {
+export default function ImageSlider({ imageData }) {
 	const [imageIndex, setImageIndex] = useState(0);
 
 	function showNextImage() {
 		setImageIndex((prevIndex) =>
-			prevIndex === imageUrls.length - 1 ? 0 : prevIndex + 1
+			prevIndex === imageData.length - 1 ? 0 : prevIndex + 1
 		);
 	}
 
 	function showPrevImage() {
 		setImageIndex((prevIndex) =>
-			prevIndex === 0 ? imageUrls.length - 1 : prevIndex - 1
+			prevIndex === 0 ? imageData.length - 1 : prevIndex - 1
 		);
 	}
 
@@ -21,11 +21,11 @@ export default function ImageSlider({ imageUrls }) {
 			<div
 				className="flex w-full h-full transition-transform duration-700 ease-in-out"
 				style={{ transform: `translateX(${-100 * imageIndex}%)` }}>
-				{imageUrls.map((url, index) => (
+				{imageData.map((img, index) => (
 					<img
-						key={url}
-						src={url}
-						alt={`Slide ${imageIndex + 1}`}
+						key={img.id || img.url || index}
+						src={img.url}
+						alt={img.altText || `Slide ${index + 1}`}
 						className="object-cover w-full h-full flex-shrink-0"
 					/>
 				))}
@@ -45,7 +45,7 @@ export default function ImageSlider({ imageUrls }) {
 
 			{/* Indicator Dots */}
 			<div className="absolute bottom-[0.5rem] left-1/2 translate-x-[-50%] flex gap-[0.5rem]">
-				{imageUrls.map((_, index) => (
+				{imageData.map((_, index) => (
 					<button
 						key={index}
 						className="block cursor-pointer w-[1rem] h-[1rem]"

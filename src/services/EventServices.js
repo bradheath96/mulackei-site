@@ -48,36 +48,34 @@ const fetchEventsBySlug = async (slug) => {
 	}
 };
 
-const fetchSingleVenueImage = async (filename) => {
+
+const fetchImagesByCategory = async (category) => {
 	try {
-		const query = `*[_type == "venue"][0].images[]{
-      "url": asset->url,
-      "filename": asset->originalFilename
-    }[filename == $filename][0]`; 
-
-		const image = await sanityClient.fetch(query, {filename});
-		return image ? image.url : null;
-	} catch (error) {
-		console.error("Error fetching venue image:", error);
-		throw error;
-	}
-};
-
-
-
-
-const fetchVenueImages = async () => {
-	try {
-		const query = `*[_type == "venue"][].images[]{
+		const query = `*[_type == "imageCollection" && category == $category][0].images[]{
 			"url": asset->url,
 			"filename": asset->originalFilename,
 			"altText": alt,
 			"metadata": asset->metadata
 		}`;
-		const images = await sanityClient.fetch(query);
+		const images = await sanityClient.fetch(query, { category });
 		return images;
 	} catch (error) {
-		console.error("Error fetching venue images:", error);
+		console.error(`Error fetching images for category '${category}':`, error);
+		throw error;
+	}
+};
+
+const fetchImageByFilename = async (filename) => {
+	try {
+		const query = `*[_type == "imageCollection"].images[]{
+			"url": asset->url,
+			"filename": asset->originalFilename
+		}[filename == $filename][0]`;
+
+		const image = await sanityClient.fetch(query, { filename });
+		return image ? image.url : null;
+	} catch (error) {
+		console.error("Error fetching image by filename:", error);
 		throw error;
 	}
 };
@@ -85,4 +83,4 @@ const fetchVenueImages = async () => {
 
 
 
-export { fetchEvents, fetchEventsBySlug, fetchSingleVenueImage, fetchVenueImages };
+export { fetchEvents, fetchEventsBySlug, fetchImagesByCategory, fetchImageByFilename };

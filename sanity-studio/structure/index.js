@@ -17,8 +17,8 @@ export const structure = (S) =>
         .child(S.documentList().title('Past Events').filter('date < now()')),
       S.divider(),
       S.listItem()
-        .title('Venue Images')
-        .schemaType('venue')
+        .title('Image Collections')
+        .schemaType('imageCollection')
         .icon(ImageIcon)
-        .child(S.documentTypeList('venue').title('Venue Images')),
+        .child(S.documentTypeList('imageCollection').title('Image Collections')),
     ])

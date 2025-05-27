@@ -69,7 +69,7 @@ const Home = () => {
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-8 max-w-7xl mx-auto">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-2 md:px-8 max-w-7xl mx-auto">
 					{/* Skeleton Loader while fetching events */}
 					{isLoading
 						? [...Array(4)].map((_, index) => (
@@ -91,7 +91,7 @@ const Home = () => {
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true, amount: 0.2 }}
 									transition={{ duration: 0.5 }}
-									className="bg-primary flex flex-col min-h-[400px] overflow-hidden">
+									className="bg-primary flex flex-col min-h-[400px] overflow-hidden ">
 									{event.image && (
 										<img
 											src={event.image.asset.url}
@@ -99,7 +99,7 @@ const Home = () => {
 											className="w-full h-[300px] object-cover"
 										/>
 									)}
-									<div className="flex flex-col flex-grow p-4">
+									<div className="flex flex-col flex-grow pt-2">
 										<p className="text-lg font-light text-white font-bodyFont">
 											{new Date(event.date).toLocaleDateString(undefined, {
 												weekday: "short",

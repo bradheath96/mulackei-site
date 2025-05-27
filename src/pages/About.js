@@ -29,7 +29,7 @@ const About = () => {
 						name: "Julius Bahner",
 						role: "Head of Chess",
 						image: teamImagesData[3]?.url,
-						bio: "Julius Bahner was born in Munich in 1990. He is an academic Philosopher who hosts and develops humanistic events in the Mulackei. Being a passionate Chess Player, who you used to play for the first Team of the legendary SC Kreuzberg alongside Grandmasters and German Champions, he is also offering a weekly Chess Class for Children as well as hosting a monthly Chess Tournament in the Mulackei called CHAZZ, in which the games are accompanied by live Jazz Music.Alice leads the creative vision of the team and ensures artistic integrity across all projects.",
+						bio: "Julius Bahner was born in Munich in 1990. He is an academic Philosopher who hosts and develops humanistic events in the Mulackei. Being a passionate Chess Player, who you used to play for the first Team of the legendary SC Kreuzberg alongside Grandmasters and German Champions, he is also offering a weekly Chess Class for Children as well as hosting a monthly Chess Tournament in the Mulackei called CHAZZ, in which the games are accompanied by live Jazz Music.",
 						email: "alice@example.com",
 					},
 					{
@@ -37,7 +37,7 @@ const About = () => {
 						name: "Frida Grubba",
 						role: "Head of Heads",
 						image: teamImagesData[1]?.url,
-						bio: "Frida Grubba was born in Berlin in 1992. From 2015 to 2022, Frida studied stage and costume design at the Weißensee Academy of Art and Design, where she graduated with a diploma in fine art. In 2019/20, Frida was awarded a scholarship from the Deutschland/Mart Stam program...",
+						bio: "She was born in Berlin in 1992. From 2015 to 2022, she studied stage and costume design at the Weißensee Academy of Art and Design, graduating with a diploma in fine art. In 2019/20, she received a scholarship from the Deutschland/Mart Stam scholarship. Since 2014, she has worked as a freelance stage and costume designer for both independent and state theater productions.",
 						email: "ben@example.com",
 					},
 					{
@@ -45,7 +45,7 @@ const About = () => {
 						name: "Oisín Large",
 						role: "Community Outreach",
 						image: teamImagesData[4]?.url,
-						bio: "Born in 1998 in London, Oisín is a strategic professional with a strong background in operations, client relations, and project leadership...",
+						bio: "Born in 1998 in London, Oisín is a strategic professional with a strong background in operations, client relations, and project leadership. Holding a Bachelor of Applied Sciences in Media & Communication Management from Macromedia University of Applied Sciences in Berlin, Oisín currently supports Mulackei e.V. in areas such as concerts, chess, writing, social media, and marketing. His career highlights include significant achievements at WeWork and Futurepath, where he improved operational efficiency and client satisfaction. Fluent in English and German, Oisín is also passionate about rugby, poetry, photography, and music. He is pursuing dreams of writing a novel, becoming a drone pilot, and sharing his creative talents with the world, with an ultimate goal of founding a sustainability-focused organization.",
 						email: "chloe@example.com",
 					},
 					{
@@ -53,7 +53,7 @@ const About = () => {
 						name: "Hannah Ugé",
 						role: "Technical Coordinator",
 						image: teamImagesData[2]?.url,
-						bio: "Hannah was born in 1997 at the Baltic Sea and grew up in Berlin...",
+						bio: "Hannah was born in 1997 at the Baltic Sea and grew up in Berlin. She holds a Bachelor’s degree in Sociolinguistics, Philosophy, and English Philology from the Free University of Berlin and is currently pursuing her Master’s degrees in Linguistics and Applied Cultural Studies in Berlin and Potsdam. Hannah has completed internships in directing for documentary film and theater and teaches German as a foreign language. Her passion is dedicated to writing and engaging with societal issues in creative and artistic formats.",
 						email: "david@example.com",
 					},
 					{
@@ -61,7 +61,7 @@ const About = () => {
 						name: "Aurelien Falconnet",
 						role: "Macgyver",
 						image: teamImagesData[0]?.url,
-						bio: "Aurelien is a musician, sound engineer and producer. Born in Paris and trained as a pianist from an early age...",
+						bio: "Aurelien is a musician, sound engineer and producer. Born in Paris and trained as a pianist from an early age, he diversified his approach to music with drums, guitar, vocals and finally specialised as a bass player. Growing up in the hectic and multicultural Parisian music scene, he quickly fell in love with African and Afro-influenced music. Touring in France & Europe with various Afrobeat, Reggae, Soul, Jazz and Hip-hop projects, he had the opportunity to meet some of the most influential musicians of the last decades. In 2016, he moved to Berlin and has since worked as a music producer, sound engineer and live musician for a wide range of German and international artists. He is one of the founder of Mulackei and takes care of the day-to-day operations.",
 						email: "david@example.com",
 					},
 				];

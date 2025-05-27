@@ -1,4 +1,4 @@
 import { eventType } from './event'
-import { venueType } from './venue'
+import { imageCollectionType} from './imageCollections'
 
-export const schemaTypes = [eventType, venueType]
+export const schemaTypes = [eventType, imageCollectionType]

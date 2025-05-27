@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchEvents, fetchSingleVenueImage } from "../services/EventServices";
+import { fetchEvents, fetchImageByFilename } from "../services/EventServices";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -22,7 +22,7 @@ const Home = () => {
 					(event) => new Date(event.date) > currentDate
 				);
 				setEvents(upcomingEvents.slice(0, 8));
-				setIsLoading(false); // Stop loading when data is fetched
+				setIsLoading(false); 
 			})
 			.catch(console.error);
 	}, []);
@@ -33,7 +33,7 @@ const Home = () => {
 
 	useEffect(() => {
 		const loadImage = async () => {
-			const url = await fetchSingleVenueImage("Mulackei_2.webp"); // Replace with any filename
+			const url = await fetchImageByFilename("Mulackei_2.webp"); 
 			setImageUrl(url);
 		};
 

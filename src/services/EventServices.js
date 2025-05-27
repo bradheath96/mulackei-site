@@ -67,19 +67,23 @@ const fetchImagesByCategory = async (category) => {
 
 const fetchImageByFilename = async (filename) => {
 	try {
-		const query = `*[_type == "imageCollection"].images[]{
-			"url": asset->url,
-			"filename": asset->originalFilename
-		}[filename == $filename][0]`;
+		const query = `*[_type == "imageCollection"]{
+			images[asset->originalFilename == $filename]{
+				"url": asset->url,
+				"filename": asset->originalFilename,
+				"alt": alt,
+				"caption": caption,
+				"assetId": asset->_id
+			}
+		}.images[]`;
 
-		const image = await sanityClient.fetch(query, { filename });
-		return image ? image.url : null;
+		const images = await sanityClient.fetch(query, { filename });
+		return images;
 	} catch (error) {
-		console.error("Error fetching image by filename:", error);
+		console.error("Error fetching images by filename:", error);
 		throw error;
 	}
 };
-
 
 
 

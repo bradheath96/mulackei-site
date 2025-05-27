@@ -83,6 +83,7 @@ const About = () => {
 		viewport: { once: true, amount: 0.2 },
 	};
 	venueImages.shift();
+	console.log("Venue Images:", venueImages); // Debugging line to check the images
 	return (
 		<div className="bg-primary lg:flex lg:flex-col max-h-full justify-start min-h-screen ">
 			<div className="w-full h-[500px] sm:h-[500px] lg:border-b-2 lg:border-boxYellow animate-fade animate-duration-1000">
@@ -91,7 +92,6 @@ const About = () => {
 
 			<hr className="border-t-2 border-boxYellow" />
 
-			{/* About Section */}
 			{/* About Us Heading */}
 			<div className="bg-primary text-white pt-5 px-6">
 				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
@@ -123,7 +123,7 @@ const About = () => {
 						) : (
 							<img
 								src={venueImages[10]?.url}
-								alt="Mulackei Venue"
+								alt={venueImages[10]?.altText}
 								className="w-full max-w-[600px] h-auto object-cover"
 							/>
 						)}
@@ -151,7 +151,7 @@ const About = () => {
 						) : (
 							<img
 								src={venueImages[11]?.url}
-								alt="Mulackei Venue"
+								alt={venueImages[11]?.altText}
 								className="w-full max-w-[600px] h-auto object-cover"
 							/>
 						)}
@@ -176,7 +176,7 @@ const About = () => {
 						) : (
 							<img
 								src={venueImages[9]?.url}
-								alt="Mulackei Venue"
+								alt={venueImages[9]?.altText}
 								className="w-full max-w-[600px] h-auto object-cover"
 							/>
 						)}

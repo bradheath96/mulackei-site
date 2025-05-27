@@ -14,8 +14,8 @@ const Contact = () => {
 
 	useEffect(() => {
 		const getImage = async () => {
-			const imageUrl = await fetchImageByFilename("Mulackei_1.webp");
-			setVenueImage(imageUrl);
+			const image = await fetchImageByFilename("Mulackei_1.webp"); // Use the correct filename
+			setVenueImage(image);
 			setIsLoading(false); 
 		};
 		getImage();
@@ -57,8 +57,8 @@ const Contact = () => {
 							<div className="w-[500px] min-h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] bg-primary "></div>
 						) : (
 							<img
-								src={venueImage}
-								alt={venueImage}
+								src={venueImage[0].url}
+								alt={venueImage[0].alt}
 								className="w-[500px] h-[500px] md:w-full md:h-[400px] lg:w-[600px] lg:h-[620px] object-cover"
 							/>
 						)}

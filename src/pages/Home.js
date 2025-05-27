@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const Home = () => {
 	const [events, setEvents] = useState([]);
-	const [imageUrl, setImageUrl] = useState(null);
+	const [image, setImage] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const navigate = useNavigate();
@@ -33,13 +33,12 @@ const Home = () => {
 
 	useEffect(() => {
 		const loadImage = async () => {
-			const url = await fetchImageByFilename("Mulackei_2.webp"); 
-			setImageUrl(url);
+			const image = await fetchImageByFilename("Mulackei_2.webp"); 
+			setImage(image);
 		};
 
 		loadImage();
 	}, []);
-
 	return (
 		<div className="bg-primary relative min-h-screen">
 			{/* Hero Section with Background Image */}
@@ -47,14 +46,16 @@ const Home = () => {
 				{!isImageLoaded && (
 					<div className="absolute inset-0 bg-primary animate-pulse"></div>
 				)}
-				<img
-					src={imageUrl}
-					alt="Venue"
-					className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-						isImageLoaded ? "opacity-100" : "opacity-0"
-					}`}
-					onLoad={() => setIsImageLoaded(true)}
-				/>
+				{image && (
+					<img
+						src={image[0].url}
+						alt={image[0].alt || "Event image"}
+						className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+							isImageLoaded ? "opacity-100" : "opacity-0"
+						}`}
+						onLoad={() => setIsImageLoaded(true)}
+					/>
+				)}
 			</div>
 
 			<hr className="border-t-2 border-boxYellow" />

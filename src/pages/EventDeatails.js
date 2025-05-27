@@ -82,12 +82,10 @@ const EventDetails = () => {
 					</h1>
 
 					{/* Event Button */}
-					<button className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium  transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
-						{loading ? (
-							<div className="w-full h-12 bg-primary animate-pulse"></div>
-						) : (
-							"Buy Tickets"
-						)}
+					<button
+						className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium  transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
+						>
+						Buy Tickets	
 					</button>
 				</motion.div>
 			</div>

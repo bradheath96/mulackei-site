@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { fetchEvents, fetchImageByFilename } from "../services/EventServices";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { translations } from "../services/translations";
 
 const Home = () => {
 	const [events, setEvents] = useState([]);
 	const [image, setImage] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
+	const { lang } = useParams();
+	const currentLang = ["en", "de"].includes(lang) ? lang : "en";
 	const navigate = useNavigate();
+
+	const { heading } = translations.home[currentLang]
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -65,7 +70,7 @@ const Home = () => {
 				<div className="relative flex items-center mb-8 mt-3 ">
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
 					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
-						Coming Up
+						{heading}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>

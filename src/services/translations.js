@@ -1,20 +1,20 @@
 export const translations = {
 	home: {
 		en: {
-			Heading: "Coming Up",
+			heading: "Coming Up",
 		},
 		de: {
-			Heading: "Demnächst",
+			heading: "Demnächst",
 		},
 	},
 	about: {
 		en: {
-			Heading: "About Us",
-			Teamheading: "Meet the Team",
+			heading: "About Us",
+			teamHeading: "Meet the Team",
 		},
 		de: {
-			Heading: "Über uns",
-			Teamheading: "Lernen Sie das Team kennen",
+			heading: "Über uns",
+			teamHeading: "Lernen Sie das Team kennen",
 		},
 	},
 };

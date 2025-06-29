@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Events from "./pages/Events";
@@ -13,11 +13,15 @@ const App = () => (
 			<Header />
 			<main className="bg-primary flex-grow">
 				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/events" element={<Events />} />
-					<Route path="/contact" element={<Contact />} />
-					<Route path="/events/:slug" element={<EventDetails />} />
+					{/* Redirect root to /en */}
+					<Route path="/" element={<Navigate to="/en" replace />} />
+
+					{/* Language-specific routes */}
+					<Route path="/:lang" element={<Home />} />
+					<Route path="/:lang/about" element={<About />} />
+					<Route path="/:lang/events" element={<Events />} />
+					<Route path="/:lang/contact" element={<Contact />} />
+					<Route path="/:lang/events/:slug" element={<EventDetails />} />
 				</Routes>
 			</main>
 			<Footer />

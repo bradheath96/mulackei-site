@@ -1,34 +1,37 @@
-import { useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-const LanguageToggle = ({onToggle}) => {
-    const [language, setLanguage] = useState("EN");
+const LanguageToggle = () => {
+	const { lang } = useParams();
+	const navigate = useNavigate();
+	const location = useLocation();
 
-    const toggleLanguage = () => {
-        const newLang = language === "EN" ? "DE" : "EN";
-        setLanguage(newLang);
-        if (onToggle) {
-            onToggle(newLang);
-        }
-    }
+	// Determine the current language (fallback to 'en')
+	const currentLang = lang === "de" ? "de" : "en";
+	const newLang = currentLang === "en" ? "de" : "en";
 
-    return (
-			<button
-				onClick={toggleLanguage}
-				className="flex items-center border rounded-full px-2 py-1 bg-gray-200 hover:bg-gray-300 transition duration-200">
-				<span
-					className={`px-2 py-0.5 rounded-full ${
-						language === "EN" ? "bg-black text-white" : "text-black"
-					}`}>
-					EN
-				</span>
-				<span
-					className={`px-2 py-0.5 rounded-full ${
-						language === "DE" ? "bg-black text-white" : "text-black"
-					}`}>
-					DE
-				</span>
-			</button>
-		);
-}
+	const toggleLanguage = () => {
+		const newPath = location.pathname.replace(`/${currentLang}`, `/${newLang}`);
+		window.location.href = newPath + location.search; // Full reload
+	};
+
+	return (
+		<button
+			onClick={toggleLanguage}
+			className="flex items-center border rounded-full px-2 py-1 bg-gray-200 hover:bg-gray-300 transition duration-200">
+			<span
+				className={`transition-all duration-300 ease-in-out px-2 py-0.5 rounded-full ${
+					currentLang === "en" ? "bg-black text-white" : "text-black"
+				}`}>
+				EN
+			</span>
+			<span
+				className={`transition-all duration-300 ease-in-out px-2 py-0.5 rounded-full ${
+					currentLang === "de" ? "bg-black text-white" : "text-black"
+				}`}>
+				DE
+			</span>
+		</button>
+	);
+};
 
 export default LanguageToggle;

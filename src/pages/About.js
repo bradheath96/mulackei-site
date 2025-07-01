@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { fetchImagesByCategory } from "../services/EventServices";
 import ImageSlider from "../components/imageSlider";
 import { motion } from "framer-motion";
+import { translations } from "../services/translations";
 
-const About = () => {
+const About = ({ currentLang }) => {
 	const [venueImages, setVenueImages] = useState([]);
 	const [team, setTeam] = useState([]);
 	const [openCard, setOpenCard] = useState(null);
@@ -12,6 +13,8 @@ const About = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+
+	const t = translations.about[currentLang];
 
 	useEffect(() => {
 		const fetchImages = async () => {
@@ -83,7 +86,6 @@ const About = () => {
 		viewport: { once: true, amount: 0.2 },
 	};
 	venueImages.shift();
-	console.log("Venue Images:", venueImages); // Debugging line to check the images
 	return (
 		<div className="bg-primary lg:flex lg:flex-col max-h-full justify-start min-h-screen ">
 			<div className="w-full h-[500px] sm:h-[500px] lg:border-b-2 lg:border-boxYellow animate-fade animate-duration-1000">
@@ -97,7 +99,7 @@ const About = () => {
 				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
 					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
-						About Us
+						{t.heading}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
@@ -111,10 +113,7 @@ const About = () => {
 					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
 					<div className="order-1 flex justify-center items-center">
 						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
-							The Mulackei is a non-profit association dedicated to art,
-							readings, workshops, concerts and other cultural events. <br />
-							Our goal is to create a space for encounters and creative exchange
-							that brings together people from different backgrounds.
+							{t.paragraph1}
 						</p>
 					</div>
 					<div className="order-2 flex justify-center items-center">
@@ -136,13 +135,7 @@ const About = () => {
 					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
 					<div className="order-1 md:order-2 flex justify-center items-center">
 						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
-							The Name „Mulackei" originates from a legendary Restaurant/Bar at
-							Mulackstraße 15, which was the second home for many of Berlin’s
-							most famous artists and con-artists, as well as for outsiders of
-							the society in general. In the 40s, the courageous Minna Mahlich
-							hid trans- and homosexuals from the Nazis in the Mulackei.
-							Mulackei was also used as a pars pro toto name for the whole
-							neighborhood surrounding Mulackstraße.
+							{t.paragraph2}
 						</p>
 					</div>
 					<div className="order-2 md:order-1 flex justify-center items-center">
@@ -162,12 +155,7 @@ const About = () => {
 					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
 					<div className="order-1 flex justify-center items-center">
 						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
-							Our Mulackei is at Mulackstraße 27, across the street from Sodtkes
-							Restaurant, which was been replaced by shiny apartment buildings a
-							long time ago. We want to honour the tradition of our historical
-							neighbours by offering a tolerant gathering place for both
-							residents and visitors of the area. But we are not a restaurant,
-							nor a bar. Instead, we focus on artistic and cultural nourishment.
+							{t.paragraph3}
 						</p>
 					</div>
 					<div className="order-2 flex justify-center items-center">
@@ -185,11 +173,11 @@ const About = () => {
 			</div>
 
 			{/* Team Section */}
-			<div className="bg-primary text-white py-5 px-6">
-				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
+			<div className="bg-primary text-white py-2 px-6">
+				<div className="relative flex items-center mb-4 mt-2 animate-fade animate-duration-1000">
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
-					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
-						Meet the Team
+					<h2 className="px-4 text-[20px] font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
+						{t.teamHeading}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>

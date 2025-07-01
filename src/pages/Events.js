@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { fetchEvents } from "../services/EventServices";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { translations } from "../services/translations";
 
-const Events = () => {
+const Events = ( { currentLang }) => {
 	const [events, setEvents] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState("all");
 	const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -11,8 +12,10 @@ const Events = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [animationKey, setAnimationKey] = useState(0); 
 	const navigate = useNavigate();
-		console.log(events);
 
+
+
+	const t = translations.events[currentLang]
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -192,11 +195,11 @@ const Events = () => {
 									<button
 										className="font-bodyFont lg:w-full md:w-full w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
 										onClick={() => handleMoreInfoClick(event.slug.current)}>
-										More Info
+										{t.button}
 									</button>
 									<button className="font-bodyFont lg:w-full md:w-full w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
 										{event.priceAmount === null
-											? "Free In!"
+											? t.freeInOption
 											: "€" + event.priceAmount}
 									</button>
 								</div>

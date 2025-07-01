@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import emailjs from "emailjs-com";
-import { fetchImageByFilename } from "../services/EventServices"; // Import function
+import { fetchImageByFilename } from "../services/EventServices"; 
+import { translations } from "../services/translations"; 
 
-const Contact = () => {
+const Contact = ( { currentLang }) => {
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
 	const [venueImage, setVenueImage] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+
+	const t = translations.contact[currentLang];
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -14,7 +17,7 @@ const Contact = () => {
 
 	useEffect(() => {
 		const getImage = async () => {
-			const image = await fetchImageByFilename("Mulackei_1.webp"); // Use the correct filename
+			const image = await fetchImageByFilename("Mulackei_1.webp"); 
 			setVenueImage(image);
 			setIsLoading(false); 
 		};
@@ -70,23 +73,24 @@ const Contact = () => {
 						<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
 
 						<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
-							Where to find us
+							{t.heading}
 						</h2>
 						<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 					</div>
 					<p className="font-bodyFont text-2xl lg:text-3xl font-bold">
-						Mulackstraße 27,
-						<br />
-						10119 Berlin,
-						<br />
-						Germany
+						{t.address.map((line, index) => (
+							<span key={index}>
+								{line}
+								<br />
+							</span>
+						))}
 					</p>
 					<button
 						className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium  transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
 						onClick={() =>
 							window.open("https://maps.app.goo.gl/PwvuUPaUE7i6eEZd7", "_blank")
 						}>
-						Get Directions
+						{t.getDirectionsButton}
 					</button>
 				</div>
 			</div>
@@ -95,23 +99,23 @@ const Contact = () => {
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
 
 					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl  lg:pr-4 lg:whitespace-normal">
-						Contact Us
+						{t.ContactUs}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
 				<form onSubmit={handleSubmit} className="max-w-xl mx-auto mb-10">
 					<input
 						type="email"
-						name="from_email" // Add "name" attribute
-						placeholder="Your email"
+						name="from_email" 
+						placeholder={t.emailPlaceholder}
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
 						className="w-full p-3 mb-4 text-black focus:outline-none focus:ring-2 focus:ring-boxYellow"
 					/>
 					<textarea
-						name="message" // Add "name" attribute
-						placeholder="Your message"
+						name="message"
+						placeholder={t.messagePlaceholder}
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
 						required
@@ -119,7 +123,7 @@ const Contact = () => {
 					<button
 						type="submit"
 						className="w-full mt-4 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium ">
-						Send Message
+						{t.sendMessageButton}
 					</button>
 				</form>
 			</div>

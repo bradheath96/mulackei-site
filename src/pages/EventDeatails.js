@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchEventsBySlug } from "../services/EventServices";
-import { motion } from "framer-motion"; // Import motion from Framer Motion
+import { motion } from "framer-motion"; 
+import { translations } from "../services/translations";
 
-const EventDetails = () => {
+const EventDetails = ({ currentLang }) => {
 	const { slug } = useParams();
 	const [event, setEvent] = useState(null);
 	const [loading, setLoading] = useState(true);
+
+	const t = translations.eventsDetails[currentLang];
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -85,7 +88,7 @@ const EventDetails = () => {
 					<button
 						className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium  transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
 						>
-						Buy Tickets	
+						{t.buyButton}
 					</button>
 				</motion.div>
 			</div>

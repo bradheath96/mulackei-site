@@ -42,7 +42,8 @@ const Header = ({ currentLang }) => {
 						<LanguageToggle currentLang={currentLang} />
 					</div>
 
-					<div className="sm:hidden">
+					<div className="sm:hidden flex items-center gap-3">
+						<LanguageToggle currentLang={currentLang} />
 						<button
 							onClick={() => setIsOpen(!isOpen)}
 							className="text-black p-2 focus:outline-none">

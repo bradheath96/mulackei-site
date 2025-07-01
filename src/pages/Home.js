@@ -3,13 +3,13 @@ import { fetchEvents, fetchImageByFilename } from "../services/EventServices";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { translations } from "../services/translations";
+import { Link } from "react-router-dom";
 
 const Home = ({ currentLang }) => {
 	const [events, setEvents] = useState([]);
 	const [image, setImage] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
-	const { lang } = useParams();
 	const navigate = useNavigate();
 
 	const t = translations.home[currentLang]

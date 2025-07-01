@@ -17,15 +17,15 @@ const LanguageToggle = () => {
 	return (
 		<button
 			onClick={toggleLanguage}
-			className="flex items-center border rounded-full px-2 py-1 bg-gray-200 hover:bg-gray-300 transition duration-200">
+			className="flex items-center px-2 py-1 border font-medium rounded-sm bg-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
 			<span
-				className={`transition-all duration-300 ease-in-out px-2 py-0.5 rounded-full ${
+				className={`transition-all font-bodyFont duration-300 ease-in-out px-2 py-0.5 rounded-full ${
 					currentLang === "en" ? "bg-black text-white" : "text-black"
 				}`}>
 				EN
 			</span>
 			<span
-				className={`transition-all duration-300 ease-in-out px-2 py-0.5 rounded-full ${
+				className={`transition-all font-bodyFont duration-300 ease-in-out px-2 py-0.5 rounded-full ${
 					currentLang === "de" ? "bg-black text-white" : "text-black"
 				}`}>
 				DE

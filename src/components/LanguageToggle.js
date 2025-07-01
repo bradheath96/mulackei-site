@@ -1,18 +1,18 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const LanguageToggle = () => {
-	const { lang } = useParams();
-	const navigate = useNavigate();
 	const location = useLocation();
 
-	// Determine the current language (fallback to 'en')
-	const currentLang = lang === "de" ? "de" : "en";
+	const pathSegments = location.pathname.split("/").filter(Boolean);
+	const currentLang = pathSegments[0] === "de" ? "de" : "en";
 	const newLang = currentLang === "en" ? "de" : "en";
 
 	const toggleLanguage = () => {
-		const newPath = location.pathname.replace(`/${currentLang}`, `/${newLang}`);
-		window.location.href = newPath + location.search; // Full reload
-	};
+		pathSegments[0] = newLang
+
+		const newPath = "/" + pathSegments.join("/") + location.search;
+		window.location.href = newPath;
+	}
 
 	return (
 		<button

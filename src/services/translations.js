@@ -31,7 +31,7 @@ export const translations = {
 			paragraph1:
 				"Die Mulackei ist ein gemeinnütziger Verein für Kunst, Lesungen, Workshops, Konzerte und andere kulturelle Veranstaltungen. Unser Ziel ist es, einen Raum für Begegnungen und kreativen Austausch zu schaffen, der Menschen aus unterschiedlichen Hintergründen zusammenbringt.",
 			paragraph2:
-				"Der Name „Mulackei“ stammt von einem legendären Restaurant/Bar in der Mulackstraße 15, das das zweite Zuhause vieler bekannter Berliner Künstler*innen und Hochstapler*innen sowie von gesellschaftlichen Außenseitern war. In den 40er Jahren versteckte die mutige Minna Mahlich Trans- und Homosexuelle vor den Nazis in der Mulackei. Der Begriff „Mulackei“ stand auch stellvertretend für das gesamte Viertel rund um die Mulackstraße.",
+				'Der Name "Mulackei" stammt von einem legendären Restaurant/Bar in der Mulackstraße 15, das das zweite Zuhause vieler bekannter Berliner Künstler*innen und Hochstapler*innen sowie von gesellschaftlichen Außenseitern war. In den 40er Jahren versteckte die mutige Minna Mahlich Trans- und Homosexuelle vor den Nazis in der Mulackei. Der Begriff "Mulackei" stand auch stellvertretend für das gesamte Viertel rund um die Mulackstraße.',
 			paragraph3:
 				"Unsere Mulackei befindet sich in der Mulackstraße 27, gegenüber vom ehemaligen Restaurant Sodtkes, das längst modernen Apartmenthäusern gewichen ist. Wir wollen die Tradition unserer historischen Nachbarn ehren, indem wir einen toleranten Treffpunkt für Anwohner*innen und Besucher*innen bieten. Doch wir sind kein Restaurant, keine Bar – unser Fokus liegt auf künstlerischer und kultureller Nahrung.",
 		},

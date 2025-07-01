@@ -4,16 +4,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { translations } from "../services/translations";
 
-const Home = () => {
+const Home = ({ currentLang }) => {
 	const [events, setEvents] = useState([]);
 	const [image, setImage] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const { lang } = useParams();
-	const currentLang = ["en", "de"].includes(lang) ? lang : "en";
 	const navigate = useNavigate();
 
-	const { heading } = translations.home[currentLang]
+	const t = translations.home[currentLang]
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -33,7 +32,7 @@ const Home = () => {
 	}, []);
 
 	const handleMoreInfoClick = (slug) => {
-		navigate(`/events/${slug}`);
+		navigate(`${currentLang}/events/${slug}`);
 	};
 
 	useEffect(() => {
@@ -44,6 +43,7 @@ const Home = () => {
 
 		loadImage();
 	}, []);
+
 	return (
 		<div className="bg-primary relative min-h-screen">
 			{/* Hero Section with Background Image */}
@@ -70,7 +70,7 @@ const Home = () => {
 				<div className="relative flex items-center mb-8 mt-3 ">
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
 					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
-						{heading}
+						{t.heading}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
@@ -119,12 +119,12 @@ const Home = () => {
 										<div className="flex flex-col gap-4 mt-auto">
 											<button
 												className="font-bodyFont w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
-												onClick={() => handleMoreInfoClick(event.slug.current)}>
-												More Info
+											onClick={() => handleMoreInfoClick(event.slug.current)}>
+												{t.button}
 											</button>
 											<button className="font-bodyFont w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
 												{event.priceAmount === null
-													? "Free In!"
+													? t.freeInOption
 													: event.priceAmount
 															.split("-")
 															.map((price) => `€${price.trim()}`)

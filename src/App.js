@@ -16,21 +16,21 @@ import RedirectToDefaultLang from "./components/RedirectToDefaultLang";
 
 const Layout = () => {
 	const { lang } = useParams();
-	const currentLang = lang === "de" ? "de" : "en"; // fallback to en if lang is invalid
+	const currentLang = lang === "de" ? "de" : "en"; 
 
 	return (
 		<>
 			<Header currentLang={currentLang} />
 			<main className="bg-primary flex-grow">
 				<Routes>
-					<Route index element={<Home />} />
-					<Route path="about" element={<About />} />
-					<Route path="events" element={<Events />} />
-					<Route path="events/:slug" element={<EventDetails />} />
-					<Route path="contact" element={<Contact />} />
+					<Route index element={<Home currentLang={currentLang} />} />
+					<Route path="about" element={<About currentLang={currentLang} />} />
+					<Route path="events" element={<Events currentLang={currentLang} />} />
+					<Route path=":lang/events/:slug" element={<EventDetails currentLang={currentLang} />} />
+					<Route path="contact" element={<Contact currentLang={currentLang} />} />
 				</Routes>
 			</main>
-			<Footer />
+			<Footer currentLang={currentLang} />
 		</>
 	);
 };
@@ -39,9 +39,7 @@ const App = () => (
 	<div className="flex flex-col min-h-screen">
 		<Router>
 			<Routes>
-				{/* Redirect root to /en */}
 				<Route path="/" element={<RedirectToDefaultLang />} />
-				{/* Mount Layout under /:lang so useParams() works correctly */}
 				<Route path="/:lang/*" element={<Layout />} />
 			</Routes>
 		</Router>

@@ -2,20 +2,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LanguageToggle from "./LanguageToggle";
-
-// Navigation labels by language
-const navLabels = {
-	en: {
-		About: "About",
-		Events: "Events",
-		Contact: "Contact",
-	},
-	de: {
-		About: "Über uns",
-		Events: "Veranstaltungen",
-		Contact: "Kontakt",
-	},
-};
+import { translations } from "../services/translations";
 
 const Header = ({ currentLang }) => {
 	const location = useLocation();
@@ -30,6 +17,8 @@ const Header = ({ currentLang }) => {
 		{ key: "Events", path: "events" },
 		{ key: "Contact", path: "contact" },
 	];
+
+	const navLabels = translations.header[currentLang];
 
 	return (
 		<nav className="bg-floralWhite sticky top-0 z-[100]">
@@ -47,7 +36,7 @@ const Header = ({ currentLang }) => {
 								key={item.key}
 								to={`/${currentLang}/${item.path}`}
 								className="font-bodyFont text-black hover:bg-boxYellow hover:text-black rounded-sm px-4 py-2 text-lg font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
-								{navLabels[currentLang][item.key]}
+								{navLabels[item.key]}
 							</Link>
 						))}
 						<LanguageToggle currentLang={currentLang} />
@@ -76,7 +65,7 @@ const Header = ({ currentLang }) => {
 								to={`/${currentLang}/${item.path}`}
 								onClick={() => setIsOpen(false)}
 								className="block text-black hover:bg-boxYellow hover:text-black py-2 text-base font-medium">
-								{navLabels[currentLang][item.key]}
+								{navLabels[item.key]}
 							</Link>
 						))}
 					</div>

@@ -3,6 +3,7 @@ import {
 	Routes,
 	Route,
 	useParams,
+	Navigate,
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
@@ -13,21 +14,20 @@ import EventDetails from "./pages/EventDeatails";
 import Footer from "./components/Footer";
 import RedirectToDefaultLang from "./components/RedirectToDefaultLang";
 
-const AppRoutes = () => {
+const Layout = () => {
 	const { lang } = useParams();
-	const currentLang = lang === "de" ? "de" : "en";
+	const currentLang = lang === "de" ? "de" : "en"; // fallback to en if lang is invalid
 
 	return (
 		<>
 			<Header currentLang={currentLang} />
 			<main className="bg-primary flex-grow">
 				<Routes>
-					<Route path="/" element={<RedirectToDefaultLang />} />
-					<Route path="/:lang" element={<Home />} />
-					<Route path="/:lang/about" element={<About />} />
-					<Route path="/:lang/events" element={<Events />} />
-					<Route path="/:lang/contact" element={<Contact />} />
-					<Route path="/:lang/events/:slug" element={<EventDetails />} />
+					<Route index element={<Home />} />
+					<Route path="about" element={<About />} />
+					<Route path="events" element={<Events />} />
+					<Route path="events/:slug" element={<EventDetails />} />
+					<Route path="contact" element={<Contact />} />
 				</Routes>
 			</main>
 			<Footer />
@@ -39,8 +39,10 @@ const App = () => (
 	<div className="flex flex-col min-h-screen">
 		<Router>
 			<Routes>
-				{/* This wrapper allows useParams to work above Header */}
-				<Route path="/*" element={<AppRoutes />} />
+				{/* Redirect root to /en */}
+				<Route path="/" element={<RedirectToDefaultLang />} />
+				{/* Mount Layout under /:lang so useParams() works correctly */}
+				<Route path="/:lang/*" element={<Layout />} />
 			</Routes>
 		</Router>
 	</div>

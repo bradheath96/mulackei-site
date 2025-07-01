@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	useParams,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Events from "./pages/Events";
@@ -6,6 +11,7 @@ import Header from "./components/Header";
 import About from "./pages/About";
 import EventDetails from "./pages/EventDeatails";
 import Footer from "./components/Footer";
+import RedirectToDefaultLang from "./components/RedirectToDefaultLang";
 
 const AppRoutes = () => {
 	const { lang } = useParams();
@@ -16,6 +22,7 @@ const AppRoutes = () => {
 			<Header currentLang={currentLang} />
 			<main className="bg-primary flex-grow">
 				<Routes>
+					<Route path="/" element={<RedirectToDefaultLang />} />
 					<Route path="/:lang" element={<Home />} />
 					<Route path="/:lang/about" element={<About />} />
 					<Route path="/:lang/events" element={<Events />} />

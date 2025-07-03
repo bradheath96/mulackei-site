@@ -106,12 +106,15 @@ const Home = ({ currentLang }) => {
 										/>
 									)}
 									<div className="flex flex-col flex-grow pt-2">
-										<p className="text-lg font-light text-white font-bodyFont">
-											{new Date(event.date).toLocaleDateString(undefined, {
-												weekday: "short",
-												month: "short",
-												day: "numeric",
-											})}
+										<p className="font-bodyFont text-lg font-light text-white">
+											{new Date(event.date).toLocaleDateString(
+												currentLang === "de" ? "de-DE" : "en-US",
+												{
+													weekday: "long",
+													month: "long",
+													day: "numeric",
+												}
+											)}
 										</p>
 										<h3 className="font-titleFont text-4xl font-bold text-white mb-5">
 											{event.name}
@@ -119,7 +122,7 @@ const Home = ({ currentLang }) => {
 										<div className="flex flex-col gap-4 mt-auto">
 											<button
 												className="font-bodyFont w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
-											onClick={() => handleMoreInfoClick(event.slug.current)}>
+												onClick={() => handleMoreInfoClick(event.slug.current)}>
 												{t.button}
 											</button>
 											<button className="font-bodyFont w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">

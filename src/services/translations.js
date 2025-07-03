@@ -115,15 +115,41 @@ export const translations = {
 		en: {
 			button: "More Info",
 			freeInOption: "Free Entry",
+			category: {
+				all: "All",
+				music: "Music",
+				chess: "Chess",
+				art: "Art",
+				film: "Film",
+			},
+			alerts: {
+				noEvents: "No events found.",
+				checkBackSoon: "Check back soon for more updates!",
+			},
 		},
 		de: {
 			button: "Mehr Infos",
 			freeInOption: "Eintritt Frei",
+			category: {
+				all: "Alle",
+				music: "Musik",
+				chess: "Schach",
+				art: "Kunst",
+				film: "Film",
+			},
+			alerts: {
+				noEvents: "Keine Veranstaltungen gefunden.",
+				checkBackSoon: "Schau bald wieder vorbei für mehr Updates!",	
+			}
 		},
 	},
 	eventsDetails: {
-		en: { buyButton: "Buy Tickets" },
-		de: { buyButton: "Tickets kaufen" },
+		en: {
+			buyButton: "Buy Tickets",
+		},
+		de: {
+			buyButton: "Tickets kaufen",
+		},
 	},
 	contact: {
 		en: {

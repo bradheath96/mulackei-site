@@ -8,14 +8,14 @@ const Footer = ({ currentLang }) => {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex flex-col sm:flex-row justify-between items-center">
 					{/* Footer Brand */}
-					<div className="text-lg font-light font-bodyFont">
+					<div className="text-lg font-light font-bodyFont text-sm">
 						<p>
 							&copy; {new Date().getFullYear()} {t.heading}
 						</p>
 					</div>
 
 					{/* Footer Navigation */}
-					<nav className="mt-4 sm:mt-0 flex space-x-6 font-bodyFont">
+					<nav className="mt-4 sm:mt-0 flex space-x-6 text-sm font-bodyFont">
 						<Link to="/About" className="hover:underline">
 							{t.about}
 						</Link>

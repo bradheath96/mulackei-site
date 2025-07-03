@@ -47,20 +47,6 @@ const Events = ( { currentLang }) => {
 		return isSameMonth && isSameCategory;
 	});
 
-	const monthNames = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"July",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	];
 
 	const handleMonthChange = (direction) => {
 		window.scrollTo(0, 0);
@@ -100,8 +86,11 @@ const Events = ( { currentLang }) => {
 					onClick={() => handleMonthChange("prev")}>
 					←
 				</button>
-				<h2 className="text-5xl font-bold mx-4 font-titleFont">
-					{monthNames[currentMonth]} {currentYear}
+				<h2 className="lg:text-5xl text-3xl font-bold mx-4 font-titleFont">
+					{new Date(currentYear, currentMonth).toLocaleString(currentLang, {
+						month: "long",
+						year: "numeric",
+					})}
 				</h2>
 				<button
 					className="text-white px-4"
@@ -121,7 +110,7 @@ const Events = ( { currentLang }) => {
 								: "bg-primary text-white"
 						} border-2 border-boxYellow font-bodyFont transition duration-300 ease-in-out`}
 						onClick={() => handleCategoryChange(category)}>
-						{category.charAt(0).toUpperCase() + category.slice(1)}
+						{t.category[category]}
 					</button>
 				))}
 			</div>
@@ -146,11 +135,11 @@ const Events = ( { currentLang }) => {
 				) : filteredEvents.length === 0 ? (
 					// No Events Message
 					<div className="text-center py-20">
-						<h2 className="text-4xl font-titleFont font-bold">
-							No events found.
+						<h2 className="text-3xl font-titleFont font-bold">
+							{t.alerts.noEvents}
 						</h2>
 						<p className="text-lg mt-2 font-bodyFont">
-							Check back soon for more updates!
+							{t.alerts.checkBackSoon}
 						</p>
 					</div>
 				) : (
@@ -179,11 +168,14 @@ const Events = ( { currentLang }) => {
 								{/* Event Content */}
 								<div className="lg:content-start lg:h-full md:h-full md:content-end p-2">
 									<p className="font-bodyFont text-lg font-light text-white">
-										{new Date(event.date).toLocaleDateString(undefined, {
-											weekday: "short",
-											month: "short",
-											day: "numeric",
-										})}
+										{new Date(event.date).toLocaleDateString(
+											currentLang === "de" ? "de-DE" : "en-US",
+											{
+												weekday: "long",
+												month: "long",
+												day: "numeric",
+											}
+										)}
 									</p>
 									<h2 className="font-titleFont lg:text-6xl md:text-6xl text-4xl font-bold text-white md:align-text-bottom">
 										{event.name}

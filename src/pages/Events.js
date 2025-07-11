@@ -74,7 +74,7 @@ const Events = ( { currentLang }) => {
 	};
 
 	const handleMoreInfoClick = (slug) => {
-		navigate(`${currentLang}/events/${slug}`);
+		navigate(`${slug}`);
 	};
 
 	return (

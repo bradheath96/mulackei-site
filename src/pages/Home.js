@@ -32,7 +32,7 @@ const Home = ({ currentLang }) => {
 	}, []);
 
 	const handleMoreInfoClick = (slug) => {
-		navigate(`${currentLang}/events/${slug}`);
+		navigate(`events/${slug}`);
 	};
 
 	useEffect(() => {

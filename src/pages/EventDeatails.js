@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchEventsBySlug } from "../services/EventServices";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import { translations } from "../services/translations";
+import { PortableText } from "@portabletext/react";
 
 const EventDetails = ({ currentLang }) => {
 	const { slug } = useParams();
@@ -28,6 +29,8 @@ const EventDetails = ({ currentLang }) => {
 		};
 		getEvent();
 	}, [slug]);
+
+	console.log("Event Details:", event);
 
 	return (
 		<div className="bg-primary min-h-screen text-white">
@@ -85,26 +88,23 @@ const EventDetails = ({ currentLang }) => {
 					</h1>
 
 					{/* Event Button */}
-					<button
-						className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium  transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
-						>
+					<button className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium  transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
 						{t.buyButton}
 					</button>
 				</motion.div>
 			</div>
 
 			{/* Divider */}
-			<hr className="border-t-2 border-boxYellow my-10" />
+			<hr className="border-t-2 border-boxYellow my-5" />
 
 			{/* Event Description Section */}
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
 				<div></div>
 				<motion.div
 					className="flex flex-col justify-start mx-5 mt-10"
-					initial={{ opacity: 0, y: 30 }} // Initial position and opacity
-					animate={{ opacity: 1, y: 0 }} // Final position and opacity
-					transition={{ duration: 0.5 }} // Duration of the animation
-				>
+					initial={{ opacity: 0, y: 30 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5 }}>
 					<div className="font-bodyFont text-md font-light justify-start mr-5 space-y-4 mb-10">
 						{loading ? (
 							<div className="space-y-4">
@@ -113,11 +113,7 @@ const EventDetails = ({ currentLang }) => {
 								<div className="w-1/2 h-6 bg-primary animate-pulse"></div>
 							</div>
 						) : (
-							event.description.map((block, index) => (
-								<p key={index}>
-									{block.children.map((child) => child.text).join(" ")}
-								</p>
-							))
+							<PortableText value={event.description?.[currentLang]} />
 						)}
 					</div>
 				</motion.div>

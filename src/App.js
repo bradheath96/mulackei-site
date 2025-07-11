@@ -26,7 +26,7 @@ const Layout = () => {
 					<Route index element={<Home currentLang={currentLang} />} />
 					<Route path="about" element={<About currentLang={currentLang} />} />
 					<Route path="events" element={<Events currentLang={currentLang} />} />
-					<Route path=":lang/events/:slug" element={<EventDetails currentLang={currentLang} />} />
+					<Route path="events/:slug" element={<EventDetails currentLang={currentLang} />} />
 					<Route path="contact" element={<Contact currentLang={currentLang} />} />
 				</Routes>
 			</main>

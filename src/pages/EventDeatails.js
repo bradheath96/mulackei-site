@@ -68,13 +68,16 @@ const EventDetails = ({ currentLang }) => {
 						{loading ? (
 							<div className="w-40 h-6 bg-primary animate-pulse"></div>
 						) : (
-							new Date(event.date).toLocaleDateString(undefined, {
-								weekday: "short",
-								month: "short",
-								day: "numeric",
-								hour: "2-digit",
-								minute: "2-digit",
-							})
+							new Date(event.date)
+								.toLocaleString(currentLang === "de" ? "de-DE" : "en-US", {
+									weekday: "short",
+									day: "numeric",
+									month: "short",
+									hour: "2-digit",
+									minute: "2-digit",
+									hour12: false,
+								})
+								.replace(",", "") // Removes comma between date and time
 						)}
 					</p>
 

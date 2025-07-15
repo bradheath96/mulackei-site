@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LanguageToggle from "./LanguageToggle";
 import { translations } from "../services/translations";
+import { ReactComponent as InstagramIcon } from "../assets/images/icons/instagram.svg";
+import { ReactComponent as FacebookIcon } from "../assets/images/icons/facebook.svg";
 
 const Header = ({ currentLang }) => {
 	const location = useLocation();
@@ -30,7 +32,7 @@ const Header = ({ currentLang }) => {
 						</Link>
 					</div>
 
-					<div className="hidden sm:flex ml-auto space-x-2">
+					<div className="hidden sm:flex ml-auto space-x-2 content-center gap-1">
 						{navItems.map((item) => (
 							<Link
 								key={item.key}
@@ -40,6 +42,20 @@ const Header = ({ currentLang }) => {
 							</Link>
 						))}
 						<LanguageToggle currentLang={currentLang} />
+						<a
+							href="https://www.instagram.com/mulackei_/"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5 flex items-center ">
+							<InstagramIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-lg" />
+						</a>
+						<a
+							href="https://www.facebook.com/profile.php?id=100092280880824"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5 flex items-center">
+							<FacebookIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-[0.9rem] " />
+						</a>
 					</div>
 
 					<div className="sm:hidden flex items-center gap-3">
@@ -69,7 +85,24 @@ const Header = ({ currentLang }) => {
 								{navLabels[item.key]}
 							</Link>
 						))}
+						<div className="flex justify-center items-center gap-4 mt-3">
+							<a
+								href="https://www.instagram.com/mulackei_/"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5 flex items-center ">
+								<InstagramIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-lg" />
+							</a>
+							<a
+								href="https://www.facebook.com/profile.php?id=100092280880824"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5 flex items-center">
+								<FacebookIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-[0.9rem] " />
+							</a>
+						</div>
 					</div>
+
 					<hr className="border-b-[1.5px] border-boxYellow" />
 				</div>
 			)}

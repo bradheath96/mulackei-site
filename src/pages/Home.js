@@ -121,11 +121,11 @@ const Home = ({ currentLang }) => {
 										</h3>
 										<div className="flex flex-col gap-4 mt-auto">
 											<button
-												className="font-bodyFont w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5"
+												className="font-bodyFont w-full py-3 bg-boxYellow hover:bg-secondary-dark font-medium text-black border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5"
 												onClick={() => handleMoreInfoClick(event.slug.current)}>
 												{t.button}
 											</button>
-											<button className="font-bodyFont w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+											<button className="font-bodyFont w-full py-3 bg-primary hover:bg-secondary-dark text-white font-medium border-2 border-boxYellow transition duration-300 ease-in-out hover:-translate-y-0.5">
 												{event.priceAmount === null
 													? t.freeInOption
 													: event.priceAmount

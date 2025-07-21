@@ -91,14 +91,14 @@ const Header = ({ currentLang }) => {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5 flex items-center ">
-								<InstagramIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-lg" />
+								<InstagramIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-[1.25rem]" />
 							</a>
 							<a
 								href="https://www.facebook.com/profile.php?id=100092280880824"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5 flex items-center">
-								<FacebookIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-[0.9rem] " />
+								<FacebookIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-[1.25rem] " />
 							</a>
 						</div>
 					</div>

@@ -139,16 +139,18 @@ export const translations = {
 			},
 			alerts: {
 				noEvents: "Keine Veranstaltungen gefunden.",
-				checkBackSoon: "Schau bald wieder vorbei für mehr Updates!",	
-			}
+				checkBackSoon: "Schau bald wieder vorbei für mehr Updates!",
+			},
 		},
 	},
 	eventsDetails: {
 		en: {
 			buyButton: "Buy Tickets",
+			freeInOption: "Free Entry",
 		},
 		de: {
 			buyButton: "Tickets kaufen",
+			freeInOption: "Eintritt Frei",
 		},
 	},
 	contact: {

@@ -9,7 +9,7 @@ const EventDetails = ({ currentLang }) => {
 	const { slug } = useParams();
 	const [event, setEvent] = useState(null);
 	const [loading, setLoading] = useState(true);
-
+	
 	const t = translations.eventsDetails[currentLang];
 
 	useEffect(() => {
@@ -30,7 +30,6 @@ const EventDetails = ({ currentLang }) => {
 		getEvent();
 	}, [slug]);
 
-	console.log("Event Details:", event);
 
 	return (
 		<div className="bg-primary min-h-screen text-white">
@@ -38,10 +37,9 @@ const EventDetails = ({ currentLang }) => {
 			<div className="grid grid-flow-col-1 md:grid-cols-2 lg:grid-cols-2 lg:grid-rows-1 mb-10">
 				<motion.div
 					className="lg:px-4 lg:pt-4 md:px-4 md:pt-4"
-					initial={{ opacity: 0, y: 30 }} // Initial position and opacity for the animation
-					animate={{ opacity: 1, y: 0 }} // Final position and opacity
-					transition={{ duration: 0.5 }} // Duration of the animation
-				>
+					initial={{ opacity: 0, y: 30 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5 }}>
 					{/* Image or Skeleton Placeholder */}
 					<div className="animate-fade animate-duration-1500">
 						{loading ? (
@@ -91,9 +89,23 @@ const EventDetails = ({ currentLang }) => {
 					</h1>
 
 					{/* Event Button */}
-					<button className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium  transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
-						{t.buyButton}
-					</button>
+					{loading ? (
+						<div className="flex gap-5 mt-5">
+							<div className="w-full h-12 bg-primary animate-pulse"></div>
+							<div className="w-full h-12 bg-primary animate-pulse"></div>
+						</div>
+					) : (
+						<div className="flex gap-5">
+							<button className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+								{t.buyButton}
+							</button>
+							<button className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 border-boxYellow border-2 hover:bg-secondary-dark text-white font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+								{event.priceAmount === null
+									? t.freeInOption
+									: "€" + event.priceAmount}
+							</button>
+						</div>
+					)}
 				</motion.div>
 			</div>
 

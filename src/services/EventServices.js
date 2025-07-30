@@ -37,6 +37,8 @@ const fetchEventsBySlug = async (slug) => {
               asset -> { url }
           },
           type,
+		  price,
+		  priceAmount,
           tickets
             }`,
 			{ slug }

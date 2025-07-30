@@ -13,6 +13,7 @@ import About from "./pages/About";
 import EventDetails from "./pages/EventDeatails";
 import Footer from "./components/Footer";
 import RedirectToDefaultLang from "./components/RedirectToDefaultLang";
+import { Analytics } from "@vercel/analytics/react";
 
 const Layout = () => {
 	const { lang } = useParams();
@@ -37,6 +38,7 @@ const Layout = () => {
 
 const App = () => (
 	<div className="flex flex-col min-h-screen bg-primary text-black">
+		<Analytics />
 		<Router>
 			<Routes>
 				<Route path="/" element={<RedirectToDefaultLang />} />

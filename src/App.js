@@ -14,6 +14,7 @@ import EventDetails from "./pages/EventDeatails";
 import Footer from "./components/Footer";
 import RedirectToDefaultLang from "./components/RedirectToDefaultLang";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const Layout = () => {
 	const { lang } = useParams();
@@ -39,6 +40,7 @@ const Layout = () => {
 const App = () => (
 	<div className="flex flex-col min-h-screen bg-primary text-black">
 		<Analytics />
+		<SpeedInsights />
 		<Router>
 			<Routes>
 				<Route path="/" element={<RedirectToDefaultLang />} />

@@ -97,7 +97,7 @@ const EventDetails = ({ currentLang }) => {
 					) : (
 						<div className="flex gap-5">
 							{event.tickets === null ? (
-								<div className="text-center font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow text-black font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+								<div className="text-center font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow text-black font-medium ">
 									{t.payOnEntry}
 								</div>
 							) : (

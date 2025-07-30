@@ -93,7 +93,9 @@ export const eventType = defineType({
     }),
     defineField({
       name: 'tickets',
+      title: 'Tickets',
       type: 'url',
+      message: 'If left blank will display "Pay on Entry"',
     }),
   ],
   preview: {

@@ -54,6 +54,13 @@ export const translations = {
 						bio: "Aurelien is a musician, sound engineer and producer. Born in Paris and trained as a pianist from an early age, he diversified his approach to music with drums, guitar, vocals and finally specialised as a bass player. Growing up in the hectic and multicultural Parisian music scene, he quickly fell in love with African and Afro-influenced music. Touring in France & Europe with various Afrobeat, Reggae, Soul, Jazz and Hip-hop projects, he had the opportunity to meet some of the most influential musicians of the last decades. In 2016, he moved to Berlin and has since worked as a music producer, sound engineer and live musician for a wide range of German and international artists. He is one of the founder of Mulackei and takes care of the day-to-day operations.",
 					},
 				},
+				{
+					Isobel: {
+						name: "Isobel Hambleton",
+						role: "Concert Booking & Sound Engineer",
+						bio: "Isobel Hambleton is a musician, producer and sound engineer from Manchester, England. Under the artist name Sable, she released two self-produced EPs, garnering attention from the likes of BBC Radio 1, Radio Berlin-Brandenburg and Wonderland. She is currently in the process of producing her debut album. Alongside her solo work, Isobel has been producing and songwriting for other artists for several years, focusing her energies on creating space for FLINTA+ artists to express themselves and tell their stories. At Mulackei, she is responsible for concerts, alongside her colleague Aurelien.",
+					},
+				},
 			],
 
 			paragraph1:
@@ -102,6 +109,13 @@ export const translations = {
 						bio: "Aurelien ist Musiker, Toningenieur und Produzent. Er wurde in Paris geboren und erhielt von klein auf Klavierunterricht. Er erweiterte seinen musikalischen Horizont mit Schlagzeug, Gitarre, Gesang und spezialisierte sich schließlich auf den Bass. Aufgewachsen in der hektischen und multikulturellen Pariser Musikszene verliebte er sich schnell in afrikanische und afro-inspirierte Musik. Auf Tournee in Frankreich und Europa mit verschiedenen Afrobeat-, Reggae-, Soul-, Jazz- und Hip-Hop-Projekten hatte er die Gelegenheit, einige der einflussreichsten Musiker der letzten Jahrzehnte zu treffen. 2016 zog er nach Berlin und arbeitet seitdem als Musikproduzent, Tontechniker und Live-Musiker für eine Vielzahl von deutschen und internationalen Künstlern. Er ist einer der Gründer der Mulackei und kümmert sich um die täglichen Abläufe.",
 					},
 				},
+				{
+					Isobel: {
+						name: "Isobel Hambleton",
+						role: "Konzertbuchung & Tontechniker",
+						bio: "Isobel Hambleton ist eine Musikerin, Produzentin und Tontechnikerin aus Manchester, England. Unter dem Künstlernamen Sable hat sie zwei selbstproduzierte EPs veröffentlicht und damit die Aufmerksamkeit von Sendern wie BBC Radio 1, Radio Berlin-Brandenburg und Wonderland auf sich gezogen. Derzeit arbeitet sie an der Produktion ihres Debütalbums. Neben ihrer Soloarbeit produziert und schreibt Isobel seit mehreren Jahren für andere Künstler und konzentriert ihre Energie darauf, Raum für FLINTA+ Künstler zu schaffen, damit sie sich ausdrücken und ihre Geschichten erzählen können. Bei Mulackei ist sie zusammen mit ihrem Kollegen Aurelien für die Konzerte zuständig.",
+					},
+				},
 			],
 			paragraph1:
 				"Die Mulackei ist ein gemeinnütziger Verein für Kunst, Lesungen, Workshops, Konzerte und andere kulturelle Veranstaltungen. Unser Ziel ist es, einen Raum für Begegnungen und kreativen Austausch zu schaffen, der Menschen aus unterschiedlichen Hintergründen zusammenbringt.",
@@ -146,10 +160,12 @@ export const translations = {
 	eventsDetails: {
 		en: {
 			buyButton: "Buy Tickets",
+			payOnEntry: "Pay on Entry",
 			freeInOption: "Free Entry",
 		},
 		de: {
 			buyButton: "Tickets kaufen",
+			payOnEntry: "Zahlung bei Eintritt",
 			freeInOption: "Eintritt Frei",
 		},
 	},

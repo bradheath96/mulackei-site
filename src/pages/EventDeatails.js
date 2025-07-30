@@ -9,7 +9,7 @@ const EventDetails = ({ currentLang }) => {
 	const { slug } = useParams();
 	const [event, setEvent] = useState(null);
 	const [loading, setLoading] = useState(true);
-	
+	console.log(event)
 	const t = translations.eventsDetails[currentLang];
 
 	useEffect(() => {
@@ -96,9 +96,19 @@ const EventDetails = ({ currentLang }) => {
 						</div>
 					) : (
 						<div className="flex gap-5">
-							<button className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
-								{t.buyButton}
-							</button>
+							{event.tickets === null ? (
+								<div className="text-center font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow text-black font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+									{t.payOnEntry}
+								</div>
+							) : (
+								<a
+									href={event.tickets}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-center font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 bg-boxYellow hover:bg-secondary-dark text-black font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+									{t.buyButton}
+								</a>
+							)}
 							<button className="font-bodyFont lg:w-full md:w-full w-full mt-5 py-3 border-boxYellow border-2 hover:bg-secondary-dark text-white font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
 								{event.priceAmount === null
 									? t.freeInOption

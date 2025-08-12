@@ -39,13 +39,11 @@ const Contact = ( { currentLang }) => {
 			)
 			.then(
 				(response) => {
-					console.log("SUCCESS!", response.status, response.text);
 					alert("Email sent successfully!");
 					setEmail("");
 					setMessage("");
 				},
 				(error) => {
-					console.log("FAILED...", error);
 					alert("Failed to send email. Please try again.");
 				}
 			);

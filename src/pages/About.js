@@ -16,7 +16,6 @@ const About = ({ currentLang }) => {
 
 	const t = translations.about[currentLang];
 
-	console.log(t.team);
 
 	useEffect(() => {
 		const fetchImages = async () => {
@@ -46,15 +45,14 @@ const About = ({ currentLang }) => {
 			}
 		};
 		fetchImages();
-	}, [currentLang]); // <-- Trigger refresh if language changes
-
+	}, [currentLang]); 
 	const fadeUp = {
 		initial: { opacity: 0, y: 40 },
 		whileInView: { opacity: 1, y: 0 },
 		transition: { duration: 1, ease: "easeOut" },
 		viewport: { once: true, amount: 0.2 },
 	};
-	venueImages.shift();
+	venueImages.splice(0, 2);;
 	return (
 		<div className="bg-primary lg:flex lg:flex-col max-h-full justify-start min-h-screen ">
 			<div className="w-full h-[500px] sm:h-[500px] lg:border-b-2 lg:border-boxYellow animate-fade animate-duration-1000">

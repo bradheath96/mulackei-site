@@ -9,7 +9,7 @@ const EventDetails = ({ currentLang }) => {
 	const { slug } = useParams();
 	const [event, setEvent] = useState(null);
 	const [loading, setLoading] = useState(true);
-	console.log(event)
+
 	const t = translations.eventsDetails[currentLang];
 
 	useEffect(() => {

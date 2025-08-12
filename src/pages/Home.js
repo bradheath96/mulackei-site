@@ -12,7 +12,14 @@ const Home = ({ currentLang }) => {
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const navigate = useNavigate();
 
-	const t = translations.home[currentLang]
+	const t = translations.home[currentLang];
+
+	const fadeUp = {
+		initial: { opacity: 0, y: 40 },
+		whileInView: { opacity: 1, y: 0 },
+		transition: { duration: 0.5, ease: "easeOut" },
+		viewport: { once: true, amount: 0.2 },
+	};
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -26,7 +33,7 @@ const Home = ({ currentLang }) => {
 					(event) => new Date(event.date) > currentDate
 				);
 				setEvents(upcomingEvents.slice(0, 8));
-				setIsLoading(false); 
+				setIsLoading(false);
 			})
 			.catch(console.error);
 	}, []);
@@ -37,7 +44,7 @@ const Home = ({ currentLang }) => {
 
 	useEffect(() => {
 		const loadImage = async () => {
-			const image = await fetchImageByFilename("CAP_1062.webp"); 
+			const image = await fetchImageByFilename("CAP_1062.webp");
 			setImage(image);
 		};
 
@@ -69,12 +76,11 @@ const Home = ({ currentLang }) => {
 			<div className="bg-primary text-white py-5 px-3">
 				<div className="relative flex items-center mb-8 mt-3 ">
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
-					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
+					<h2 className="px-4 text-2xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
 						{t.heading}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
-
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-2 md:px-8 max-w-7xl mx-auto">
 					{/* Skeleton Loader while fetching events */}
 					{isLoading
@@ -137,6 +143,45 @@ const Home = ({ currentLang }) => {
 									</div>
 								</motion.div>
 						  ))}
+				</div>
+				<div className="relative flex items-center mb-5 mt-10 ">
+					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
+					<h2 className="px-4 text-2xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
+						{t.helpHeading}
+					</h2>
+					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
+				</div>
+
+				{/* We Need Your Help Section */}
+				<div className="bg-primary text-white px-4 md:px-6 lg:px-8 py-5">
+					{/* Grid row (Text left / Image right) */}
+					<motion.div
+						{...fadeUp}
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+						{/* Text */}
+						<div className="order-1 flex justify-center items-center">
+							<div className="max-w-xl">
+								<p className="font-bodyFont text-md lg:text-lg font-light mb-6">
+									{t.helpParagraph}
+								</p>
+							</div>
+						</div>
+
+						<div className="order-2 flex justify-center items-center">
+							<div className="max-w-xl">
+								<p className="font-bodyFont text-md lg:text-lg font-light mb-6">
+									{t.helpParagraph2}
+								</p>
+							</div>
+						</div>
+					</motion.div>
+					<a
+						href={t.helpLink}
+						target="_blank"
+						rel="noopener noreferrer"
+						className=" bg-boxYellow text-black font-bodyFont font-medium py-3 px-6 hover:bg-secondary-dark transition transform hover:-translate-y-0.5 hover:-translate-x-0.5">
+						{t.helpButton}
+					</a>
 				</div>
 			</div>
 		</div>

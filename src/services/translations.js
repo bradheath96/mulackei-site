@@ -7,11 +7,23 @@ export const translations = {
 			heading: "Coming Up",
 			button: "More Info",
 			freeInOption: "Free Entry",
+			helpHeading: "We Need Your Help",
+			helpParagraph: "Dearest friends of Mulackei, Just over two years ago we opened our doors in Mitte to host artistic and cultural events and hold space for people to connect, create, and feel at home. Now, to continue bringing inspiring performances, exhibitions, discussions and events to life, we’re asking for your help.",
+			helpParagraph2: "The Mulackei has always been entirely non-profit, run by a small team of volunteers who are devoted to the venue and its ethos. We are very proud of the many wonderful events we have hosted, and the community we have found in Mitte and beyond. We have been able to thrive because of the open hearts and generosity of the people who walk through our door every week.",
+			helpButton: "Donate Now",
+			helpLink:
+				"https://www.betterplace.org/en/projects/155684-neue-mulackei-e-v",
 		},
 		de: {
 			heading: "Demnächst",
 			button: "Mehr Infos",
 			freeInOption: "Eintritt Frei",
+			helpHeading: "Wir brauchen Ihre Hilfe",
+			helpParagraph: "Liebste Freund*innen der Mulackei, Vor etwas mehr als zwei Jahren haben wir in Berlin Mitte unsere Türen geöffnet, um künstlerische und kulturelle Veranstaltungen zu ermöglichen – ein Ort, an dem Menschen zusammenkommen, kreativ sein und sich wie zuhause fühlen können. Um auch weiterhin inspirierende Auftritte, Ausstellungen, Gespräche und Veranstaltungen verwirklichen zu können, bitten wir nun um eure Unterstützung.",
+			helpParagraph2: "Die Mulackei ist seit jeher ein gemeinnütziger Ort, betrieben von einem kleinen ehrenamtlichen Team, das mit Herzblut hinter dem Projekt steht. Wir sind sehr stolz auf die vielen großartigen Veranstaltungen, die wir bisher ausrichten durften, und auf die Gemeinschaft, die wir in Mitte, und darüber hinaus, gefunden haben. Dass wir bisher bestehen konnten, verdanken wir der Großzügigkeit der Menschen, die Woche für Woche durch unsere Tür kommen.",
+			helpButton: "Jetzt spenden",
+			helpLink:
+				"https://https://www.betterplace.org/de/projects/155684-neue-mulackei-e-v-link.example.com",
 		},
 	},
 	about: {

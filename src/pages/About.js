@@ -16,8 +16,6 @@ const About = ({ currentLang }) => {
 
 	const t = translations.about[currentLang];
 
-	console.log(t.team);
-
 	useEffect(() => {
 		const fetchImages = async () => {
 			try {

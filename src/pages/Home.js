@@ -37,7 +37,7 @@ const Home = ({ currentLang }) => {
 
 	useEffect(() => {
 		const loadImage = async () => {
-			const image = await fetchImageByFilename("Mulackei_2.webp"); 
+			const image = await fetchImageByFilename("CAP_1062.webp"); 
 			setImage(image);
 		};
 

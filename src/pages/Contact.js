@@ -32,9 +32,9 @@ const Contact = ( { currentLang }) => {
 
 		emailjs
 			.sendForm(
-				"service_mhuqmdo",
+				"service_fob9hup",
 				"template_wi4pwdk",
-				form, 
+				form,
 				"lnzsxhUl3YINQGmQL"
 			)
 			.then(

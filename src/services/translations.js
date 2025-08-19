@@ -7,11 +7,37 @@ export const translations = {
 			heading: "Coming Up",
 			button: "More Info",
 			freeInOption: "Free Entry",
+			helpHeading: "We Need Your Help",
+			helpParagraph:
+				"Dearest friends of Mulackei, Just over two years ago we opened our doors in Mitte to host artistic and cultural events and hold space for people to connect, create, and feel at home. Now, to continue bringing inspiring performances, exhibitions, discussions and events to life, we’re asking for your help.",
+			helpParagraph2:
+				"The Mulackei has always been entirely non-profit, run by a small team of volunteers who are devoted to the venue and its ethos. We are very proud of the many wonderful events we have hosted, and the community we have found in Mitte and beyond. We have been able to thrive because of the open hearts and generosity of the people who walk through our door every week.",
+			helpParagraph3:
+				"We want the Mulackei to thrive long into the future, but it’s no secret that rising costs and red tape are threatening many institutions in Berlin. Because of this, we have decided to open an ongoing, online fundraiser, to create an easier route for people who love the Mulackei to participate in its journey. Even a small monthly contribution can provide the steady support that we need to stay open long into the future, and keep Mulackei accessible to everyone.",
+			helpParagraph4:
+				"If you have ever played, sang, talked, danced, laughed, or cried at the Mulackei, please consider donating to our online fundraiser. We have a wonderful July program coming up before we enter a reduced program in August to work on the implementation of certain necessary improvements in the Mulackei. We will be back fully in September with even more brilliant events.",
+			helpParagraph5:
+				"Thank you all for your ongoing support, generosity, and participation in this amazing space. Mulackei is beautiful because of you, and we hope that we can continue to honour and develop our community for years to come. Your Mulackei team ♥️",
+			helpButton: "Donate Now",
+			helpLink: "www.betterplace.org/en/projects/155684-neue-mulackei-e-v",
 		},
 		de: {
 			heading: "Demnächst",
 			button: "Mehr Infos",
 			freeInOption: "Eintritt Frei",
+			helpHeading: "Wir brauchen Ihre Hilfe",
+			helpParagraph:
+				"Liebste Freund*innen der Mulackei, Vor etwas mehr als zwei Jahren haben wir in Berlin Mitte unsere Türen geöffnet, um künstlerische und kulturelle Veranstaltungen zu ermöglichen – ein Ort, an dem Menschen zusammenkommen, kreativ sein und sich wie zuhause fühlen können. Um auch weiterhin inspirierende Auftritte, Ausstellungen, Gespräche und Veranstaltungen verwirklichen zu können, bitten wir nun um eure Unterstützung.",
+			helpParagraph2:
+				"Die Mulackei ist seit jeher ein gemeinnütziger Ort, betrieben von einem kleinen ehrenamtlichen Team, das mit Herzblut hinter dem Projekt steht. Wir sind sehr stolz auf die vielen großartigen Veranstaltungen, die wir bisher ausrichten durften, und auf die Gemeinschaft, die wir in Mitte, und darüber hinaus, gefunden haben. Dass wir bisher bestehen konnten, verdanken wir der Großzügigkeit der Menschen, die Woche für Woche durch unsere Tür kommen.",
+			helpParagraph3:
+				"Wir wünschen uns, dass die Mulackei noch lange weiterlebt – aber es ist kein Geheimnis, dass steigende Kosten und bürokratische Hürden viele Institutionen in Berlin bedrohen. Deshalb haben wir uns entschieden, eine fortlaufende Online-Spendenkampagne zu starten, um es allen, die die Mulackei lieben, einfacher zu machen, an ihrer Zukunft teilzuhaben. Schon ein kleiner monatlicher Beitrag bietet jene Unterstützung, die wir brauchen, um langfristig bestehen zu bleiben und die Mulackei für alle zugänglich zu halten.",
+			helpParagraph4:
+				"Wenn du jemals in der Mulackei gespielt, gesungen, gesprochen, getanzt, gelacht oder geweint hast, bitten wir dich: Unterstütze unsere Online-Spendenaktion. Im Juli erwarten euch noch einige wundervolle Veranstaltungen, bevor wir im August ein reduziertes Programm anbieten und im September wieder mit vielen weiteren großartigen Events zurückkehren.",
+			helpParagraph5:
+				"Danke für eure andauernde Unterstützung, Großzügigkeit und eure Teilnahme an diesem besonderen Ort. Die Mulackei ist so schön wegen euch – und wir hoffen, dass wir unsere Gemeinschaft noch viele Jahre gemeinsam gestalten und weiterentwickeln können. Euer Mulackei-Team ♥️",
+			helpButton: "Jetzt spenden",
+			helpLink: "www.betterplace.org/en/projects/155684-neue-mulackei-e-v",
 		},
 	},
 	about: {
@@ -208,6 +234,7 @@ export const translations = {
 			events: "Events",
 			contact: "Contact",
 			address: "Mulackstraße 27, 10119 Berlin, Germany",
+			credit: "Designed by Bradley Heath",
 		},
 		de: {
 			heading: "Mulackei. Alle Rechte vorbehalten.",
@@ -215,6 +242,7 @@ export const translations = {
 			events: "Veranstaltungen",
 			contact: "Kontakt",
 			address: "Mulackstraße 27, 10119 Berlin, Deutschland",
+			credit: "Gestaltet von Bradley Heath",
 		},
 	},
 };

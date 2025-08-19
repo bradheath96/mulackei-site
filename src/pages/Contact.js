@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import emailjs from "emailjs-com";
-import { fetchImageByFilename } from "../services/EventServices"; 
+import { fetchImagesByFilenames } from "../services/EventServices"; 
 import { translations } from "../services/translations"; 
 
 const Contact = ( { currentLang }) => {
@@ -17,7 +17,7 @@ const Contact = ( { currentLang }) => {
 
 	useEffect(() => {
 		const getImage = async () => {
-			const image = await fetchImageByFilename("Mulackei_1.webp"); 
+			const image = await fetchImagesByFilenames(["Mulackei_1.webp"]); 
 			setVenueImage(image);
 			setIsLoading(false); 
 		};

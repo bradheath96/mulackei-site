@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchEvents, fetchImageByFilename } from "../services/EventServices";
+import { fetchEvents, fetchImagesByFilenames } from "../services/EventServices";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { translations } from "../services/translations";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Home = ({ currentLang }) => {
 	const [events, setEvents] = useState([]);
-	const [image, setImage] = useState(null);
+	const [images, setImages] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const navigate = useNavigate();
@@ -42,26 +42,33 @@ const Home = ({ currentLang }) => {
 		navigate(`events/${slug}`);
 	};
 
-	useEffect(() => {
-		const loadImage = async () => {
-			const image = await fetchImageByFilename("CAP_1062.webp");
-			setImage(image);
-		};
+useEffect(() => {
+	const loadImage = async () => {
+		const imgs = await fetchImagesByFilenames([
+			"CAP_1062.webp",
+			"CAP_1256.webp",
+			"CAP_0950.webp",
+			"CAP_1066.webp",
+		]);
+		console.log("Images:", imgs);
+		setImages(imgs);
+	};
 
-		loadImage();
-	}, []);
+	loadImage();
+}, []);
+
 
 	return (
 		<div className="bg-primary relative min-h-screen">
 			{/* Hero Section with Background Image */}
-			<div className="relative min-h-[500px] md:h-[500px] lg:min-h-[70vh] overflow-hidden animate-fade animate-duration-1500">
+			<div className="relative min-h-[500px] md:h-[500px] lg:min-h-[40vh] overflow-hidden animate-fade animate-duration-1500">
 				{!isImageLoaded && (
 					<div className="absolute inset-0 bg-primary animate-pulse"></div>
 				)}
-				{image && (
+				{images?.[0] && (
 					<img
-						src={image[0].url}
-						alt={image[0].alt || "Event image"}
+						src={images[0].url}
+						alt={images[0].alt || "Event image"}
 						className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
 							isImageLoaded ? "opacity-100" : "opacity-0"
 						}`}
@@ -73,15 +80,15 @@ const Home = ({ currentLang }) => {
 			<hr className="border-t-2 border-boxYellow" />
 
 			{/* Upcoming Events Section */}
-			<div className="bg-primary text-white py-5 px-3">
-				<div className="relative flex items-center mb-8 mt-3 ">
-					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
+			<div className="bg-primary text-white py-5 px-4">
+				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
+					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden " />
 					<h2 className="px-4 text-2xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
 						{t.heading}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-2 md:px-8 max-w-7xl mx-auto">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 md:px-8 max-w-7xl mx-auto">
 					{/* Skeleton Loader while fetching events */}
 					{isLoading
 						? [...Array(4)].map((_, index) => (
@@ -144,44 +151,152 @@ const Home = ({ currentLang }) => {
 								</motion.div>
 						  ))}
 				</div>
+			</div>
+			<div className="bg-primary text-white px-4 md:px-6 pb-5">
+				{/* We Need Your Help Section */}
 				<div className="relative flex items-center mb-5 mt-10 ">
-					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
+					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden animate-fade animate-duration-1000" />
 					<h2 className="px-4 text-2xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
 						{t.helpHeading}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
 				</div>
-
-				{/* We Need Your Help Section */}
-				<div className="bg-primary text-white px-4 md:px-6 lg:px-8 py-5">
+				<div className="bg-primary text-white">
 					{/* Grid row (Text left / Image right) */}
 					<motion.div
 						{...fadeUp}
-						className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+						className="flex flex-col items-center justify-center lg:text-center mb-10 mt-10">
+						<button
+							className="font-bodyFont w-full md:w-auto lg:w-[400px] lg:h-[50px]  py-3 px-6 bg-boxYellow hover:bg-secondary-dark text-black font-medium transition duration-300 ease-in-out hover:-translate-y-0.5"
+							onClick={() =>
+								window.open(
+									"https://www.betterplace.org/en/projects/155684-neue-mulackei-e-v",
+									"_blank"
+								)
+							}>
+							{t.helpButton}
+						</button>
+					</motion.div>
+					<motion.div
+						{...fadeUp}
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-center">
 						{/* Text */}
 						<div className="order-1 flex justify-center items-center">
 							<div className="max-w-xl">
-								<p className="font-bodyFont text-md lg:text-lg font-light mb-6">
+								<p className="font-bodyFont text-md lg:text-lg font-light">
 									{t.helpParagraph}
 								</p>
 							</div>
 						</div>
-
 						<div className="order-2 flex justify-center items-center">
+							{isLoading ? (
+								<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+							) : (
+								images?.[1] && (
+									<img
+										src={images[1].url}
+										alt={images[1].alt || "Event image"}
+										className="w-full max-w-[600px] h-auto object-cover"
+									/>
+								)
+							)}
+						</div>
+					</motion.div>
+					<motion.div
+						{...fadeUp}
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-center">
+						<div className="order-2 md:order-1 flex justify-center items-center">
+							{isLoading ? (
+								<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+							) : (
+								images?.[2] && (
+									<img
+										src={images[2].url}
+										alt={images[2].alt || "Event image"}
+										className="w-full max-w-[600px] h-auto object-cover"
+									/>
+								)
+							)}
+						</div>
+
+						<div className="order-1 md:order-2 flex justify-center items-center">
 							<div className="max-w-xl">
-								<p className="font-bodyFont text-md lg:text-lg font-light mb-6">
+								<p className="font-bodyFont text-md lg:text-lg font-light">
 									{t.helpParagraph2}
 								</p>
 							</div>
 						</div>
 					</motion.div>
-					<a
-						href={t.helpLink}
-						target="_blank"
-						rel="noopener noreferrer"
-						className=" bg-boxYellow text-black font-bodyFont font-medium py-3 px-6 hover:bg-secondary-dark transition transform hover:-translate-y-0.5 hover:-translate-x-0.5">
-						{t.helpButton}
-					</a>
+					<motion.div
+						{...fadeUp}
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-center">
+						{/* Text */}
+						<div className="order-1 flex justify-center items-center">
+							<div className="max-w-xl">
+								<p className="font-bodyFont text-md lg:text-lg font-light">
+									{t.helpParagraph3}
+								</p>
+							</div>
+						</div>
+						<div className="order-2 flex justify-center items-center">
+							{isLoading ? (
+								<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+							) : (
+								images?.[1] && (
+									<img
+										src={images[3].url}
+										alt={images[3].alt || "Event image"}
+										className="w-full max-w-[600px] h-auto object-cover"
+									/>
+								)
+							)}
+						</div>
+					</motion.div>
+					<motion.div
+						{...fadeUp}
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-center">
+						<div className="order-2 md:order-1 flex justify-center items-center">
+							{isLoading ? (
+								<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+							) : (
+								images?.[2] && (
+									<img
+										src={images[2].url}
+										alt={images[2].alt || "Event image"}
+										className="w-full max-w-[600px] h-auto object-cover"
+									/>
+								)
+							)}
+						</div>
+
+						<div className="order-1 md:order-2 flex justify-center items-center">
+							<div className="max-w-xl">
+								<p className="font-bodyFont text-md lg:text-lg font-light">
+									{t.helpParagraph4}
+								</p>
+							</div>
+						</div>
+					</motion.div>
+					<motion.div
+						{...fadeUp}
+						className="flex flex-col items-center justify-center lg:text-center lg:mt-16">
+						<div className="max-w-2xl">
+							<p className="font-bodyFont text-md lg:text-lg font-light mb-6">
+								{t.helpParagraph5}
+							</p>
+						</div>
+
+						<button
+							className="font-bodyFont w-full md:w-auto lg:w-[400px] lg:h-[50px]  py-3 px-6 bg-boxYellow hover:bg-secondary-dark text-black font-medium transition duration-300 ease-in-out hover:-translate-y-0.5"
+							onClick={() =>
+								window.open(
+									"https://www.betterplace.org/en/projects/155684-neue-mulackei-e-v",
+									"_blank"
+								)
+							}>
+							{t.helpButton}
+						</button>
+					</motion.div>
 				</div>
 			</div>
 		</div>

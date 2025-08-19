@@ -67,10 +67,10 @@ const fetchImagesByCategory = async (category) => {
 	}
 };
 
-const fetchImageByFilename = async (filename) => {
+const fetchImagesByFilenames = async (filenames) => {
 	try {
 		const query = `*[_type == "imageCollection"]{
-			images[asset->originalFilename == $filename]{
+			images[asset->originalFilename in $filenames]{
 				"url": asset->url,
 				"filename": asset->originalFilename,
 				"alt": alt,
@@ -79,14 +79,20 @@ const fetchImageByFilename = async (filename) => {
 			}
 		}.images[]`;
 
-		const images = await sanityClient.fetch(query, { filename });
+		// Pass an array instead of a single string
+		const images = await sanityClient.fetch(query, { filenames });
 		return images;
 	} catch (error) {
-		console.error("Error fetching images by filename:", error);
+		console.error("Error fetching images by filenames:", error);
 		throw error;
 	}
 };
 
 
 
-export { fetchEvents, fetchEventsBySlug, fetchImagesByCategory, fetchImageByFilename };
+export {
+	fetchEvents,
+	fetchEventsBySlug,
+	fetchImagesByCategory,
+	fetchImagesByFilenames,
+};

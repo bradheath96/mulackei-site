@@ -65,7 +65,7 @@ const About = ({ currentLang }) => {
 			<div className="bg-primary text-white pt-5 px-6">
 				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
-					<h2 className="px-4 text-3xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
+					<h2 className="px-4 text-2xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
 						{t.heading}
 					</h2>
 					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />

@@ -15,9 +15,22 @@ export const eventType = defineType({
     }),
     defineField({
       name: 'slug',
+      title: 'Slug',
       type: 'slug',
-      options: {source: 'name'},
-      validation: (rule) => rule.required().error(`Required to generate a page on the website`),
+      options: {
+        source: (doc) => `${doc.title}-${doc.date}`,
+        maxLength: 96,
+      },
+      validation: (Rule) =>
+        Rule.required().custom(async (slug, context) => {
+          const {getClient} = context
+          const client = getClient({apiVersion: '2023-01-01'})
+          const existing = await client.fetch(
+            `*[_type == "event" && slug.current == $slug && _id != $id][0]`,
+            {slug: slug.current, id: context.document._id},
+          )
+          return existing ? 'Slug must be unique' : true
+        }),
     }),
     defineField({
       name: 'description',

@@ -12,6 +12,17 @@ const Events = ( { currentLang }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [animationKey, setAnimationKey] = useState(0); 
 	const navigate = useNavigate();
+	const categories = [
+		"all",
+		"music",
+		"chess",
+		"art",
+		"film",
+		"literature",
+		"workshop",
+		"other",
+	];
+
 
 
 
@@ -100,15 +111,15 @@ const Events = ( { currentLang }) => {
 			</div>
 
 			{/* Category Filter */}
-			<div className="grid grid-cols-5 justify-center mx-auto w-[350px] max-w-2xl mt-4">
-				{["all", "music", "chess", "art", "film"].map((category) => (
+			<div className="grid grid-cols-4 grid-rows-2 justify-center mx-auto w-[350px] max-w-2xl mt-4">
+				{categories.map((category) => (
 					<button
 						key={category}
 						className={`px-1 py-1 ${
 							selectedCategory === category
 								? "bg-boxYellow text-black"
 								: "bg-primary text-white"
-						} border-2 border-boxYellow font-bodyFont transition duration-300 ease-in-out`}
+						} border-2 border-boxYellow text-sm font-bodyFont transition duration-300 ease-in-out`}
 						onClick={() => handleCategoryChange(category)}>
 						{t.category[category]}
 					</button>

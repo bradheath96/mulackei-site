@@ -1,5 +1,5 @@
 import { button } from "framer-motion/client";
-import { Contact } from "lucide-react";
+import { Contact, ListTodo } from "lucide-react";
 
 export const translations = {
 	home: {
@@ -161,6 +161,9 @@ export const translations = {
 				chess: "Chess",
 				art: "Art",
 				film: "Film",
+				literature: "Literature",
+				workshop: "Workshops",
+				other: "Other...",
 			},
 			alerts: {
 				noEvents: "No events found.",
@@ -176,6 +179,9 @@ export const translations = {
 				chess: "Schach",
 				art: "Kunst",
 				film: "Film",
+				literature: "Literatur",
+				workshop: "Workshops",
+				other: "Andere...",
 			},
 			alerts: {
 				noEvents: "Keine Veranstaltungen gefunden.",

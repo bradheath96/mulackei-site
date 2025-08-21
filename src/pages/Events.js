@@ -19,11 +19,9 @@ const Events = ( { currentLang }) => {
 		"art",
 		"film",
 		"literature",
-		"workshop",
+		"workshops",
 		"other",
 	];
-
-
 
 
 	const t = translations.events[currentLang]

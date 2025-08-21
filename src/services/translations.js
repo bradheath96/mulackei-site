@@ -162,7 +162,7 @@ export const translations = {
 				art: "Art",
 				film: "Film",
 				literature: "Literature",
-				workshop: "Workshops",
+				workshops: "Workshops",
 				other: "Other...",
 			},
 			alerts: {
@@ -180,7 +180,7 @@ export const translations = {
 				art: "Kunst",
 				film: "Film",
 				literature: "Literatur",
-				workshop: "Workshops",
+				workshops: "Workshops",
 				other: "Andere...",
 			},
 			alerts: {

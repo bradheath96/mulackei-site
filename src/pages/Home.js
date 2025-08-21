@@ -50,7 +50,6 @@ useEffect(() => {
 			"CAP_0950.webp",
 			"CAP_1066.webp",
 		]);
-		console.log("Images:", imgs);
 		setImages(imgs);
 	};
 

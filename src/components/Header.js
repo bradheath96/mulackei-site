@@ -37,7 +37,7 @@ const Header = ({ currentLang }) => {
 							<Link
 								key={item.key}
 								to={`/${currentLang}/${item.path}`}
-								className="font-bodyFont text-black hover:bg-boxYellow hover:text-black rounded-sm px-4 py-2 text-lg font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
+								className="font-bodyFont text-black hover:bg-boxYellow hover:text-black px-4 py-2 text-lg font-medium transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5">
 								{navLabels[item.key]}
 							</Link>
 						))}

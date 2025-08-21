@@ -19,11 +19,11 @@ export const eventType = defineType({
       type: 'slug',
       options: {
         source: (doc) => {
-          if (!doc.title || !doc.date) return doc.title || ''
+          if (!doc.name || !doc.date) return doc.name
           const d = new Date(doc.date)
           const month = String(d.getMonth() + 1).padStart(2, '0')
           const day = String(d.getDate()).padStart(2, '0')
-          return `${doc.title}-${month}=${day}`
+          return `${doc.name}-${month}-${day}`
         },
         maxLength: 96,
       },

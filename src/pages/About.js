@@ -61,92 +61,99 @@ const About = ({ currentLang }) => {
 
 			<hr className="border-t-2 border-boxYellow" />
 
-			{/* About Us Heading */}
-			<div className="bg-primary text-white pt-5 px-6">
-				<div className="relative flex items-center mb-4 mt-3 animate-fade animate-duration-1000">
-					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
-					<h2 className="px-4 text-2xl font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
-						{t.heading}
-					</h2>
-					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
+			{/* About Us Section */}
+			<hr className="border-t-2 border-boxYellow" />
+
+			<div className="bg-primary text-white py-5">
+				{/* Heading with full-width HR */}
+				<div className="relative w-full animate-fade animate-duration-1000">
+					<hr className="absolute left-0 right-0 border-t-2 border-boxYellow top-1/2 -translate-y-1/2" />
+					<div className="relative flex max-w-7xl mx-auto px-4 md:px-8 items-center justify-center lg:justify-start">
+						<h2 className="text-2xl font-bold text-white font-titleFont bg-primary px-4 relative z-10 lg:text-5xl inline-block">
+							{t.heading}
+						</h2>
+					</div>
+				</div>
+
+				{/* Content under heading */}
+				<div className="max-w-7xl mx-auto px-4 md:px-8 pt-6">
+					{/* First Row */}
+					<motion.div
+						{...fadeUp}
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
+						<div className="order-1 flex justify-center items-center">
+							<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
+								{t.paragraph1}
+							</p>
+						</div>
+						<div className="order-2 flex justify-center items-center">
+							{isLoading ? (
+								<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+							) : (
+								<img
+									src={venueImages[10]?.url}
+									alt={venueImages[10]?.altText}
+									className="w-full max-w-[600px] h-auto object-cover"
+								/>
+							)}
+						</div>
+					</motion.div>
+
+					{/* Second Row */}
+					<motion.div
+						{...fadeUp}
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
+						<div className="order-1 md:order-2 flex justify-center items-center">
+							<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
+								{t.paragraph2}
+							</p>
+						</div>
+						<div className="order-2 md:order-1 flex justify-center items-center">
+							{isLoading ? (
+								<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+							) : (
+								<img
+									src={venueImages[11]?.url}
+									alt={venueImages[11]?.altText}
+									className="w-full max-w-[600px] h-auto object-cover"
+								/>
+							)}
+						</div>
+					</motion.div>
+
+					{/* Third Row */}
+					<motion.div
+						{...fadeUp}
+						className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+						<div className="order-1 flex justify-center items-center">
+							<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
+								{t.paragraph3}
+							</p>
+						</div>
+						<div className="order-2 flex justify-center items-center">
+							{isLoading ? (
+								<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
+							) : (
+								<img
+									src={venueImages[12]?.url}
+									alt={venueImages[12]?.altText}
+									className="w-full max-w-[600px] h-auto object-cover"
+								/>
+							)}
+						</div>
+					</motion.div>
 				</div>
 			</div>
 
-			{/* First Row - Text Left, Image Right */}
-			<div className="bg-primary text-white px-4 md:px-6 lg:px-8 py-4 ">
-				{/* First Row */}
-				<motion.div
-					{...fadeUp}
-					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
-					<div className="order-1 flex justify-center items-center">
-						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
-							{t.paragraph1}
-						</p>
-					</div>
-					<div className="order-2 flex justify-center items-center">
-						{isLoading ? (
-							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
-						) : (
-							<img
-								src={venueImages[10]?.url}
-								alt={venueImages[10]?.altText}
-								className="w-full max-w-[600px] h-auto object-cover"
-							/>
-						)}
-					</div>
-				</motion.div>
-
-				{/* Second Row */}
-				<motion.div
-					{...fadeUp}
-					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
-					<div className="order-1 md:order-2 flex justify-center items-center">
-						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
-							{t.paragraph2}
-						</p>
-					</div>
-					<div className="order-2 md:order-1 flex justify-center items-center">
-						{isLoading ? (
-							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
-						) : (
-							<img
-								src={venueImages[11]?.url}
-								alt={venueImages[11]?.altText}
-								className="w-full max-w-[600px] h-auto object-cover"
-							/>
-						)}
-					</div>
-				</motion.div>
-				<motion.div
-					{...fadeUp}
-					className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6 items-center">
-					<div className="order-1 flex justify-center items-center">
-						<p className="font-bodyFont text-md lg:text-lg font-light max-w-xl md:text-left">
-							{t.paragraph3}
-						</p>
-					</div>
-					<div className="order-2 flex justify-center items-center">
-						{isLoading ? (
-							<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
-						) : (
-							<img
-								src={venueImages[9]?.url}
-								alt={venueImages[9]?.altText}
-								className="w-full max-w-[600px] h-auto object-cover"
-							/>
-						)}
-					</div>
-				</motion.div>
-			</div>
-
 			{/* Team Section */}
-			<div className="bg-primary text-white py-2 px-6">
-				<div className="relative flex items-center mb-4 mt-2 animate-fade animate-duration-1000">
-					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto lg:hidden" />
-					<h2 className="px-4 text-[20px] font-bold text-white font-titleFont whitespace-nowrap lg:text-5xl lg:px-0 lg:pr-4 lg:whitespace-normal">
-						{t.teamHeading}
-					</h2>
-					<hr className="flex-grow border-t-2 border-boxYellow lg:w-auto" />
+			<div className="bg-primary text-white py-5">
+				<div className="relative w-full animate-fade animate-duration-1000">
+					<hr className="absolute left-0 right-0 border-t-2 border-boxYellow top-1/2 -translate-y-1/2" />
+					<div className="relative flex max-w-7xl mx-auto px-4 md:px-8 items-center justify-center lg:justify-start">
+						<h2 className="text-2xl font-bold text-white font-titleFont bg-primary px-4 relative z-10 lg:text-5xl inline-block">
+							{t.teamHeading}
+						</h2>
+					</div>
 				</div>
 				<div className="bg-primary text-white py-5 px-4">
 					<div className="flex overflow-x-auto space-x-6 snap-x snap-mandatory pb-4">

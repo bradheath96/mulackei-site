@@ -75,7 +75,7 @@ const Home = ({ currentLang }) => {
 				)}
 			</div>
 
-			<hr className="border-t-2 border-boxYellow" />
+			<hr className="border-t-4 border-boxYellow" />
 
 			{/* Upcoming Events Section */}
 			<div className="bg-primary text-white py-5 ">

@@ -59,10 +59,10 @@ const About = ({ currentLang }) => {
 				<ImageSlider imageData={venueImages.slice(0, -3)} />
 			</div>
 
-			<hr className="border-t-2 border-boxYellow" />
+			<hr className="border-t-4 border-boxYellow" />
 
 			{/* About Us Section */}
-			<hr className="border-t-2 border-boxYellow" />
+			
 
 			<div className="bg-primary text-white py-5">
 				{/* Heading with full-width HR */}

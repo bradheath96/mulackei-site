@@ -24,14 +24,17 @@ const Header = ({ currentLang }) => {
 
 	return (
 		<nav className="bg-floralWhite sticky top-0 z-[100]">
+			{/* Wrap header content in same max width as About/Home */}
 			<div className="w-full px-6 sm:px-8 lg:px-10">
-				<div className="relative flex h-16 items-center justify-between">
+				<div className="relative flex h-16 items-center justify-between max-w-7xl mx-auto">
+					{/* Logo */}
 					<div className="flex items-center">
 						<Link to={`/${currentLang}`}>
 							<h1 className="text-3xl font-logoFont">Mulackei</h1>
 						</Link>
 					</div>
 
+					{/* Nav + Socials */}
 					<div className="hidden sm:flex ml-auto space-x-2 content-center gap-1">
 						{navItems.map((item) => (
 							<Link
@@ -54,10 +57,11 @@ const Header = ({ currentLang }) => {
 							target="_blank"
 							rel="noopener noreferrer"
 							className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:-translate-x-0.5 flex items-center">
-							<FacebookIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-[0.9rem] " />
+							<FacebookIcon className="w-8 h-8 fill-black transition duration-300 ease-in-out hover:bg-boxYellow rounded-[0.9rem]" />
 						</a>
 					</div>
 
+					{/* Mobile Toggle */}
 					<div className="sm:hidden flex items-center gap-3">
 						<LanguageToggle currentLang={currentLang} />
 						<button
@@ -106,7 +110,7 @@ const Header = ({ currentLang }) => {
 					<hr className="border-b-[1.5px] border-boxYellow" />
 				</div>
 			)}
-			<hr className="border-b-[1.5px] border-boxYellow" />
+			<hr className="border-b-2 border-boxYellow" />
 		</nav>
 	);
 };

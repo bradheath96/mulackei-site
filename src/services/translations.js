@@ -54,7 +54,7 @@ export const translations = {
 				},
 				{
 					Frida: {
-						name: "Frida Bahner",
+						name: "Frida Grubba",
 						role: "Head of Heads",
 						bio: "She was born in Berlin in 1992. From 2015 to 2022, she studied stage and costume design at the Weißensee Academy of Art and Design, graduating with a diploma in fine art. In 2019/20, she received a scholarship from the Deutschland/Mart Stam scholarship. Since 2014, she has worked as a freelance stage and costume designer for both independent and state theater productions.",
 					},
@@ -109,7 +109,7 @@ export const translations = {
 				},
 				{
 					Frida: {
-						name: "Frida Bahner",
+						name: "Frida Grubba",
 						role: "Kopf der Köpfe",
 						bio: "Sie wurde 1992 in Berlin geboren. Von 2015 bis 2022 studierte sie Bühnen- und Kostümbild an der Weißensee Kunsthochschule Berlin und schloss mit einem Diplom in Bildender Kunst ab. 2019/20 erhielt sie ein Stipendium des Deutschland/Mart Stam Stipendiums. Seit 2014 arbeitet sie als freiberufliche Bühnen- und Kostümbildnerin für sowohl freie als auch staatliche Theaterproduktionen.",
 					},

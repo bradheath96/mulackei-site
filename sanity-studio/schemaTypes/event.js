@@ -21,19 +21,23 @@ export const eventType = defineType({
         source: (doc) => {
           if (!doc.name || !doc.date) return doc.name
           const d = new Date(doc.date)
+          const year = d.getFullYear()
           const month = String(d.getMonth() + 1).padStart(2, '0')
           const day = String(d.getDate()).padStart(2, '0')
-          return `${doc.name}-${month}-${day}`
+          return `${doc.name}-${year}-${month}-${day}`
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[^a-z0-9-]/g, '') 
         },
         maxLength: 96,
       },
       validation: (Rule) =>
         Rule.required().custom(async (slug, context) => {
-          const {getClient} = context
-          const client = getClient({apiVersion: '2023-01-01'})
+          const { getClient } = context
+          const client = getClient({ apiVersion: '2023-01-01' })
           const existing = await client.fetch(
             `*[_type == "event" && slug.current == $slug && _id != $id][0]`,
-            {slug: slug.current, id: context.document._id},
+            { slug: slug.current, id: context.document._id },
           )
           return existing ? 'Slug must be unique' : true
         }),
@@ -47,13 +51,13 @@ export const eventType = defineType({
           name: 'en',
           title: 'English',
           type: 'array',
-          of: [{type: 'block'}],
+          of: [{ type: 'block' }],
         },
         {
           name: 'de',
           title: 'German',
           type: 'array',
-          of: [{type: 'block'}],
+          of: [{ type: 'block' }],
         },
       ],
     }),
@@ -74,14 +78,14 @@ export const eventType = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Music Gig', value: 'music'},
-          {title: 'Art Exhibition', value: 'art'},
-          {title: 'Film Screening', value: 'film'},
-          {title: 'Chess Night', value: 'chess'},
-          {title: 'Literature', value: 'literature'},
-          {title: 'Workshops', value: 'workshops'},
-          {title: 'Spoken Word', value: 'spoken-word'},
-          {title: 'Other', value: 'other'},
+          { title: 'Music Gig', value: 'music' },
+          { title: 'Art Exhibition', value: 'art' },
+          { title: 'Film Screening', value: 'film' },
+          { title: 'Chess Night', value: 'chess' },
+          { title: 'Literature', value: 'literature' },
+          { title: 'Workshops', value: 'workshops' },
+          { title: 'Spoken Word', value: 'spoken-word' },
+          { title: 'Other', value: 'other' },
         ],
         layout: 'radio',
       },
@@ -92,8 +96,8 @@ export const eventType = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Free In', value: 'free'},
-          {title: 'Paid (Enter Price)', value: 'paid'},
+          { title: 'Free In', value: 'free' },
+          { title: 'Paid (Enter Price)', value: 'paid' },
         ],
         layout: 'radio',
       },
@@ -103,7 +107,7 @@ export const eventType = defineType({
       name: 'priceAmount',
       title: 'Price Amount (€)',
       type: 'string',
-      hidden: ({parent}) => parent?.price !== 'paid',
+      hidden: ({ parent }) => parent?.price !== 'paid',
       validation: (rule) =>
         rule.custom((value, context) => {
           if (context.parent?.price === 'paid') {
@@ -118,7 +122,7 @@ export const eventType = defineType({
       name: 'tickets',
       title: 'Tickets',
       type: 'url',
-      message: 'If left blank will display "Pay on Entry"',
+      description: 'If left blank will display "Pay on Entry"',
     }),
   ],
   preview: {
@@ -128,16 +132,16 @@ export const eventType = defineType({
       image: 'image',
       highlighted: 'highlighted',
     },
-    prepare({name, date, image, highlighted}) {
+    prepare({ name, date, image, highlighted }) {
       const nameFormatted = name || 'Untitled event'
       const dateFormatted = date
         ? new Date(date).toLocaleDateString(undefined, {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-          })
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+        })
         : 'No date'
 
       return {
@@ -147,4 +151,4 @@ export const eventType = defineType({
       }
     },
   },
-})
+});

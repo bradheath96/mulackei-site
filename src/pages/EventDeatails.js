@@ -79,7 +79,7 @@ const EventDetails = ({ currentLang }) => {
 					</p>
 
 					{/* Event Name */}
-					<h1 className="font-titleFont text-6xl lg:text-8xl font-bold">
+					<h1 className="font-titleFont text-4xl lg:text-7xl font-bold">
 						{loading ? (
 							<div className="w-60 h-8 bg-primary animate-pulse"></div>
 						) : (

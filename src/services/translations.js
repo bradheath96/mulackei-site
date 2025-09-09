@@ -53,10 +53,10 @@ export const translations = {
 					},
 				},
 				{
-					Frida: {
-						name: "Frida Grubba",
-						role: "Head of Heads",
-						bio: "She was born in Berlin in 1992. From 2015 to 2022, she studied stage and costume design at the Weißensee Academy of Art and Design, graduating with a diploma in fine art. In 2019/20, she received a scholarship from the Deutschland/Mart Stam scholarship. Since 2014, she has worked as a freelance stage and costume designer for both independent and state theater productions.",
+					Aurelien: {
+						name: "Aurelien Falconnet",
+						role: "Head of Music",
+						bio: "Aurelien is a musician, sound engineer and producer. Born in Paris and trained as a pianist from an early age, he diversified his approach to music with drums, guitar, vocals and finally specialised as a bass player. Growing up in the hectic and multicultural Parisian music scene, he quickly fell in love with African and Afro-influenced music. Touring in France & Europe with various Afrobeat, Reggae, Soul, Jazz and Hip-hop projects, he had the opportunity to meet some of the most influential musicians of the last decades. In 2016, he moved to Berlin and has since worked as a music producer, sound engineer and live musician for a wide range of German and international artists. He is one of the founder of Mulackei and takes care of the day-to-day operations.",
 					},
 				},
 				{
@@ -67,24 +67,24 @@ export const translations = {
 					},
 				},
 				{
-					Hannah: {
-						name: "Hannah Ugé",
-						role: "Technical Coordinator",
-						bio: "Hannah was born in 1997 at the Baltic Sea and grew up in Berlin. She holds a Bachelor’s degree in Sociolinguistics, Philosophy, and English Philology from the Free University of Berlin and is currently pursuing her Master’s degrees in Linguistics and Applied Cultural Studies in Berlin and Potsdam. Hannah has completed internships in directing for documentary film and theater and teaches German as a foreign language. Her passion is dedicated to writing and engaging with societal issues in creative and artistic formats.",
-					},
-				},
-				{
-					Aurelien: {
-						name: "Aurelien Falconnet",
-						role: "Macgyver",
-						bio: "Aurelien is a musician, sound engineer and producer. Born in Paris and trained as a pianist from an early age, he diversified his approach to music with drums, guitar, vocals and finally specialised as a bass player. Growing up in the hectic and multicultural Parisian music scene, he quickly fell in love with African and Afro-influenced music. Touring in France & Europe with various Afrobeat, Reggae, Soul, Jazz and Hip-hop projects, he had the opportunity to meet some of the most influential musicians of the last decades. In 2016, he moved to Berlin and has since worked as a music producer, sound engineer and live musician for a wide range of German and international artists. He is one of the founder of Mulackei and takes care of the day-to-day operations.",
-					},
-				},
-				{
 					Isobel: {
 						name: "Isobel Hambleton",
 						role: "Concert Booking & Sound Engineer",
 						bio: "Isobel Hambleton is a musician, producer and sound engineer from Manchester, England. Under the artist name Sable, she released two self-produced EPs, garnering attention from the likes of BBC Radio 1, Radio Berlin-Brandenburg and Wonderland. She is currently in the process of producing her debut album. Alongside her solo work, Isobel has been producing and songwriting for other artists for several years, focusing her energies on creating space for FLINTA+ artists to express themselves and tell their stories. At Mulackei, she is responsible for concerts, alongside her colleague Aurelien.",
+					},
+				},
+				{
+					Frida: {
+						name: "Frida Grubba",
+						role: "Head of Heads",
+						bio: "She was born in Berlin in 1992. From 2015 to 2022, she studied stage and costume design at the Weißensee Academy of Art and Design, graduating with a diploma in fine art. In 2019/20, she received a scholarship from the Deutschland/Mart Stam scholarship. Since 2014, she has worked as a freelance stage and costume designer for both independent and state theater productions.",
+					},
+				},
+				{
+					Hannah: {
+						name: "Hannah Ugé",
+						role: "Technical Coordinator",
+						bio: "Hannah was born in 1997 at the Baltic Sea and grew up in Berlin. She holds a Bachelor’s degree in Sociolinguistics, Philosophy, and English Philology from the Free University of Berlin and is currently pursuing her Master’s degrees in Linguistics and Applied Cultural Studies in Berlin and Potsdam. Hannah has completed internships in directing for documentary film and theater and teaches German as a foreign language. Her passion is dedicated to writing and engaging with societal issues in creative and artistic formats.",
 					},
 				},
 			],
@@ -108,10 +108,10 @@ export const translations = {
 					},
 				},
 				{
-					Frida: {
-						name: "Frida Grubba",
-						role: "Kopf der Köpfe",
-						bio: "Sie wurde 1992 in Berlin geboren. Von 2015 bis 2022 studierte sie Bühnen- und Kostümbild an der Weißensee Kunsthochschule Berlin und schloss mit einem Diplom in Bildender Kunst ab. 2019/20 erhielt sie ein Stipendium des Deutschland/Mart Stam Stipendiums. Seit 2014 arbeitet sie als freiberufliche Bühnen- und Kostümbildnerin für sowohl freie als auch staatliche Theaterproduktionen.",
+					Aurelien: {
+						name: "Aurelien Falconnet",
+						role: "Leiter Musik",
+						bio: "Aurelien ist Musiker, Toningenieur und Produzent. Er wurde in Paris geboren und erhielt von klein auf Klavierunterricht. Er erweiterte seinen musikalischen Horizont mit Schlagzeug, Gitarre, Gesang und spezialisierte sich schließlich auf den Bass. Aufgewachsen in der hektischen und multikulturellen Pariser Musikszene verliebte er sich schnell in afrikanische und afro-inspirierte Musik. Auf Tournee in Frankreich und Europa mit verschiedenen Afrobeat-, Reggae-, Soul-, Jazz- und Hip-Hop-Projekten hatte er die Gelegenheit, einige der einflussreichsten Musiker der letzten Jahrzehnte zu treffen. 2016 zog er nach Berlin und arbeitet seitdem als Musikproduzent, Tontechniker und Live-Musiker für eine Vielzahl von deutschen und internationalen Künstlern. Er ist einer der Gründer der Mulackei und kümmert sich um die täglichen Abläufe.",
 					},
 				},
 				{
@@ -122,24 +122,24 @@ export const translations = {
 					},
 				},
 				{
-					Hannah: {
-						name: "Hannah Ugé",
-						role: "Technische Koordinatorin",
-						bio: "Hannah wurde 1997 an der Ostsee geboren und wuchs in Berlin auf. Sie hat einen Bachelor-Abschluss in Soziolinguistik, Philosophie und Anglistik von der Freien Universität Berlin und studiert derzeit im Master Linguistik und Angewandte Kulturwissenschaften in Berlin und Potsdam. Hannah hat Praktika in Regie für Dokumentarfilm und Theater absolviert und unterrichtet Deutsch als Fremdsprache. Ihre Leidenschaft gilt dem Schreiben und der Auseinandersetzung mit gesellschaftlichen Themen in kreativen und künstlerischen Formaten.",
-					},
-				},
-				{
-					Aurelien: {
-						name: "Aurelien Falconnet",
-						role: "Macgyver",
-						bio: "Aurelien ist Musiker, Toningenieur und Produzent. Er wurde in Paris geboren und erhielt von klein auf Klavierunterricht. Er erweiterte seinen musikalischen Horizont mit Schlagzeug, Gitarre, Gesang und spezialisierte sich schließlich auf den Bass. Aufgewachsen in der hektischen und multikulturellen Pariser Musikszene verliebte er sich schnell in afrikanische und afro-inspirierte Musik. Auf Tournee in Frankreich und Europa mit verschiedenen Afrobeat-, Reggae-, Soul-, Jazz- und Hip-Hop-Projekten hatte er die Gelegenheit, einige der einflussreichsten Musiker der letzten Jahrzehnte zu treffen. 2016 zog er nach Berlin und arbeitet seitdem als Musikproduzent, Tontechniker und Live-Musiker für eine Vielzahl von deutschen und internationalen Künstlern. Er ist einer der Gründer der Mulackei und kümmert sich um die täglichen Abläufe.",
-					},
-				},
-				{
 					Isobel: {
 						name: "Isobel Hambleton",
 						role: "Konzertbuchung & Tontechniker",
 						bio: "Isobel Hambleton ist eine Musikerin, Produzentin und Tontechnikerin aus Manchester, England. Unter dem Künstlernamen Sable hat sie zwei selbstproduzierte EPs veröffentlicht und damit die Aufmerksamkeit von Sendern wie BBC Radio 1, Radio Berlin-Brandenburg und Wonderland auf sich gezogen. Derzeit arbeitet sie an der Produktion ihres Debütalbums. Neben ihrer Soloarbeit produziert und schreibt Isobel seit mehreren Jahren für andere Künstler und konzentriert ihre Energie darauf, Raum für FLINTA+ Künstler zu schaffen, damit sie sich ausdrücken und ihre Geschichten erzählen können. Bei Mulackei ist sie zusammen mit ihrem Kollegen Aurelien für die Konzerte zuständig.",
+					},
+				},
+				{
+					Frida: {
+						name: "Frida Grubba",
+						role: "Kopf der Köpfe",
+						bio: "Sie wurde 1992 in Berlin geboren. Von 2015 bis 2022 studierte sie Bühnen- und Kostümbild an der Weißensee Kunsthochschule Berlin und schloss mit einem Diplom in Bildender Kunst ab. 2019/20 erhielt sie ein Stipendium des Deutschland/Mart Stam Stipendiums. Seit 2014 arbeitet sie als freiberufliche Bühnen- und Kostümbildnerin für sowohl freie als auch staatliche Theaterproduktionen.",
+					},
+				},
+				{
+					Hannah: {
+						name: "Hannah Ugé",
+						role: "Technische Koordinatorin",
+						bio: "Hannah wurde 1997 an der Ostsee geboren und wuchs in Berlin auf. Sie hat einen Bachelor-Abschluss in Soziolinguistik, Philosophie und Anglistik von der Freien Universität Berlin und studiert derzeit im Master Linguistik und Angewandte Kulturwissenschaften in Berlin und Potsdam. Hannah hat Praktika in Regie für Dokumentarfilm und Theater absolviert und unterrichtet Deutsch als Fremdsprache. Ihre Leidenschaft gilt dem Schreiben und der Auseinandersetzung mit gesellschaftlichen Themen in kreativen und künstlerischen Formaten.",
 					},
 				},
 			],

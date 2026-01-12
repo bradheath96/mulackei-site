@@ -47,7 +47,7 @@ const Home = ({ currentLang }) => {
 			const imgs = await fetchImagesByFilenames([
 				"CAP_1062.webp",
 				"CAP_1256.webp",
-				"CAP_0950.ywebp",
+				"CAP_0950.webp",
 				"CAP_1066.webp",
 			]);
 			setImages(imgs);
@@ -253,7 +253,7 @@ const Home = ({ currentLang }) => {
 								{isLoading ? (
 									<div className="w-full max-w-[600px] h-[400px] bg-primary animate-pulse"></div>
 								) : (
-									images?.[1] && (
+									images?.[3] && (
 										<img
 											src={images[3].url}
 											alt={images[3].alt || "Event image"}

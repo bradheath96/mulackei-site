@@ -47,7 +47,7 @@ const Home = ({ currentLang }) => {
 			const imgs = await fetchImagesByFilenames([
 				"CAP_1062.webp",
 				"CAP_1256.webp",
-				"CAP_0950.webp",
+				"CAP_0950.ywebp",
 				"CAP_1066.webp",
 			]);
 			setImages(imgs);
